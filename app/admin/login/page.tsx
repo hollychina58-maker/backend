@@ -1,12 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { Button } from '../../../components/Button';
 import { Input } from '../../../components/Input';
 
 export default function LoginPage() {
-  const router = useRouter();
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -27,7 +25,7 @@ export default function LoginPage() {
 
       if (data.success) {
         localStorage.setItem('admin_user', JSON.stringify(data.user));
-        router.push('/admin');
+        window.location.href = '/admin';
       } else {
         setError(data.error || '登录失败');
       }
