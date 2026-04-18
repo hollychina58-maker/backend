@@ -7,7 +7,7 @@ import { AdminSidebar } from '../../components/AdminSidebar';
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
-  const [user, setUser] = useState<{ name: string; email: string } | null>(null);
+  const [user, setUser] = useState<{ name: string; email: string } | undefined>(undefined);
   const [loading, setLoading] = useState(true);
 
   const isLoginPage = pathname === '/admin/login';
