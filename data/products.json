@@ -1,0 +1,1316 @@
+[
+  {
+    "id": "PA-3ARG",
+    "slug": "PA-3ARG-A",
+    "image": "/images/products/PA-3ARG-A.jpg",
+    "specs": {
+      "zh": [
+        {
+          "name": "分辨率(°/s)",
+          "value": "≤0.06",
+          "unit": "度"
+        },
+        {
+          "name": "交叉耦合(%)",
+          "value": "≤2",
+          "unit": "%"
+        },
+        {
+          "name": "启动时间(ms)",
+          "value": "≤20",
+          "unit": "毫秒"
+        },
+        {
+          "name": "带宽(Hz,可调)",
+          "value": "80~100",
+          "unit": "赫兹"
+        },
+        {
+          "name": "G值灵敏度(/s/g)",
+          "value": "<0.02~<0.1",
+          "unit": ""
+        },
+        {
+          "name": "可靠性 MTBF",
+          "value": "10万小时",
+          "unit": "小时"
+        },
+        {
+          "name": "使用温度(℃)",
+          "value": "-65~+125",
+          "unit": "度"
+        },
+        {
+          "name": "重量(g)",
+          "value": "<40",
+          "unit": "克"
+        },
+        {
+          "name": "外形尺寸",
+          "value": "34X25X24",
+          "unit": "毫米"
+        }
+      ],
+      "en": [
+        {
+          "name": "Resolution (°/s)",
+          "value": "≤0.06",
+          "unit": "Degree"
+        },
+        {
+          "name": "Cross-coupling (%)",
+          "value": "≤2",
+          "unit": "%"
+        },
+        {
+          "name": "Startup time (ms)",
+          "value": "≤20",
+          "unit": "ms"
+        },
+        {
+          "name": "Bandwidth (Hz, adjustable)",
+          "value": "80, 100",
+          "unit": "Hertz"
+        },
+        {
+          "name": "Sensitivity G (/s/g)",
+          "value": "< 0.02 ~ < 0.1",
+          "unit": ""
+        },
+        {
+          "name": "Reliability MTBF",
+          "value": "100,000 hours",
+          "unit": "Jam"
+        },
+        {
+          "name": "using temperture(℃)",
+          "value": "-65 ~ +125",
+          "unit": "Degree"
+        },
+        {
+          "name": "Weight (g)",
+          "value": "40",
+          "unit": "Grams"
+        },
+        {
+          "name": "External dimensions",
+          "value": "34X25X24",
+          "unit": "mm"
+        }
+      ],
+      "ru": [
+        {
+          "name": "Разрешение (°/с)",
+          "value": "0. 06",
+          "unit": "Градус"
+        },
+        {
+          "name": "Поперечная муфта (%)",
+          "value": "≤2",
+          "unit": "%"
+        },
+        {
+          "name": "Время запуска (мс)",
+          "value": "20",
+          "unit": "микросекунд"
+        },
+        {
+          "name": "Полоса пропускания (Гц, регулируемая)",
+          "value": "80 〜100",
+          "unit": "Гц"
+        },
+        {
+          "name": "Чувствительность G (/с/г)",
+          "value": "< 0,02 ~ < 0,1",
+          "unit": ""
+        },
+        {
+          "name": "Надежность MTBF",
+          "value": "100 000 часов",
+          "unit": "Час"
+        },
+        {
+          "name": "Рабочая температура",
+          "value": "-65 ~ +125",
+          "unit": "Градус"
+        },
+        {
+          "name": "Вес (г)",
+          "value": "40",
+          "unit": "Грамм"
+        },
+        {
+          "name": "Размеры габаритные",
+          "value": "34X25X24",
+          "unit": "мм                "
+        }
+      ],
+      "ar": [
+        {
+          "name": "القرار: %s",
+          "value": "06",
+          "unit": "ف."
+        },
+        {
+          "name": "التقارن المتقاطع (٪)",
+          "value": "2",
+          "unit": "%"
+        },
+        {
+          "name": "وقت بدء التشغيل (مللي ثانية)",
+          "value": "20",
+          "unit": "م ث"
+        },
+        {
+          "name": "عرض النطاق الترددي (هرتز، قابل للتعديل)",
+          "value": "80 ~ 100",
+          "unit": "هرتز"
+        },
+        {
+          "name": "الحساسية G (/ s/g)",
+          "value": "< 0.02 ~ < 0.1",
+          "unit": ""
+        },
+        {
+          "name": "الموثوقية MTBF",
+          "value": "100000 ساعة",
+          "unit": "ساعة"
+        },
+        {
+          "name": "درجة حرارة التشغيل (درجة مئوية)",
+          "value": "-65 ~ +125",
+          "unit": "ف."
+        },
+        {
+          "name": "الوزن (جم)",
+          "value": "40",
+          "unit": "(غرامات)"
+        },
+        {
+          "name": "الأبعاد",
+          "value": "34X25X24",
+          "unit": "ملم"
+        }
+      ],
+      "fa": [
+        {
+          "name": "وضوح (درجه بر ثانیه)",
+          "value": "≤0.06",
+          "unit": "اورگرین"
+        },
+        {
+          "name": "اتصال متقاطع (%)",
+          "value": "- دو .",
+          "unit": "%"
+        },
+        {
+          "name": "زمان شروع (میلی‌ثانیه)",
+          "value": "۰/ ۲۰",
+          "unit": "ریزثانیه‌ها"
+        },
+        {
+          "name": "پهنای باند (هرتز، قابل تنظیم)",
+          "value": "۸۰ تا ۱۰۰",
+          "unit": "هرتز"
+        },
+        {
+          "name": "حساسیت به مقدار G (/s/g)",
+          "value": "&lt;0.02 ~ &lt;0.1",
+          "unit": ""
+        },
+        {
+          "name": "میانگین زمان بین خرابی‌ها (MTBF) در قابلیت اطمینان",
+          "value": "۱۰۰۰۰۰ ساعت",
+          "unit": "hours"
+        },
+        {
+          "name": "دمای عملیاتی (°C)",
+          "value": "-65 ~ +125",
+          "unit": "اورگرین"
+        },
+        {
+          "name": "وزن (گرم)",
+          "value": ". چهل",
+          "unit": "گرم"
+        },
+        {
+          "name": "ابعاد خارجی",
+          "value": "۳۴X۲۵X۲۴",
+          "unit": "میلی‌متر"
+        }
+      ],
+      "la": [
+        {
+          "name": "Resolutionis (°/s)",
+          "value": "≤ 0.06",
+          "unit": "gradus"
+        },
+        {
+          "name": "Cross-coupling (%)",
+          "value": "Duo",
+          "unit": "%"
+        },
+        {
+          "name": "Tacula Startup (ms)",
+          "value": "≤ 20",
+          "unit": "milisecondi"
+        },
+        {
+          "name": "Bandwidth (Hz, adjustable)",
+          "value": "80 ~ 100",
+          "unit": "Hertz"
+        },
+        {
+          "name": "Sensitas G (/s/g)",
+          "value": "< 0.02 ~ < 0.1",
+          "unit": ""
+        },
+        {
+          "name": "Reliability MTBF",
+          "value": "QUAE 100.000 UNIVERSITATIS",
+          "unit": "Adhucum"
+        },
+        {
+          "name": "Imperium exercatio (℃)",
+          "value": "-65 ~ +125",
+          "unit": "gradus"
+        },
+        {
+          "name": "Weight (g)",
+          "value": "< 40",
+          "unit": "g"
+        },
+        {
+          "name": "Mensura",
+          "value": "34X25X24",
+          "unit": "mm"
+        }
+      ]
+    },
+    "published": true,
+    "content": {
+      "zh": {
+        "name": "PA-3ARG-A系列通用型三轴角速率陀螺",
+        "description": "PA-3ARG-A系列通用型三轴角速率陀螺用于测量三轴角速率的传感器。产品采用MEMS技术的芯片,具有高性能、低成本、高可靠性和高封装坚固性,并具备自检测(Self-Test) 功能。此外,该产品还具有低功耗、宽的工作温度范围、宽的带宽、小体积、快速启动、直流输入直流输出等特点。"
+      },
+      "en": {
+        "name": "PA-3ARG-A Series Universal Triaxial Angular Rate Gyroscope",
+        "description": "The PA-3ARG-A series of universal triaxial angular rate gyroscopes are used to measure triaxial angular rate sensors. The product adopts a chip with MEMS technology, which has high performance, low cost, high reliability, high packaging robustness, and self-inspection (Self-Test) function. In addition, the product also has low power consumption, wide operating temperature range, wide bandwidth, small volume, fast start, DC input and DC output."
+      },
+      "ru": {
+        "name": "Универсальный трехосный гироскоп с угловой скоростью серии PA-3ARG-A",
+        "description": "Серия универсальных трехосных гироскопов с угловой скоростью PA-3ARG-A используется для измерения трехосных датчиков угловой скорости. Продукт оснащен чипом с технологией MEMS, который обладает высокой производительностью, низкой стоимостью, высокой надежностью, высокой прочностью упаковки и функцией самоконтроля (самопроверки). Кроме того, продукт также имеет низкое энергопотребление, широкий диапазон рабочих температур, широкую полосу пропускания, небольшой объем, быстрый запуск, вход постоянного тока и выход постоянного тока."
+      },
+      "ar": {
+        "name": "جيروسكوب ثلاثي المحور ثلاثي الزوايا من سلسلة PA -3ARG - A",
+        "description": "تُستخدم سلسلة PA -3ARG - A من الجيروسكوبات ذات المعدل الزاوي ثلاثي المحاور الشامل لقياس مستشعرات المعدل الزاوي ثلاثي المحاور. يعتمد المنتج شريحة مزودة بتقنية MEMS، والتي تتميز بالأداء العالي والتكلفة المنخفضة والموثوقية العالية وقوة التغليف العالية ووظيفة الفحص الذاتي (الاختبار الذاتي). بالإضافة إلى ذلك، يتميز المنتج أيضًا باستهلاك منخفض للطاقة، ونطاق واسع لدرجة حرارة التشغيل، وعرض نطاق ترددي واسع، وحجم صغير، وبدء سريع، ومدخل تيار مستمر، ومخرج تيار مستمر."
+      },
+      "fa": {
+        "name": "ژیروسکوپ سه محوره با سرعت زاویه‌ای عمومی سری PA-3ARG-A",
+        "description": "ژیروسکوپ سه محوره با سرعت زاویه‌ای عمومی سری PA-3ARG-A، حسگری است که برای اندازه‌گیری سرعت زاویه‌ای سه محوره استفاده می‌شود. این محصول از یک تراشه MEMS بهره می‌برد که دارای عملکرد بالا، هزینه کم، قابلیت اطمینان بالا و بسته‌بندی مقاوم است و شامل یک تابع خودآزمایی نیز می‌باشد. علاوه بر این، دارای مصرف توان کم، محدوده دمای عملیاتی گسترده، پهنای باند وسیع، اندازه کوچک، راه‌اندازی سریع و ورودی/خروجی DC است."
+      },
+      "la": {
+        "name": "PA-3ARG-A Series Universal Triaxiale Angular Rate Gyroscope",
+        "description": "PA-3ARG-A series del universale triaxialis angularis rate gyroscopes usque refre to measure triaxial angular rate sensors. PRODUCTATION ACEPTATIONES ACCRIPTATIONES PROFECTIVE, INTERNATIONAL POWDERIONALITATIONAL, CONFECTURE PROFECT (Self-Test) function. Ankoatra izany, PRODUCT POWER LOWERENSI OPTIONE POWERENSIONE LEARNS RECTUM ACLEMENT PERFECTIVE, PLUS APPLICATION, DC INPUT & DC OUTERNATION."
+      }
+    },
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2026-04-18T06:35:40.337Z"
+  },
+  {
+    "id": "PA-AHRS01",
+    "slug": "pa-ahrs01",
+    "image": "/images/products/PA-AHRS01.jpg",
+    "specs": {
+      "zh": [],
+      "en": [],
+      "ru": [],
+      "ar": [],
+      "fa": [],
+      "la": []
+    },
+    "published": true,
+    "content": {
+      "zh": {
+        "name": "PA-AHRS01 姿态航向参考系统",
+        "description": "集成AHRS，结合加速度计、陀螺仪和磁力计，实现全面的姿态和航向确定。"
+      },
+      "en": {
+        "name": "PA-AHRS01 attitude heading reference system",
+        "description": "Integrated AHRS, combined with accelerometers, gyroscopes and magnetometers for comprehensive attitude and heading determination."
+      },
+      "ru": {
+        "name": "PA-AHRS01 система координат курса ориентации",
+        "description": "Интегрированные AHRS в сочетании с акселерометрами, гироскопами и магнитометрами для комплексного определения ориентации и курса."
+      },
+      "ar": {
+        "name": "PA - AHRS01 النظام المرجعي لعنوان الموقف",
+        "description": "نظام AHRS المتكامل، جنبًا إلى جنب مع مقاييس التسارع والجيروسكوبات ومقاييس المغناطيسية للموقف الشامل وتحديد الاتجاه."
+      },
+      "fa": {
+        "name": "سیستم مرجع جهت و وضعیت PA-AHRS01",
+        "description": "ادغام AHRS، همراه با شتاب‌سنج‌ها، ژیروسکوپ‌ها و مغناطیس‌سنج‌ها، امکان تعیین جامع وضعیت و جهت را فراهم می‌کند."
+      },
+      "la": {
+        "name": "PA-AHRS01 REGION SIGNORITATION SIGNEM",
+        "description": "AHRS Integratedis, cum accelerometersis, gyroscopes et magnetometers for comprehensive attitude and heading determination."
+      }
+    },
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2026-04-18T06:16:24.177Z"
+  },
+  {
+    "id": "PA-IMU-01",
+    "slug": "pa-imu-01",
+    "image": "/images/products/PA-IMU-01G.jpg",
+    "specs": {
+      "en": [
+        {
+          "name": "Bias Stability",
+          "value": "0.01",
+          "unit": "deg/hr"
+        },
+        {
+          "name": "Angular Range",
+          "value": "±100",
+          "unit": "deg/s"
+        },
+        {
+          "name": "Power",
+          "value": "2",
+          "unit": "W"
+        },
+        {
+          "name": "Weight",
+          "value": "50",
+          "unit": "g"
+        }
+      ],
+      "zh": [],
+      "ru": [],
+      "ar": [],
+      "fa": [],
+      "la": []
+    },
+    "published": true,
+    "content": {
+      "en": {
+        "name": "PA-IMU-01 Inertial Measurement Unit",
+        "description": "High-precision inertial measurement unit with exceptional bias stability for navigation and guidance systems."
+      },
+      "zh": {
+        "name": "PA-IMU-01 惯性测量单元",
+        "description": "具有出色偏置稳定性的高精度惯性测量单元，用于导航和制导系统。"
+      },
+      "ru": {
+        "name": "PA-IMU-01 Инерциальный измерительный блок",
+        "description": "Высокоточный инерциальный измерительный блок с исключительной стабильностью смещения для навигации и систем наведения."
+      },
+      "ar": {
+        "name": "PA-IMU-01 وحدة القياس بالقصور الذاتي",
+        "description": "وحدة قياس بالقصور الذاتي عالية الدقة مع استقرار ممتاز في التحيز لأنظمة الملاحة والتوجيه."
+      },
+      "fa": {
+        "name": "PA-IMU-01 واحده اندازه‌گیری اینرسی",
+        "description": "واحد اندازه‌گیری اینرسی با دقت بالا با پایداری بایاس استثنایی برای سیستم‌های ناوبری و هدایت."
+      },
+      "la": {
+        "name": "PA-IMU-01 Unitatis Mensurae Inertialis",
+        "description": "Unitatis mensurae inertialis altae precisionis cum stabilitate bias exceptionali pro systematis navigationis et ductus."
+      }
+    },
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "PA-GS",
+    "slug": "pa-gs",
+    "image": "/images/products/PA-GS.jpg",
+    "specs": {
+      "en": [
+        {
+          "name": "Bias Stability",
+          "value": "0.001",
+          "unit": "deg/hr"
+        },
+        {
+          "name": "Angular Range",
+          "value": "±500",
+          "unit": "deg/s"
+        },
+        {
+          "name": "Power",
+          "value": "8",
+          "unit": "W"
+        },
+        {
+          "name": "Weight",
+          "value": "200",
+          "unit": "g"
+        }
+      ],
+      "zh": [],
+      "ru": [],
+      "ar": [],
+      "fa": [],
+      "la": []
+    },
+    "published": true,
+    "content": {
+      "en": {
+        "name": "PA-GS Navigation Gyroscope System",
+        "description": "Premium navigation-grade gyroscope system with ultra-high bias stability for critical aerospace applications."
+      },
+      "zh": {
+        "name": "PA-GS 导航陀螺仪系统",
+        "description": "面向关键航空航天应用的超高偏置稳定性顶级导航级陀螺仪系统。"
+      },
+      "ru": {
+        "name": "PA-GS Навигационная гироскопическая система",
+        "description": "Премиальная навигационная гироскопическая система с ультравысокой стабильностью смещения для критических аэрокосмических приложений."
+      },
+      "ar": {
+        "name": "PA-GS نظام الجيروسكوب الملاحي",
+        "description": "نظام جيروسكوب ملاحي فائق مع استقرار تحيز فائق الارتفاع للتطبيقات الجوية والفضائية الحرجة."
+      },
+      "fa": {
+        "name": "PA-GS سیستم ژیروسکوپ ناوبری",
+        "description": "سیستم ژیروسکوپ درجه ناوبری ممتاز با پایداری بایاس فوق‌العاده بالا برای کاربردهای حیاتی هوافضا."
+      },
+      "la": {
+        "name": "PA-GS Systema Gyroscopium Navigationis",
+        "description": "Systema gyroscopium navigationis praemii cum stabilitate bias ultraalta pro applicationibus astronauticis criticis."
+      }
+    },
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "PA-ARG",
+    "slug": "pa-arg",
+    "image": "/images/products/PA-ARG-A.jpg",
+    "specs": {
+      "en": [
+        {
+          "name": "Accuracy",
+          "value": "0.2",
+          "unit": "deg"
+        },
+        {
+          "name": "Range",
+          "value": "±90",
+          "unit": "deg"
+        },
+        {
+          "name": "Power",
+          "value": "4",
+          "unit": "W"
+        },
+        {
+          "name": "Weight",
+          "value": "120",
+          "unit": "g"
+        }
+      ],
+      "zh": [],
+      "ru": [],
+      "ar": [],
+      "fa": [],
+      "la": []
+    },
+    "published": true,
+    "content": {
+      "en": {
+        "name": "PA-ARG Air Reference Gyroscope",
+        "description": "Cost-effective attitude reference gyroscope ideal for commercial aviation and UAV applications."
+      },
+      "zh": {
+        "name": "PA-ARG 空气参考陀螺仪",
+        "description": "性价比高的姿态参考陀螺仪，非常适合商业航空和无人机应用。"
+      },
+      "ru": {
+        "name": "PA-ARG Воздушный эталонный гироскоп",
+        "description": "Экономичный гироскоп эталонной ориентации, идеальный для коммерческой авиации и приложений БПЛА."
+      },
+      "ar": {
+        "name": "PA-ARG جيروسكوب المرجع الجوي",
+        "description": "جيروسكوب مرجع وضعية فعال من حيث التكلفة مثالي لتطبيقات الطيران التجاري والطائرات بدون طيار."
+      },
+      "fa": {
+        "name": "PA-ARG ژیروسکوپ مرجع هوایی",
+        "description": "ژیروسکوپ مرجع وضعیت مقرون به صرفه ایده‌آل برای کاربردهای هوانوردی تجاری و پهپاد."
+      },
+      "la": {
+        "name": "PA-ARG Gyroscopium Referentiae Aereae",
+        "description": "Gyroscopium referentiae attitudinis efficientiae costae idealis pro applicationibus aviationis commercialis et UAV."
+      }
+    },
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "PA-LAMIII",
+    "slug": "pa-lamiii",
+    "image": "/images/products/PA-LAMIII-D.jpg",
+    "specs": {
+      "en": [
+        {
+          "name": "Accuracy",
+          "value": "0.001",
+          "unit": "deg"
+        },
+        {
+          "name": "Range",
+          "value": "±45",
+          "unit": "deg"
+        },
+        {
+          "name": "Power",
+          "value": "10",
+          "unit": "W"
+        },
+        {
+          "name": "Weight",
+          "value": "500",
+          "unit": "g"
+        }
+      ],
+      "zh": [],
+      "ru": [],
+      "ar": [],
+      "fa": [],
+      "la": []
+    },
+    "published": true,
+    "content": {
+      "en": {
+        "name": "PA-LAMIII Laser Angular Measurement System",
+        "description": "Ultra-precision laser-based angular measurement system for laboratory and calibration applications."
+      },
+      "zh": {
+        "name": "PA-LAMIII 激光角度测量系统",
+        "description": "超精密基于激光的角度测量系统，适用于实验室和校准应用。"
+      },
+      "ru": {
+        "name": "PA-LAMIII Лазерная система измерения углов",
+        "description": "Ультраточная лазерная система измерения углов для лабораторных приложений и калибровки."
+      },
+      "ar": {
+        "name": "PA-LAMIII نظام قياس الزاوية بالليزر",
+        "description": "نظام قياس زاوية فائق الدقة قائم على الليزر للتطبيقات المختبرية والمعايرة."
+      },
+      "fa": {
+        "name": "PA-LAMIII سیستم اندازه‌گیری زاویه لیزری",
+        "description": "سیستم اندازه‌گیری زاویه‌ای فوق‌دقیق مبتنی بر لیزر برای کاربردهای آزمایشگاهی و کالیبراسیون."
+      },
+      "la": {
+        "name": "PA-LAMIII Systema Mensurae Angularis Laser",
+        "description": "Systema mensurae angularis ultra-precisionis fundatum in laser pro applicationibus laboratory et calibrationis."
+      }
+    },
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "PA-LASI",
+    "slug": "pa-lasi",
+    "image": "/images/products/PA-LASI-A.jpg",
+    "specs": {
+      "en": [
+        {
+          "name": "Accuracy",
+          "value": "1",
+          "unit": "μg"
+        },
+        {
+          "name": "Acceleration Range",
+          "value": "±10",
+          "unit": "g"
+        },
+        {
+          "name": "Power",
+          "value": "2",
+          "unit": "W"
+        },
+        {
+          "name": "Weight",
+          "value": "40",
+          "unit": "g"
+        }
+      ],
+      "zh": [],
+      "ru": [],
+      "ar": [],
+      "fa": [],
+      "la": []
+    },
+    "published": true,
+    "content": {
+      "en": {
+        "name": "PA-LASI Accelerometer System",
+        "description": "MEMS-based high-performance accelerometer with micro-g resolution for precision navigation."
+      },
+      "zh": {
+        "name": "PA-LASI 加速度计系统",
+        "description": "基于MEMS的高性能加速度计，具有微重力分辨率，用于精密导航。"
+      },
+      "ru": {
+        "name": "PA-LASI Акселерометрическая система",
+        "description": "Высокопроизводительный акселерометр на основе МЭМС с разрешением микрогравитации для прецизионной навигации."
+      },
+      "ar": {
+        "name": "PA-LASI نظام مقاييس التسارع",
+        "description": "مقياس تسارع عالي الأداء قائم على MEMS بدقة ميكروغرام للملاحة الدقيقة."
+      },
+      "fa": {
+        "name": "PA-LASI سیستم شتاب‌سنج",
+        "description": "شتاب‌سنج با کارایی بالا مبتنی بر MEMS با دقت میکروگرانشی برای ناوبری دقیق."
+      },
+      "la": {
+        "name": "PA-LASI Systema Accelerometri",
+        "description": "Accelerometrum alti performantiae fundatum in MEMS cum resolutione micro-g pro navigatione precisa."
+      }
+    },
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "PM-C3000",
+    "slug": "pm-c3000",
+    "image": "/images/products/PM-C3000.jpg",
+    "specs": {
+      "en": [
+        {
+          "name": "Resolution",
+          "value": "16",
+          "unit": "bit"
+        },
+        {
+          "name": "Interface",
+          "value": "RS485",
+          "unit": ""
+        },
+        {
+          "name": "Power",
+          "value": "5",
+          "unit": "W"
+        },
+        {
+          "name": "Weight",
+          "value": "100",
+          "unit": "g"
+        }
+      ],
+      "zh": [],
+      "ru": [],
+      "ar": [],
+      "fa": [],
+      "la": []
+    },
+    "published": true,
+    "content": {
+      "en": {
+        "name": "PM-C3000 Compass Module",
+        "description": "Digital compass module with RS485 interface for marine and land navigation systems."
+      },
+      "zh": {
+        "name": "PM-C3000 罗盘模块",
+        "description": "带RS485接口的数字罗盘模块，用于船舶和陆地导航系统。"
+      },
+      "ru": {
+        "name": "PM-C3000 Модуль компаса",
+        "description": "Модуль цифрового компаса с интерфейсом RS485 для морских и наземных навигационных систем."
+      },
+      "ar": {
+        "name": "PM-C3000 وحدة البوصلة",
+        "description": "وحدة بوصلة رقمية مع واجهة RS485 لأنظمة الملاحة البحرية والبرية."
+      },
+      "fa": {
+        "name": "PM-C3000 ماژول قطب‌نما",
+        "description": "ماژول قطب‌نمای دیجیتال با رابط RS485 برای سیستم‌های ناوبری دریایی و زمینی."
+      },
+      "la": {
+        "name": "PM-C3000 Modulus Compass",
+        "description": "Modulus compassus digitalis cum interfacie RS485 pro systematis navigationis marinae et terrestris."
+      }
+    },
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "PA-VG11",
+    "slug": "pa-vg11",
+    "image": "/images/products/PA-VG11.jpg",
+    "specs": {
+      "en": [
+        {
+          "name": "Accuracy",
+          "value": "0.01",
+          "unit": "deg"
+        },
+        {
+          "name": "Range",
+          "value": "±90",
+          "unit": "deg"
+        },
+        {
+          "name": "Power",
+          "value": "5",
+          "unit": "W"
+        },
+        {
+          "name": "Weight",
+          "value": "120",
+          "unit": "g"
+        }
+      ],
+      "zh": [],
+      "ru": [],
+      "ar": [],
+      "fa": [],
+      "la": []
+    },
+    "published": true,
+    "content": {
+      "en": {
+        "name": "PA-VG11 Vertical Gyroscope",
+        "description": "Precision vertical gyroscope for attitude determination in stabilized platforms and weapons systems."
+      },
+      "zh": {
+        "name": "PA-VG11 垂直陀螺仪",
+        "description": "用于稳定平台和武器系统姿态确定的高精度垂直陀螺仪。"
+      },
+      "ru": {
+        "name": "PA-VG11 Вертикальный гироскоп",
+        "description": "Прецизионный вертикальный гироскоп для определения ориентации в стабилизированных платформах и оружейных системах."
+      },
+      "ar": {
+        "name": "PA-VG11 جيروسكوب عمودي",
+        "description": "جيروسكوب عمودي دقيق لتحديد الوضعية في المنصات المستقرة وأنظمة الأسلحة."
+      },
+      "fa": {
+        "name": "PA-VG11 ژیروسکوپ عمودی",
+        "description": "ژیروسکوپ عمودی دقیق برای تعیین وضعیت در سکوهای پایدار و سیستم‌های تسلیحاتی."
+      },
+      "la": {
+        "name": "PA-VG11 Gyroscopium Verticale",
+        "description": "Gyroscopium verticale precisum ad determinationem attitudinis in platformis stabilitis et systematis armorum."
+      }
+    },
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "PA-LASIII",
+    "slug": "pa-lasiii",
+    "image": "/images/products/PA-LASIII-A.jpg",
+    "specs": {
+      "en": [
+        {
+          "name": "Accuracy",
+          "value": "0.0005",
+          "unit": "deg"
+        },
+        {
+          "name": "Range",
+          "value": "±60",
+          "unit": "deg"
+        },
+        {
+          "name": "Power",
+          "value": "15",
+          "unit": "W"
+        },
+        {
+          "name": "Weight",
+          "value": "600",
+          "unit": "g"
+        }
+      ],
+      "zh": [],
+      "ru": [],
+      "ar": [],
+      "fa": [],
+      "la": []
+    },
+    "published": true,
+    "content": {
+      "en": {
+        "name": "PA-LASIII High-Precision Laser Angular Sensor",
+        "description": "Research-grade laser angular sensor with sub-millidegree accuracy for metrology applications."
+      },
+      "zh": {
+        "name": "PA-LASIII 高精度激光角度传感器",
+        "description": "研究级激光角度传感器，具有亚毫度精度，适用于计量应用。"
+      },
+      "ru": {
+        "name": "PA-LASIII Высокоточный лазерный датчик углов",
+        "description": "Исследовательский лазерный датчик углов с точностью менее миллиградуса для метрологических приложений."
+      },
+      "ar": {
+        "name": "PA-LASIII مستشعر الزاوية الليزري عالي الدقة",
+        "description": "مستشعر زاوية ليزري من فئة البحث بدقة أقل من جزء من الألف من الدرجة للتطبيقات المترولوجية."
+      },
+      "fa": {
+        "name": "PA-LASIII سنسور زاویه لیزری با دقت بالا",
+        "description": "سنسور زاویه لیزری درجه تحقیقاتی با دقت زیر میلی‌درجه برای کاربردهای اندازه‌شناسی."
+      },
+      "la": {
+        "name": "PA-LASIII Sensor Angularis Laser Altae Precisionis",
+        "description": "Sensor angularis laser investigationis gradus cum accuratione sub-millidegri pro applicationibus metrologicis."
+      }
+    },
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "PA-IMU-02",
+    "slug": "pa-imu-02",
+    "image": "/images/products/PA-IMU-02D03D.jpg",
+    "specs": {
+      "en": [
+        {
+          "name": "Bias Stability",
+          "value": "0.005",
+          "unit": "deg/hr"
+        },
+        {
+          "name": "Angular Range",
+          "value": "±200",
+          "unit": "deg/s"
+        },
+        {
+          "name": "Power",
+          "value": "3",
+          "unit": "W"
+        },
+        {
+          "name": "Weight",
+          "value": "60",
+          "unit": "g"
+        }
+      ],
+      "zh": [],
+      "ru": [],
+      "ar": [],
+      "fa": [],
+      "la": []
+    },
+    "published": true,
+    "content": {
+      "en": {
+        "name": "PA-IMU-02 Tactical Grade IMU",
+        "description": "Tactical-grade inertial measurement unit balancing performance and cost for demanding defense applications."
+      },
+      "zh": {
+        "name": "PA-IMU-02 战术级IMU",
+        "description": "战术级惯性测量单元，在性能和成本之间取得平衡，适用于苛刻的国防应用。"
+      },
+      "ru": {
+        "name": "PA-IMU-02 ИМУ тактического класса",
+        "description": "Инерциальный измерительный блок тактического класса, обеспечивающий баланс производительности и стоимости для требовательных оборонных приложений."
+      },
+      "ar": {
+        "name": "PA-IMU-02 وحدة القياس بالقصور الذاتي من الدرجة التكتيكية",
+        "description": "وحدة قياس بالقصور الذاتي من الدرجة التكتيكية توازن بين الأداء والتكلفة للتطبيقات الدفاعية demanding."
+      },
+      "fa": {
+        "name": "PA-IMU-02 IMU درجه تاکتیکی",
+        "description": "واحد اندازه‌گیری اینرسی درجه تاکتیکی با تعادل بین عملکرد و هزینه برای کاربردهای دفاعی."
+      },
+      "la": {
+        "name": "PA-IMU-02 IMU Gradus Tacticus",
+        "description": "Unitatis mensurae inertialis gradus tactici aequilibrium performantiae et costae pro applicationibus defensionis."
+      }
+    },
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "PA-GSAUTO",
+    "slug": "pa-gsauto",
+    "image": "/images/products/PA-GSAUTO.jpg",
+    "specs": {
+      "en": [
+        {
+          "name": "Bias Stability",
+          "value": "0.001",
+          "unit": "deg/hr"
+        },
+        {
+          "name": "Heading Range",
+          "value": "±360",
+          "unit": "deg"
+        },
+        {
+          "name": "Power",
+          "value": "10",
+          "unit": "W"
+        },
+        {
+          "name": "Weight",
+          "value": "250",
+          "unit": "g"
+        }
+      ],
+      "zh": [],
+      "ru": [],
+      "ar": [],
+      "fa": [],
+      "la": []
+    },
+    "published": true,
+    "content": {
+      "en": {
+        "name": "PA-GSAUTO Autonomous Vehicle Gyroscope",
+        "description": "High-stability gyroscope designed for autonomous vehicles, delivering reliable heading and attitude data."
+      },
+      "zh": {
+        "name": "PA-GSAUTO 自动驾驶车辆陀螺仪",
+        "description": "高稳定性陀螺仪，专为自动驾驶车辆设计，提供可靠的航向和姿态数据。"
+      },
+      "ru": {
+        "name": "PA-GSAUTO Гироскоп для автономных транспортных средств",
+        "description": "Гироскоп с высокой стабильностью, разработанный для автономных транспортных средств, обеспечивающий надежные данные о курсе и ориентации."
+      },
+      "ar": {
+        "name": "PA-GSAUTO جيروسكوب المركبات المستقلة",
+        "description": "جيروسكوب عالي الاستقرار مصمم للمركبات المستقلة،提供 بيانات الاتجاه والاتجاه الموثوقة."
+      },
+      "fa": {
+        "name": "PA-GSAUTO ژیروسکوپ وسیله نقلیه خودمختار",
+        "description": "ژیروسکوپ با پایداری بالا طراحی شده برای وسایل نقلیه خودمختار، ارائه‌دهنده داده‌های جهت و وضعیت قابل اعتماد."
+      },
+      "la": {
+        "name": "PA-GSAUTO Gyroscopium Vehiculi Autonomousi",
+        "description": "Gyroscopium altae stabilitatis designatum pro vehiculis autonomousis, praebens datos capitis et attitudinis fidentes."
+      }
+    },
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "PA-GSFA1",
+    "slug": "pa-gsfa1",
+    "image": "/images/products/PA-GSFA1.jpg",
+    "specs": {
+      "en": [
+        {
+          "name": "Bias Stability",
+          "value": "0.002",
+          "unit": "deg/hr"
+        },
+        {
+          "name": "Heading Range",
+          "value": "±180",
+          "unit": "deg"
+        },
+        {
+          "name": "Power",
+          "value": "8",
+          "unit": "W"
+        },
+        {
+          "name": "Weight",
+          "value": "180",
+          "unit": "g"
+        }
+      ],
+      "zh": [],
+      "ru": [],
+      "ar": [],
+      "fa": [],
+      "la": []
+    },
+    "published": true,
+    "content": {
+      "en": {
+        "name": "PA-GSFA1 Fiber Optic Gyroscope",
+        "description": "Fiber optic gyroscope with excellent long-term stability for precision heading reference applications."
+      },
+      "zh": {
+        "name": "PA-GSFA1 光纤陀螺仪",
+        "description": "具有出色长期稳定性的光纤陀螺仪，用于精密航向参考应用。"
+      },
+      "ru": {
+        "name": "PA-GSFA1 Волоконно-оптический гироскоп",
+        "description": "Волоконно-оптический гироскоп с превосходной долговременной стабильностью для приложений прецизионного определения курса."
+      },
+      "ar": {
+        "name": "PA-GSFA1 جيروسكوب الألياف البصرية",
+        "description": "جيروسكوب الألياف البصرية مع استقرار ممتاز على المدى الطويل لتطبيقات مرجع الاتجاه الدقيق."
+      },
+      "fa": {
+        "name": "PA-GSFA1 ژیروسکوپ فیبر نوری",
+        "description": "ژیروسکوپ فیبر نوری با پایداری عالی درازمدت برای کاربردهای مرجع جهت دقیق."
+      },
+      "la": {
+        "name": "PA-GSFA1 Gyroscopium Fibrae Opticae",
+        "description": "Gyroscopium fibrae opticae cum stabilitate temporali excellenti pro applicationibus referentiae capitis precisae."
+      }
+    },
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "PM-TS-VG",
+    "slug": "pm-ts-vg",
+    "image": "/images/products/PM-TS-VG.jpg",
+    "specs": {
+      "en": [
+        {
+          "name": "Accuracy",
+          "value": "0.02",
+          "unit": "deg"
+        },
+        {
+          "name": "Range",
+          "value": "±45",
+          "unit": "deg"
+        },
+        {
+          "name": "Power",
+          "value": "4",
+          "unit": "W"
+        },
+        {
+          "name": "Weight",
+          "value": "90",
+          "unit": "g"
+        }
+      ],
+      "zh": [],
+      "ru": [],
+      "ar": [],
+      "fa": [],
+      "la": []
+    },
+    "published": true,
+    "content": {
+      "en": {
+        "name": "PM-TS-VG Tilt Sensor with Vertical Gyro",
+        "description": "Combined tilt sensor and vertical gyro for platform leveling and attitude monitoring."
+      },
+      "zh": {
+        "name": "PM-TS-VG 带垂直陀螺的倾斜传感器",
+        "description": "组合倾斜传感器和垂直陀螺仪，用于平台调平和姿态监测。"
+      },
+      "ru": {
+        "name": "PM-TS-VG Датчик наклона с вертикальным гироскопом",
+        "description": "Комбинированный датчик наклона и вертикальный гироскоп для выравнивания платформы и мониторинга ориентации."
+      },
+      "ar": {
+        "name": "PM-TS-VG مستشعر الان倾斜 مع جيروسكوب عمودي",
+        "description": "مستشعر ان倾斜 مدمج وجيروسكوب عمودي لتسوية المنصة ومراقبة الوضعية."
+      },
+      "fa": {
+        "name": "PM-TS-VG سنسور شیب با ژیروسکوپ عمودی",
+        "description": "سنسور شیب ترکیبی و ژیروسکوپ عمودی برای تراز کردن سکو و پایش وضعیت."
+      },
+      "la": {
+        "name": "PM-TS-VG Sensor Tiltationis cum Gyroscopio Verticali",
+        "description": "Sensor tiltationis combinatus et gyroscopium verticale pro nivelatione platformae et monitorio attitudinis."
+      }
+    },
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "slug": "PA-GS02",
+    "image": "/images/products/PA-GS02-1776438105517.jpg",
+    "specs": {
+      "zh": [
+        {
+          "name": "加速度计零偏稳定性",
+          "value": "5mg~1mg",
+          "unit": "mg"
+        },
+        {
+          "name": "加速度计量程",
+          "value": "±6g (±15可选)~±5g (±10可选)",
+          "unit": "g"
+        },
+        {
+          "name": "功耗",
+          "value": "<3W",
+          "unit": "瓦"
+        },
+        {
+          "name": "供电范围",
+          "value": "9V-30V",
+          "unit": "伏特"
+        },
+        {
+          "name": "外形尺寸",
+          "value": "80×60×31mm",
+          "unit": "毫米"
+        }
+      ],
+      "en": [
+        {
+          "name": "Zero bias stability of the accelerometer",
+          "value": "5mg ~ 1mg",
+          "unit": "mg"
+        },
+        {
+          "name": "Accelerometer Range",
+          "value": "± 6g (± 15 optional) ~ ± 5g (± 10 optional)",
+          "unit": "g"
+        },
+        {
+          "name": "Power Consumption",
+          "value": "30000",
+          "unit": "Tile#Roof tiles"
+        },
+        {
+          "name": "Power supply range",
+          "value": "9V-30V",
+          "unit": "V"
+        },
+        {
+          "name": "External dimensions",
+          "value": "80 × 60 × 31mm",
+          "unit": "mm"
+        }
+      ],
+      "ru": [
+        {
+          "name": "Стабильность нулевого смещения акселерометра",
+          "value": "5 мг ~ 1 мг",
+          "unit": "мг"
+        },
+        {
+          "name": "Диапазон акселерометра",
+          "value": "± 6 г (± 15 опционально) ~ ± 5 г (± 10 опционально)",
+          "unit": "g"
+        },
+        {
+          "name": "Энергопотребление",
+          "value": "< 3 Вт",
+          "unit": "Черепица"
+        },
+        {
+          "name": "Диапазон электропитания",
+          "value": "9В-30В",
+          "unit": "Вольт"
+        },
+        {
+          "name": "Размеры габаритные",
+          "value": "80 × 60 × 31 мм",
+          "unit": "мм                "
+        }
+      ],
+      "ar": [
+        {
+          "name": "ثبات عدم الانحياز لمقياس التسارع",
+          "value": "5 ملغ ~ 1 ملغ",
+          "unit": "mg"
+        },
+        {
+          "name": "نطاق مقياس التسارع",
+          "value": "± 6g (± 15 اختياري )~± 5g (± 10 اختياري)",
+          "unit": "ز"
+        },
+        {
+          "name": "استهلاك الطاقة",
+          "value": "3W",
+          "unit": "واط"
+        },
+        {
+          "name": "نطاق إمداد الطاقة",
+          "value": "9 فولت - 30 فولت",
+          "unit": "فولت"
+        },
+        {
+          "name": "الأبعاد",
+          "value": "80 × 60 × 31 مم",
+          "unit": "ملم"
+        }
+      ],
+      "fa": [
+        {
+          "name": "پایداری بایاس صفر شتاب‌سنج",
+          "value": "۵ میلی‌گرم تا ۱ میلی‌گرم",
+          "unit": "میلی‌گرم"
+        },
+        {
+          "name": "محدوده شتاب‌سنج",
+          "value": "±6 گرم (±15 اختیاری) ~ ±5 گرم (±10 اختیاری)",
+          "unit": "G"
+        },
+        {
+          "name": "مصرف برق",
+          "value": "&lt;3W",
+          "unit": "وي؟"
+        },
+        {
+          "name": "محدوده منبع تغذیه",
+          "value": "9 ولت تا 30 ولت",
+          "unit": "ولت"
+        },
+        {
+          "name": "ابعاد خارجی",
+          "value": "80 × 60 × 31 میلی‌متر",
+          "unit": "میلی‌متر"
+        }
+      ],
+      "la": [
+        {
+          "name": "Zero bias stability del accelerometer",
+          "value": "5mg ~ 1mg",
+          "unit": "mg"
+        },
+        {
+          "name": "Rangeus acelerometer",
+          "value": "± 6g (± 15 optional) ~ ± 5g (± 10 optional)",
+          "unit": "g"
+        },
+        {
+          "name": "Consumio potest",
+          "value": "< 3W",
+          "unit": "Tegula"
+        },
+        {
+          "name": "POWER PLANCE LIMENSE",
+          "value": "9V-30V",
+          "unit": "Volts"
+        },
+        {
+          "name": "Mensura",
+          "value": "80 × 60 × 31mm",
+          "unit": "mm"
+        }
+      ]
+    },
+    "published": true,
+    "content": {
+      "en": {
+        "name": "Enhanced Integrated Navigation PA-GS02",
+        "description": "The enhanced integrated navigation system PA-GS02 is an integrated navigation system based on a high-precision inertial platform that integrates differential GPS and supports RTK. The system realizes differential dynamic, accurate orientation, RTK centimeter-level positioning, high-precision attitude measurement and other functions. Integrated navigation fusion algorithm, stable and mature. Fast alignment, fast response, fast convergence. The three postures are stable and reliable, and the positioning is fast and accurate. The algorithm optimizes the design of GNSS occlusion, multipath interference and other situations. Integrated navigation fusion algorithm, stable and mature. Fast alignment, fast response, fast convergence. Three posture steady"
+      },
+      "zh": {
+        "name": "增强型组合导航 PA-GS02",
+        "description": "增强型组合导航系统PA-GS02,是一款基于高精度惯性平台,融合了差分GPS,支持RTK的组合导航系统。系统实现差分动态、准确定向,RTK厘米级定位,高精度姿态测量等功能。组合导航融合算法,稳定、成熟。快速对准、快速响应、快速收敛。三姿态稳定可靠,定位快速准确。算法优化了GNSS遮挡、多路径干扰等情况的设计。组合导航融合算法,稳定、成熟。快速对准、快速响应、快速收敛。三姿态稳"
+      },
+      "ru": {
+        "name": "Улучшенная интегрированная навигация PA-GS02",
+        "description": "Усовершенствованная интегрированная навигационная система PA-GS02 представляет собой интегрированную навигационную систему, основанную на высокоточной инерциальной платформе, которая интегрирует дифференциальный GPS и поддерживает RTK. Система реализует дифференциальную динамику, точную ориентацию, позиционирование на уровне сантиметра RTK, высокоточное измерение положения и другие функции. Интегрированный алгоритм слияния навигации, стабильный и зрелый. Быстрое выравнивание, быстрая реакция, быстрая конвергенция. Три позиции являются стабильными и надежными, а позиционирование - быстрым и точным. Алгоритм оптимизирует проектирование окклюзии GNSS, многолучевых помех и других ситуаций. Интегрированный алгоритм слияния навигации, стабильный и зрелый. Быстрое выравнивание, быстрая реакция, быстрая конвергенция. Три устойчивые позы"
+      },
+      "ar": {
+        "name": "الملاحة المتكاملة المحسنة PA - GS02",
+        "description": "نظام الملاحة المتكامل المحسن PA - GS02 هو نظام ملاحة متكامل يعتمد على منصة قصور ذات دقة عالية تدمج نظام تحديد المواقع التفاضلي وتدعم RTK. يحقق النظام اتجاهًا ديناميكيًا تفاضليًا ودقيقًا، وتحديد موضع RTK على مستوى السنتيمتر، وقياسًا عالي الدقة للموقف ووظائف أخرى. خوارزمية دمج الملاحة المتكاملة، مستقرة وناضجة. محاذاة سريعة، استجابة سريعة، تقارب سريع. تكون الأوضاع الثلاثة مستقرة وموثوقة، ويكون الوضع سريعًا ودقيقًا. تعمل الخوارزمية على تحسين تصميم انسداد النظم العالمية لسواتل الملاحة والتداخل متعدد المسارات وغيرها من الحالات. خوارزمية دمج الملاحة المتكاملة، مستقرة وناضجة. محاذاة سريعة، استجابة سريعة، تقارب سريع. ثلاثة وضعية ثابتة"
+      },
+      "fa": {
+        "name": "ناوبری یکپارچه پیشرفته PA-GS02",
+        "description": "سیستم ناوبری یکپارچه پیشرفته PA-GS02 یک سیستم مبتنی بر پلتفرم اینرسی با دقت بالا است که GPS تفاضلی را ادغام کرده و از RTK پشتیبانی می‌کند. این سیستم به جهت‌گیری دینامیکی تفاضلی و دقیق، موقعیت‌یابی در سطح سانتی‌متر RTK و اندازه‌گیری وضعیت با دقت بالا دست می‌یابد. الگوریتم ادغام ناوبری یکپارچه پایدار و بالغ است و دارای هم‌ترازی سریع، پاسخ سریع و همگرایی سریع می‌باشد. این الگوریتم موقعیت‌یابی سه وضعیتی پایدار و قابل اعتمادی را ارائه می‌دهد که موقعیت‌یابی سریع و دقیقی را فراهم می‌کند. این الگوریتم برای انسداد GNSS و تداخل چندمسیری بهینه شده است. الگوریتم ادغام ناوبری یکپارچه پایدار و بالغ است و هم‌ترازی سریع، پاسخ سریع و همگرایی سریع را ارائه می‌دهد. این الگوریتم موقعیت‌یابی سه وضعیتی پایدار و قابل اعتمادی را ارائه می‌دهد."
+      },
+      "la": {
+        "name": "Retis Integrated Navigationis PA-GS02",
+        "description": "Systema navigation system PA-GS02 dia systema navigation systema Integrated mifototra mifototra amin'ny platforma inertialis avo-marina tsara izay mampifandray ny GPS differentialis ary manohana ny RTK. Systema realitas differentiales dynamic, accurate orientatione, RTK centimeter-level positioning, high precision attitude measureing and other functions. algorithm navigation fusione Integrated, stable and mature. Alignium fastam explicabo, fast convergence. QUAE THES PATTURATIONES CONSTURE RECTUDURITIS, et QUALITAE POSITIUS ET SOCII FOREST CONSISSISSISSISSORITIS. algorithm optimize del design de GNSS occlusion, multipath interferencee et alia situations. algorithm navigation fusione Integrated, stable and mature. Alignium fastam explicabo, fast convergence. Vesque thiorum posture stady"
+      }
+    },
+    "id": "PA-1776433365275",
+    "createdAt": "2026-04-17T13:42:45.275Z",
+    "updatedAt": "2026-04-17T16:27:34.856Z"
+  }
+]
