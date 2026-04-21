@@ -44,9 +44,9 @@ async function getPostsFromDb(): Promise<BlogPost[]> {
       SELECT id, slug, cover_image, tags, author, date, read_time, published, content, created_at, updated_at
       FROM blog_posts
       ORDER BY created_at DESC
-    `;
+    ` as unknown as DbBlogRow[];
 
-    return rows.map((row: DbBlogRow) => ({
+    return rows.map((row) => ({
       id: row.id,
       slug: row.slug,
       coverImage: row.cover_image || '',
@@ -74,11 +74,11 @@ async function getPostFromDb(id: string): Promise<BlogPost | null> {
       SELECT id, slug, cover_image, tags, author, date, read_time, published, content, created_at, updated_at
       FROM blog_posts
       WHERE id = ${id}
-    `;
+    ` as unknown as DbBlogRow[];
 
     if (rows.length === 0) return null;
 
-    const row = rows[0] as DbBlogRow;
+    const row = rows[0];
     return {
       id: row.id,
       slug: row.slug,
@@ -103,11 +103,11 @@ async function getPostBySlugFromDb(slug: string): Promise<BlogPost | null> {
   if (!sql) return null;
 
   try {
-    const rows = await sql`SELECT * FROM blog_posts WHERE LOWER(slug) = LOWER(${slug})`;
+    const rows = await sql`SELECT * FROM blog_posts WHERE LOWER(slug) = LOWER(${slug})` as unknown as DbBlogRow[];
 
     if (rows.length === 0) return null;
 
-    const row = rows[0] as DbBlogRow;
+    const row = rows[0];
     return {
       id: row.id,
       slug: row.slug,
@@ -179,11 +179,11 @@ async function updatePostInDb(id: string, input: Partial<BlogPostInput>): Promis
         updated_at = ${now}
       WHERE id = ${id}
       RETURNING *
-    `;
+    ` as unknown as DbBlogRow[];
 
     if (result.length === 0) return null;
 
-    const row = result[0] as DbBlogRow;
+    const row = result[0];
     return {
       id: row.id,
       slug: row.slug,

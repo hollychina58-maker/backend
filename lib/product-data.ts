@@ -68,9 +68,9 @@ async function getProductsFromDb(): Promise<Product[]> {
       SELECT id, slug, image, specs, published, content, created_at, updated_at
       FROM products
       ORDER BY created_at DESC
-    `;
+    ` as unknown as { id: string; slug: string; image: string | null; specs: Record<string, ProductSpec[]>; published: boolean; content: Record<string, { name: string; description: string }>; created_at: string; updated_at: string }[];
 
-    return rows.map((row: { id: string; slug: string; image: string | null; specs: Record<string, ProductSpec[]>; published: boolean; content: Record<string, { name: string; description: string }>; created_at: string; updated_at: string }) => ({
+    return rows.map((row) => ({
       id: row.id,
       slug: row.slug,
       image: row.image || '',
@@ -95,11 +95,11 @@ async function getProductFromDb(id: string): Promise<Product | null> {
       SELECT id, slug, image, specs, published, content, created_at, updated_at
       FROM products
       WHERE id = ${id}
-    `;
+    ` as unknown as { id: string; slug: string; image: string | null; specs: Record<string, ProductSpec[]>; published: boolean; content: Record<string, { name: string; description: string }>; created_at: string; updated_at: string }[];
 
     if (rows.length === 0) return null;
 
-    const row = rows[0] as { id: string; slug: string; image: string | null; specs: Record<string, ProductSpec[]>; published: boolean; content: Record<string, { name: string; description: string }>; created_at: string; updated_at: string };
+    const row = rows[0];
     return {
       id: row.id,
       slug: row.slug,
@@ -162,11 +162,11 @@ async function updateProductInDb(id: string, input: Partial<ProductInput>): Prom
         updated_at = ${now}
       WHERE id = ${id}
       RETURNING *
-    `;
+    ` as unknown as { id: string; slug: string; image: string | null; specs: Record<string, ProductSpec[]>; published: boolean; content: Record<string, { name: string; description: string }>; created_at: string; updated_at: string }[];
 
     if (result.length === 0) return null;
 
-    const row = result[0] as { id: string; slug: string; image: string | null; specs: Record<string, ProductSpec[]>; published: boolean; content: Record<string, { name: string; description: string }>; created_at: string; updated_at: string };
+    const row = result[0];
     return {
       id: row.id,
       slug: row.slug,
