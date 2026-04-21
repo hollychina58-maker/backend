@@ -1,4 +1,6 @@
-const TRANSLATION_API = process.env.TRANSLATION_API_URL || 'https://api.mymemory.translated.net/get';
+const MYMEMORY_API = process.env.TRANSLATION_API_URL || 'https://api.mymemory.translated.net/get';
+const GOOGLE_TRANSLATE_API = 'https://translation.googleapis.com/language/translate/v2';
+const GOOGLE_API_KEY = process.env.GOOGLE_TRANSLATE_API_KEY;
 
 interface TranslationResult {
   success: boolean;
@@ -6,22 +8,65 @@ interface TranslationResult {
   error?: string;
 }
 
-export async function translateText(
+async function translateWithGoogle(
   text: string,
   sourceLang: string,
   targetLang: string
 ): Promise<TranslationResult> {
-  if (!text || text.trim() === '') {
-    return { success: true, translatedText: '' };
-  }
-
-  if (sourceLang === targetLang) {
-    return { success: true, translatedText: text };
+  if (!GOOGLE_API_KEY) {
+    return { success: false, translatedText: '', error: 'Google Translate API key not configured' };
   }
 
   try {
+    const langPair = sourceLang === 'en' ? 'en' : sourceLang;
+    const target = targetLang === 'en' ? 'en' : targetLang;
+
+    const response = await fetch(
+      `${GOOGLE_TRANSLATE_API}?key=${GOOGLE_API_KEY}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          q: text,
+          source: langPair,
+          target: target,
+          format: 'text',
+        }),
+      }
+    );
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      const errorMsg = errorData?.error?.message || `HTTP ${response.status}`;
+      return { success: false, translatedText: '', error: errorMsg };
+    }
+
+    const data = await response.json();
+    if (data.data?.translations?.[0]?.translatedText) {
+      return {
+        success: true,
+        translatedText: data.data.translations[0].translatedText,
+      };
+    } else {
+      return { success: false, translatedText: '', error: 'Invalid response from Google Translate' };
+    }
+  } catch (error) {
+    return {
+      success: false,
+      translatedText: '',
+      error: error instanceof Error ? error.message : 'Network error',
+    };
+  }
+}
+
+async function translateWithMyMemory(
+  text: string,
+  sourceLang: string,
+  targetLang: string
+): Promise<TranslationResult> {
+  try {
     const langPair = `${sourceLang}|${targetLang}`;
-    const url = `${TRANSLATION_API}?q=${encodeURIComponent(text)}&langpair=${encodeURIComponent(langPair)}`;
+    const url = `${MYMEMORY_API}?q=${encodeURIComponent(text)}&langpair=${encodeURIComponent(langPair)}`;
 
     const response = await fetch(url);
     const data = await response.json();
@@ -45,6 +90,32 @@ export async function translateText(
       error: error instanceof Error ? error.message : 'Network error',
     };
   }
+}
+
+export async function translateText(
+  text: string,
+  sourceLang: string,
+  targetLang: string
+): Promise<TranslationResult> {
+  if (!text || text.trim() === '') {
+    return { success: true, translatedText: '' };
+  }
+
+  if (sourceLang === targetLang) {
+    return { success: true, translatedText: text };
+  }
+
+  // Try Google Translate first
+  if (GOOGLE_API_KEY) {
+    const googleResult = await translateWithGoogle(text, sourceLang, targetLang);
+    if (googleResult.success) {
+      return googleResult;
+    }
+    console.log('Google Translate failed, falling back to MyMemory:', googleResult.error);
+  }
+
+  // Fallback to MyMemory
+  return translateWithMyMemory(text, sourceLang, targetLang);
 }
 
 export async function translateContent(
