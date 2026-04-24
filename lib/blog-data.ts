@@ -219,8 +219,12 @@ async function deletePostInDb(id: string): Promise<boolean> {
 // Public API - uses database if available, falls back to JSON file
 export async function getPosts(): Promise<BlogPost[]> {
   if (isDatabaseAvailable()) {
-    const posts = await getPostsFromDb();
-    if (posts.length > 0) return posts;
+    try {
+      const posts = await getPostsFromDb();
+      if (posts.length > 0) return posts;
+    } catch (error) {
+      console.error('Database query failed, falling back to JSON:', error);
+    }
   }
   return readData();
 }
