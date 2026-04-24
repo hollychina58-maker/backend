@@ -58,6 +58,23 @@ async function writeData(products: Product[]): Promise<void> {
   await fs.writeFile(DATA_PATH, JSON.stringify(products, null, 2), 'utf-8');
 }
 
+// Write-through: sync a single product to JSON file as backup
+async function syncProductToJson(product: Product): Promise<void> {
+  try {
+    const products = await readData();
+    const index = products.findIndex((p) => p.id === product.id);
+    if (index >= 0) {
+      products[index] = product;
+    } else {
+      products.push(product);
+    }
+    await writeData(products);
+    console.log(`Product ${product.id} synced to JSON backup`);
+  } catch (error) {
+    console.error('Failed to sync product to JSON:', error);
+  }
+}
+
 // Database operations
 async function getProductsFromDb(): Promise<Product[]> {
   const sql = getDb();
@@ -254,7 +271,10 @@ export async function getProductBySlug(slug: string): Promise<Product | null> {
 export async function createProduct(input: ProductInput): Promise<Product> {
   if (isDatabaseAvailable()) {
     try {
-      return await createProductInDb(input);
+      const product = await createProductInDb(input);
+      // Write-through: also update JSON file as backup
+      await syncProductToJson(product);
+      return product;
     } catch (error) {
       console.error('Failed to create product in database, falling back to JSON:', error);
     }
@@ -280,7 +300,12 @@ export async function updateProduct(
 ): Promise<Product | null> {
   if (isDatabaseAvailable()) {
     try {
-      return await updateProductInDb(id, input);
+      const product = await updateProductInDb(id, input);
+      if (product) {
+        // Write-through: also update JSON file as backup
+        await syncProductToJson(product);
+      }
+      return product;
     } catch (error) {
       console.error('Failed to update product in database, falling back to JSON:', error);
     }
@@ -304,7 +329,12 @@ export async function updateProduct(
 export async function deleteProduct(id: string): Promise<boolean> {
   if (isDatabaseAvailable()) {
     try {
-      return await deleteProductInDb(id);
+      const deleted = await deleteProductInDb(id);
+      if (deleted) {
+        // Write-through: also update JSON file as backup
+        await removeProductFromJson(id);
+      }
+      return deleted;
     } catch (error) {
       console.error('Failed to delete product from database, falling back to JSON:', error);
     }
@@ -318,4 +348,19 @@ export async function deleteProduct(id: string): Promise<boolean> {
   products.splice(index, 1);
   await writeData(products);
   return true;
+}
+
+// Remove product from JSON file
+async function removeProductFromJson(id: string): Promise<void> {
+  try {
+    const products = await readData();
+    const index = products.findIndex((p) => p.id === id);
+    if (index >= 0) {
+      products.splice(index, 1);
+      await writeData(products);
+      console.log(`Product ${id} removed from JSON backup`);
+    }
+  } catch (error) {
+    console.error('Failed to remove product from JSON:', error);
+  }
 }

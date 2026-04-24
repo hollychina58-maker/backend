@@ -34,6 +34,38 @@ async function writeData(posts: BlogPost[]): Promise<void> {
   await fs.writeFile(DATA_PATH, JSON.stringify(posts, null, 2), 'utf-8');
 }
 
+// Write-through: sync a single post to JSON file as backup
+async function syncPostToJson(post: BlogPost): Promise<void> {
+  try {
+    const posts = await readData();
+    const index = posts.findIndex((p) => p.id === post.id);
+    if (index >= 0) {
+      posts[index] = post;
+    } else {
+      posts.push(post);
+    }
+    await writeData(posts);
+    console.log(`Post ${post.id} synced to JSON backup`);
+  } catch (error) {
+    console.error('Failed to sync post to JSON:', error);
+  }
+}
+
+// Remove post from JSON file
+async function removePostFromJson(id: string): Promise<void> {
+  try {
+    const posts = await readData();
+    const index = posts.findIndex((p) => p.id === id);
+    if (index >= 0) {
+      posts.splice(index, 1);
+      await writeData(posts);
+      console.log(`Post ${id} removed from JSON backup`);
+    }
+  } catch (error) {
+    console.error('Failed to remove post from JSON:', error);
+  }
+}
+
 // Database operations
 async function getPostsFromDb(): Promise<BlogPost[]> {
   const sql = getDb();
@@ -250,7 +282,10 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
 export async function createPost(input: BlogPostInput): Promise<BlogPost> {
   if (isDatabaseAvailable()) {
     try {
-      return await createPostInDb(input);
+      const post = await createPostInDb(input);
+      // Write-through: also update JSON file as backup
+      await syncPostToJson(post);
+      return post;
     } catch (error) {
       console.error('Failed to create post in database, falling back to JSON:', error);
     }
@@ -276,7 +311,12 @@ export async function updatePost(
 ): Promise<BlogPost | null> {
   if (isDatabaseAvailable()) {
     try {
-      return await updatePostInDb(id, input);
+      const post = await updatePostInDb(id, input);
+      if (post) {
+        // Write-through: also update JSON file as backup
+        await syncPostToJson(post);
+      }
+      return post;
     } catch (error) {
       console.error('Failed to update post in database, falling back to JSON:', error);
     }
@@ -300,7 +340,12 @@ export async function updatePost(
 export async function deletePost(id: string): Promise<boolean> {
   if (isDatabaseAvailable()) {
     try {
-      return await deletePostInDb(id);
+      const deleted = await deletePostInDb(id);
+      if (deleted) {
+        // Write-through: also update JSON file as backup
+        await removePostFromJson(id);
+      }
+      return deleted;
     } catch (error) {
       console.error('Failed to delete post from database, falling back to JSON:', error);
     }

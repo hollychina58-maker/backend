@@ -56,6 +56,7 @@ export default function BlogPage() {
   const [activeLang, setActiveLang] = useState('en');
   const [saving, setSaving] = useState(false);
   const [translating, setTranslating] = useState(false);
+  const [restoring, setRestoring] = useState(false);
   const [tagInput, setTagInput] = useState('');
 
   const fetchPosts = useCallback(async () => {
@@ -159,6 +160,26 @@ export default function BlogPage() {
       console.error('Failed to delete post:', error);
     } finally {
       setSaving(false);
+    }
+  };
+
+  const handleRestore = async () => {
+    if (!confirm('将从JSON备份文件恢复所有文章数据到数据库。是否继续？')) return;
+    setRestoring(true);
+    try {
+      const res = await fetch('/api/import-blog', { method: 'POST' });
+      const data = await res.json();
+      if (data.success) {
+        alert(`恢复成功：已导入 ${data.imported} 篇文章，跳过 ${data.skipped} 个已存在的记录`);
+        await fetchPosts();
+      } else {
+        alert('恢复失败：' + (data.error || '未知错误'));
+      }
+    } catch (error) {
+      console.error('Failed to restore posts:', error);
+      alert('恢复失败');
+    } finally {
+      setRestoring(false);
     }
   };
 
@@ -322,6 +343,9 @@ export default function BlogPage() {
             />
           </div>
           <Button onClick={openCreateModal}>+ 新增文章</Button>
+            <Button variant="secondary" onClick={handleRestore} loading={restoring}>
+              从备份恢复
+            </Button>
         </div>
 
         <DataTable columns={columns} data={filteredPosts} loading={loading} />
