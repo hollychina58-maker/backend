@@ -199,16 +199,25 @@ async function deleteProductInDb(id: string): Promise<boolean> {
 // Public API - uses database if available, falls back to JSON file
 export async function getProducts(): Promise<Product[]> {
   if (isDatabaseAvailable()) {
-    const products = await getProductsFromDb();
-    if (products.length > 0) return products;
+    try {
+      const products = await getProductsFromDb();
+      // Only use DB results if we got actual data, otherwise fall back to JSON
+      if (products.length > 0) return products;
+    } catch (error) {
+      console.error('Database query failed, falling back to JSON:', error);
+    }
   }
   return readData();
 }
 
 export async function getProduct(id: string): Promise<Product | null> {
   if (isDatabaseAvailable()) {
-    const product = await getProductFromDb(id);
-    if (product) return product;
+    try {
+      const product = await getProductFromDb(id);
+      if (product) return product;
+    } catch (error) {
+      console.error('Database query failed, falling back to JSON:', error);
+    }
   }
   const products = await readData();
   return products.find((p) => p.id === id) || null;
