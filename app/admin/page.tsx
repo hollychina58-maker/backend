@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { AdminHeader } from '../../components/AdminHeader';
 import { Button } from '../../components/Button';
+import { Modal } from '../../components/Modal';
+import { Input } from '../../components/Input';
 
 interface Stats {
   totalProducts: number;
@@ -23,6 +25,13 @@ export default function DashboardPage() {
     publishedPosts: 0,
     draftPosts: 0,
   });
+  const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
+  const [oldPassword, setOldPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [passwordSuccess, setPasswordSuccess] = useState('');
+  const [changingPassword, setChangingPassword] = useState(false);
 
   useEffect(() => {
     async function fetchStats() {
@@ -49,6 +58,52 @@ export default function DashboardPage() {
 
     fetchStats();
   }, []);
+
+  const handleChangePassword = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setPasswordError('');
+    setPasswordSuccess('');
+
+    if (newPassword !== confirmPassword) {
+      setPasswordError('两次输入的新密码不一致');
+      return;
+    }
+
+    if (newPassword.length < 6) {
+      setPasswordError('新密码长度至少6位');
+      return;
+    }
+
+    setChangingPassword(true);
+
+    try {
+      const res = await fetch('/api/admin/change-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ oldPassword, newPassword }),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setPasswordSuccess('密码修改成功');
+        setOldPassword('');
+        setNewPassword('');
+        setConfirmPassword('');
+        setTimeout(() => {
+          setIsPasswordModalOpen(false);
+          setPasswordSuccess('');
+        }, 2000);
+      } else {
+        setPasswordError(data.error || '修改密码失败');
+      }
+    } catch (error) {
+      console.error('Change password error:', error);
+      setPasswordError('修改密码失败');
+    } finally {
+      setChangingPassword(false);
+    }
+  };
 
   return (
     <>
@@ -118,8 +173,89 @@ export default function DashboardPage() {
                 新增文章
               </Button>
             </Link>
+            <Button
+              variant="secondary"
+              onClick={() => setIsPasswordModalOpen(true)}
+              leftIcon={
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+                </svg>
+              }
+            >
+              修改密码
+            </Button>
           </div>
         </div>
+
+        {/* Change Password Modal */}
+        <Modal
+          isOpen={isPasswordModalOpen}
+          onClose={() => { setIsPasswordModalOpen(false); setPasswordError(''); setPasswordSuccess(''); }}
+          title="修改密码"
+          size="md"
+        >
+          <form onSubmit={handleChangePassword} className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
+                旧密码
+              </label>
+              <Input
+                type="password"
+                value={oldPassword}
+                onChange={(e) => setOldPassword(e.target.value)}
+                placeholder="请输入旧密码"
+                required
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
+                新密码
+              </label>
+              <Input
+                type="password"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+                placeholder="请输入新密码（至少6位）"
+                required
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
+                确认新密码
+              </label>
+              <Input
+                type="password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                placeholder="请再次输入新密码"
+                required
+              />
+            </div>
+
+            {passwordError && (
+              <div className="p-3 rounded-lg bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 text-sm">
+                {passwordError}
+              </div>
+            )}
+
+            {passwordSuccess && (
+              <div className="p-3 rounded-lg bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 text-sm">
+                {passwordSuccess}
+              </div>
+            )}
+
+            <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-200 dark:border-slate-700">
+              <Button variant="secondary" type="button" onClick={() => setIsPasswordModalOpen(false)}>
+                取消
+              </Button>
+              <Button type="submit" loading={changingPassword}>
+                保存
+              </Button>
+            </div>
+          </form>
+        </Modal>
       </div>
     </>
   );

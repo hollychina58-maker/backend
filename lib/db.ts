@@ -68,6 +68,15 @@ export async function initializeDatabase(): Promise<void> {
       )
     `;
 
+    // Create admin_users table
+    await sql`
+      CREATE TABLE IF NOT EXISTS admin_users (
+        id VARCHAR(50) PRIMARY KEY DEFAULT 'admin',
+        password_hash VARCHAR(255) NOT NULL,
+        updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+      )
+    `;
+
     console.log('Database schema initialized successfully');
 
     // Auto-recovery: if tables are empty, restore from JSON backup

@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (verifyPassword(password)) {
+    if (await verifyPassword(password)) {
       return NextResponse.json({
         success: true,
         user: { name: 'Admin', email: 'admin@mmes-mcti.com' },
