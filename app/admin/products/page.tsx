@@ -63,7 +63,6 @@ export default function ProductsPage() {
   const [activeLang, setActiveLang] = useState('en');
   const [saving, setSaving] = useState(false);
   const [translating, setTranslating] = useState(false);
-  const [restoring, setRestoring] = useState(false);
 
   const fetchProducts = useCallback(async () => {
     try {
@@ -216,26 +215,6 @@ export default function ProductsPage() {
     }
   };
 
-  const handleRestore = async () => {
-    if (!confirm('将从JSON备份文件恢复所有产品数据到数据库。是否继续？')) return;
-    setRestoring(true);
-    try {
-      const res = await fetch('/api/import-products', { method: 'POST' });
-      const data = await res.json();
-      if (data.success) {
-        alert(`恢复成功：已导入 ${data.imported} 个产品，跳过 ${data.skipped} 个已存在的记录`);
-        await fetchProducts();
-      } else {
-        alert('恢复失败：' + (data.error || '未知错误'));
-      }
-    } catch (error) {
-      console.error('Failed to restore products:', error);
-      alert('恢复失败');
-    } finally {
-      setRestoring(false);
-    }
-  };
-
   const openDeleteModal = (id: string) => {
     setDeletingId(id);
     setIsDeleteModalOpen(true);
@@ -330,9 +309,6 @@ export default function ProductsPage() {
             />
           </div>
           <Button onClick={openCreateModal}>+ 新增产品</Button>
-            <Button variant="secondary" onClick={handleRestore} loading={restoring}>
-              从备份恢复
-            </Button>
         </div>
 
         <DataTable columns={columns} data={filteredProducts} loading={loading} />
