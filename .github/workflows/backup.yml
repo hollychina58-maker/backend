@@ -1,0 +1,89 @@
+name: Backup Database to JSON
+
+on:
+  schedule:
+    # Run daily at 2:00 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    # Allow manual trigger
+
+env:
+  DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Query products from database
+        run: |
+          node -e "
+            const { neon } = require('@neondatabase/serverless');
+            const fs = require('fs');
+            const sql = neon(process.env.DATABASE_URL);
+
+            async function backup() {
+              try {
+                // Query products
+                const products = await sql\`SELECT id, slug, image, specs, published, content, created_at, updated_at FROM products ORDER BY created_at DESC\`;
+                const formattedProducts = products.map(p => ({
+                  id: p.id,
+                  slug: p.slug,
+                  image: p.image || '',
+                  specs: p.specs,
+                  published: p.published,
+                  content: p.content,
+                  createdAt: p.created_at,
+                  updatedAt: p.updated_at
+                }));
+
+                fs.mkdirSync('data', { recursive: true });
+                fs.writeFileSync('data/products.json', JSON.stringify(formattedProducts, null, 2));
+                console.log('Backed up', formattedProducts.length, 'products');
+
+                // Query blog posts
+                const posts = await sql\`SELECT id, slug, cover_image, tags, author, date, read_time, published, content, created_at, updated_at FROM blog_posts ORDER BY created_at DESC\`;
+                const formattedPosts = posts.map(p => ({
+                  id: p.id,
+                  slug: p.slug,
+                  coverImage: p.cover_image || '',
+                  tags: p.tags || [],
+                  author: p.author || '',
+                  date: p.date || '',
+                  readTime: p.read_time || '',
+                  published: p.published,
+                  content: p.content,
+                  createdAt: p.created_at,
+                  updatedAt: p.updated_at
+                }));
+
+                fs.writeFileSync('data/blog.json', JSON.stringify(formattedPosts, null, 2));
+                console.log('Backed up', formattedPosts.length, 'posts');
+
+              } catch (error) {
+                console.error('Backup failed:', error);
+                process.exit(1);
+              }
+            }
+
+            backup();
+          "
+
+      - name: Commit and push backup
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data/products.json data/blog.json
+          git diff --staged --quiet || git commit -m "chore: backup database to JSON $(date -u +'%Y-%m-%d %H:%M:%S')"
+          git push

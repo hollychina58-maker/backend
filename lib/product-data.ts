@@ -272,8 +272,6 @@ export async function createProduct(input: ProductInput): Promise<Product> {
   if (isDatabaseAvailable()) {
     try {
       const product = await createProductInDb(input);
-      // Write-through: also update JSON file as backup
-      await syncProductToJson(product);
       return product;
     } catch (error) {
       console.error('Failed to create product in database, falling back to JSON:', error);
@@ -301,10 +299,6 @@ export async function updateProduct(
   if (isDatabaseAvailable()) {
     try {
       const product = await updateProductInDb(id, input);
-      if (product) {
-        // Write-through: also update JSON file as backup
-        await syncProductToJson(product);
-      }
       return product;
     } catch (error) {
       console.error('Failed to update product in database, falling back to JSON:', error);
@@ -330,10 +324,6 @@ export async function deleteProduct(id: string): Promise<boolean> {
   if (isDatabaseAvailable()) {
     try {
       const deleted = await deleteProductInDb(id);
-      if (deleted) {
-        // Write-through: also update JSON file as backup
-        await removeProductFromJson(id);
-      }
       return deleted;
     } catch (error) {
       console.error('Failed to delete product from database, falling back to JSON:', error);

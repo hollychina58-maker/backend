@@ -283,8 +283,6 @@ export async function createPost(input: BlogPostInput): Promise<BlogPost> {
   if (isDatabaseAvailable()) {
     try {
       const post = await createPostInDb(input);
-      // Write-through: also update JSON file as backup
-      await syncPostToJson(post);
       return post;
     } catch (error) {
       console.error('Failed to create post in database, falling back to JSON:', error);
@@ -312,10 +310,6 @@ export async function updatePost(
   if (isDatabaseAvailable()) {
     try {
       const post = await updatePostInDb(id, input);
-      if (post) {
-        // Write-through: also update JSON file as backup
-        await syncPostToJson(post);
-      }
       return post;
     } catch (error) {
       console.error('Failed to update post in database, falling back to JSON:', error);
@@ -341,10 +335,6 @@ export async function deletePost(id: string): Promise<boolean> {
   if (isDatabaseAvailable()) {
     try {
       const deleted = await deletePostInDb(id);
-      if (deleted) {
-        // Write-through: also update JSON file as backup
-        await removePostFromJson(id);
-      }
       return deleted;
     } catch (error) {
       console.error('Failed to delete post from database, falling back to JSON:', error);
