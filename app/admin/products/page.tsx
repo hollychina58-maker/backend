@@ -63,6 +63,9 @@ export default function ProductsPage() {
   const [activeLang, setActiveLang] = useState('en');
   const [saving, setSaving] = useState(false);
   const [translating, setTranslating] = useState(false);
+  const [isImportModalOpen, setIsImportModalOpen] = useState(false);
+  const [importing, setImporting] = useState(false);
+  const [importResult, setImportResult] = useState<{ success: boolean; message: string } | null>(null);
 
   const fetchProducts = useCallback(async () => {
     try {
@@ -165,6 +168,53 @@ export default function ProductsPage() {
       alert('翻译失败');
     } finally {
       setTranslating(false);
+    }
+  };
+
+  const handleImport = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setImporting(true);
+    setImportResult(null);
+
+    const form = e.currentTarget;
+    const fileInput = form.elements.namedItem('file') as HTMLInputElement;
+    const file = fileInput?.files?.[0];
+
+    if (!file) {
+      setImportResult({ success: false, message: '请选择文件' });
+      setImporting(false);
+      return;
+    }
+
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+
+      const res = await fetch('/api/import-products-excel', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setImportResult({
+          success: true,
+          message: `导入成功：${data.imported} 个产品已导入，${data.skipped} 个已跳过`,
+        });
+        await fetchProducts();
+        setTimeout(() => {
+          setIsImportModalOpen(false);
+          setImportResult(null);
+        }, 2000);
+      } else {
+        setImportResult({ success: false, message: data.error || '导入失败' });
+      }
+    } catch (error) {
+      console.error('Import error:', error);
+      setImportResult({ success: false, message: '导入失败' });
+    } finally {
+      setImporting(false);
     }
   };
 
@@ -309,6 +359,9 @@ export default function ProductsPage() {
             />
           </div>
           <Button onClick={openCreateModal}>+ 新增产品</Button>
+          <Button variant="secondary" onClick={() => setIsImportModalOpen(true)}>
+            导入Excel
+          </Button>
         </div>
 
         <DataTable columns={columns} data={filteredProducts} loading={loading} />
@@ -459,6 +512,62 @@ export default function ProductsPage() {
               </Button>
             </div>
           </div>
+        </Modal>
+
+        {/* Import Excel Modal */}
+        <Modal
+          isOpen={isImportModalOpen}
+          onClose={() => { setIsImportModalOpen(false); setImportResult(null); }}
+          title="导入产品"
+          size="md"
+        >
+          <form onSubmit={handleImport} className="space-y-4">
+            <div className="space-y-2">
+              <p className="text-sm text-slate-600 dark:text-slate-400">
+                请下载模板文件，填写后上传：{' '}
+                <a
+                  href="/docs/product_model.xlsx"
+                  download
+                  className="text-[#0066ff] hover:underline"
+                >
+                  product_model.xlsx
+                </a>
+              </p>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                选择 Excel 文件
+              </label>
+              <input
+                type="file"
+                name="file"
+                accept=".xlsx,.xls"
+                required
+                className="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-slate-900 dark:text-white file:mr-4 file:py-1 file:px-3 file:rounded file:border-0 file:text-sm file:bg-[#0066ff] file:text-white hover:file:bg-[#0052cc]"
+              />
+            </div>
+
+            {importResult && (
+              <div
+                className={`p-3 rounded-lg ${importResult.success
+                    ? 'bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400'
+                    : 'bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400'
+                  }`}
+              >
+                {importResult.message}
+              </div>
+            )}
+
+            <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-200 dark:border-slate-700">
+              <Button variant="secondary" type="button" onClick={() => setIsImportModalOpen(false)}>
+                取消
+              </Button>
+              <Button type="submit" loading={importing}>
+                导入
+              </Button>
+            </div>
+          </form>
         </Modal>
       </div>
     </>
