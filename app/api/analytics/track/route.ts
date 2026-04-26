@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getDb, isDatabaseAvailable } from '../../../../lib/db';
+import { getDb, isDatabaseAvailable, initializeDatabase } from '../../../../lib/db';
 
 export async function POST(request: NextRequest) {
+  // Ensure database is initialized (creates tables if needed)
+  await initializeDatabase();
+
   if (!isDatabaseAvailable()) {
     return NextResponse.json({ success: false, error: 'Database not available' }, { status: 503 });
   }

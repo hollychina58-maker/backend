@@ -1,7 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getDb, isDatabaseAvailable } from '../../../../lib/db';
+import { getDb, isDatabaseAvailable, initializeDatabase } from '../../../../lib/db';
 
 export async function GET(request: NextRequest) {
+  try {
+    // Ensure database is initialized (creates tables if needed)
+    await initializeDatabase();
+  } catch (error) {
+    console.error('Failed to initialize database:', error);
+    return NextResponse.json({ success: false, error: 'Database initialization failed: ' + (error instanceof Error ? error.message : String(error)) }, { status: 500 });
+  }
+
   if (!isDatabaseAvailable()) {
     return NextResponse.json({ success: false, error: 'Database not available' }, { status: 503 });
   }
@@ -82,6 +90,6 @@ export async function GET(request: NextRequest) {
     });
   } catch (error) {
     console.error('Analytics stats error:', error);
-    return NextResponse.json({ success: false, error: 'Failed to fetch stats' }, { status: 500 });
+    return NextResponse.json({ success: false, error: 'Failed to fetch stats: ' + (error instanceof Error ? error.message : String(error)) }, { status: 500 });
   }
 }
