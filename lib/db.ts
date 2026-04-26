@@ -77,6 +77,30 @@ export async function initializeDatabase(): Promise<void> {
       )
     `;
 
+    // Create analytics tables
+    await sql`
+      CREATE TABLE IF NOT EXISTS page_views (
+        id SERIAL PRIMARY KEY,
+        visitor_id VARCHAR(32) NOT NULL,
+        page_url TEXT NOT NULL,
+        country VARCHAR(2),
+        language VARCHAR(5),
+        referrer TEXT,
+        created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+      )
+    `;
+
+    await sql`
+      CREATE TABLE IF NOT EXISTS product_clicks (
+        id SERIAL PRIMARY KEY,
+        visitor_id VARCHAR(32) NOT NULL,
+        product_id VARCHAR(50) NOT NULL,
+        country VARCHAR(2),
+        language VARCHAR(5),
+        created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+      )
+    `;
+
     console.log('Database schema initialized successfully');
 
     // Auto-recovery: if tables are empty, restore from JSON backup
