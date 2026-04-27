@@ -62,26 +62,38 @@ export async function POST(request: NextRequest) {
 }
 
 async function uploadToUploadcare(buffer: Buffer, fileName: string, contentType: string): Promise<string> {
-  // Uploadcare REST API
+  // Uploadcare REST API - upload endpoint
   const formData = new FormData();
-  formData.append('file', new Blob([buffer], { type: contentType }), fileName);
-  formData.append('UPLOADCARE_PUB_KEY', UPLOADCARE_PUBLIC_KEY!);
-  formData.append('UPLOADCARE_SECRET_KEY', UPLOADCARE_SECRET_KEY!);
+  const blob = new Blob([buffer], { type: contentType });
+  formData.append('file', blob, fileName);
+  formData.append('pub_key', UPLOADCARE_PUBLIC_KEY!);
 
-  const response = await fetch('https://upload.uploadcare.com/base/', {
+  const response = await fetch('https://upload.uploadcare.com/post/', {
     method: 'POST',
     body: formData,
   });
 
   if (!response.ok) {
-    throw new Error(`Uploadcare upload failed: ${response.statusText}`);
+    const errorText = await response.text();
+    throw new Error(`Uploadcare upload failed: ${response.status} - ${errorText}`);
   }
 
   const data = await response.json();
 
-  // Return the CDN URL
-  // Format: https://ucarecdn.com/{uuid}/{filename}
-  return `https://ucarecdn.com/${data.uuid}/${encodeURIComponent(fileName)}`;
+  // Uploadcare returns { file: "https://ucarecdn.com/uuid/filename" } or { uuid: "uuid" }
+  // If file URL is returned, use it directly
+  if (data.file) {
+    return data.file;
+  }
+
+  // Otherwise construct the URL from uuid
+  const uuid = data.uuid;
+  if (!uuid) {
+    throw new Error('Uploadcare response missing uuid');
+  }
+
+  // Return CDN URL
+  return `https://ucarecdn.com/${uuid}/${encodeURIComponent(fileName)}`;
 }
 
 async function saveLocally(buffer: Buffer, fileName: string): Promise<string> {
