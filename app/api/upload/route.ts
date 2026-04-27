@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { uploadToR2, isR2Configured } from '../../../lib/r2-upload';
 import { writeFile, mkdir } from 'fs/promises';
 import { existsSync } from 'fs';
 import path from 'path';
@@ -33,25 +34,41 @@ export async function POST(request: NextRequest) {
     // Generate unique filename
     const timestamp = Date.now();
     const ext = path.extname(file.name);
-    const baseName = path.basename(file.name, ext);
+    const baseName = path.basename(file.name, ext).replace(/[^a-zA-Z0-9]/g, '-');
     const fileName = `${baseName}-${timestamp}${ext}`;
 
-    // Ensure directory exists
-    const uploadDir = path.join(process.cwd(), 'public', 'images', 'products');
-    if (!existsSync(uploadDir)) {
-      await mkdir(uploadDir, { recursive: true });
+    let url: string;
+
+    // Try R2 first, fall back to local storage
+    if (isR2Configured()) {
+      try {
+        url = await uploadToR2(buffer, fileName, file.type);
+        console.log('Uploaded to R2:', url);
+      } catch (r2Error) {
+        console.error('R2 upload failed, falling back to local:', r2Error);
+        url = await saveLocally(buffer, fileName);
+      }
+    } else {
+      url = await saveLocally(buffer, fileName);
     }
-
-    const filePath = path.join(uploadDir, fileName);
-    await writeFile(filePath, buffer);
-
-    const url = `/images/products/${fileName}`;
 
     return NextResponse.json({ url }, { headers: corsHeaders });
   } catch (error) {
     console.error('Upload error:', error);
     return NextResponse.json({ error: '上传失败' }, { status: 500, headers: corsHeaders });
   }
+}
+
+async function saveLocally(buffer: Buffer, fileName: string): Promise<string> {
+  const uploadDir = path.join(process.cwd(), 'public', 'images', 'products');
+  if (!existsSync(uploadDir)) {
+    await mkdir(uploadDir, { recursive: true });
+  }
+
+  const filePath = path.join(uploadDir, fileName);
+  await writeFile(filePath, buffer);
+
+  return `/images/products/${fileName}`;
 }
 
 export async function OPTIONS() {
