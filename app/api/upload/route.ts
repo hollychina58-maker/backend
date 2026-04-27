@@ -68,9 +68,9 @@ async function uploadToUploadcare(buffer: Buffer, fileName: string, contentType:
   const uint8Array = new Uint8Array(buffer);
   const blob = new Blob([uint8Array], { type: contentType });
   formData.append('file', blob, fileName);
-  formData.append('pub_key', UPLOADCARE_PUBLIC_KEY!);
+  formData.append('UPLOADCARE_PUB_KEY', UPLOADCARE_PUBLIC_KEY!);
 
-  const response = await fetch('https://upload.uploadcare.com/post/', {
+  const response = await fetch('https://upload.uploadcare.com/base/', {
     method: 'POST',
     body: formData,
   });
@@ -82,20 +82,13 @@ async function uploadToUploadcare(buffer: Buffer, fileName: string, contentType:
 
   const data = await response.json();
 
-  // Uploadcare returns { file: "https://ucarecdn.com/uuid/filename" } or { uuid: "uuid" }
-  // If file URL is returned, use it directly
-  if (data.file) {
-    return data.file;
-  }
-
-  // Otherwise construct the URL from uuid
-  const uuid = data.uuid;
-  if (!uuid) {
-    throw new Error('Uploadcare response missing uuid');
+  // Uploadcare returns { file: "uuid" }
+  if (!data.file) {
+    throw new Error('Uploadcare response missing file uuid');
   }
 
   // Return CDN URL
-  return `https://ucarecdn.com/${uuid}/${encodeURIComponent(fileName)}`;
+  return `https://ucarecdn.com/${data.file}/${encodeURIComponent(fileName)}`;
 }
 
 async function saveLocally(buffer: Buffer, fileName: string): Promise<string> {
