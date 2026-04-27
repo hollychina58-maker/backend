@@ -26,60 +26,58 @@ jobs:
         run: npm ci
 
       - name: Query products from database
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: |
-          node -e "
-            const { neon } = require('@neondatabase/serverless');
-            const fs = require('fs');
-            const sql = neon(process.env.DATABASE_URL);
+          node << 'NODESCRIPT'
+          const { neon } = require('@neondatabase/serverless');
+          const fs = require('fs');
+          const sql = neon(process.env.DATABASE_URL);
 
-            async function backup() {
-              try {
-                // Query products
-                const products = await sql\`SELECT id, slug, image, specs, published, content, created_at, updated_at FROM products ORDER BY created_at DESC\`;
-                const formattedProducts = products.map(p => ({
-                  id: p.id,
-                  slug: p.slug,
-                  image: p.image || '',
-                  specs: p.specs,
-                  published: p.published,
-                  content: p.content,
-                  createdAt: p.created_at,
-                  updatedAt: p.updated_at
-                }));
+          async function backup() {
+            try {
+              // Query products
+              const products = await sql`SELECT id, slug, image, specs, published, content, created_at, updated_at FROM products ORDER BY created_at DESC`;
+              const formattedProducts = products.map(p => ({
+                id: p.id,
+                slug: p.slug,
+                image: p.image || '',
+                specs: p.specs,
+                published: p.published,
+                content: p.content,
+                createdAt: p.created_at,
+                updatedAt: p.updated_at
+              }));
 
-                fs.mkdirSync('data', { recursive: true });
-                fs.writeFileSync('data/products.json', JSON.stringify(formattedProducts, null, 2));
-                console.log('Backed up', formattedProducts.length, 'products');
+              fs.mkdirSync('data', { recursive: true });
+              fs.writeFileSync('data/products.json', JSON.stringify(formattedProducts, null, 2));
+              console.log('Backed up', formattedProducts.length, 'products');
 
-                // Query blog posts
-                const posts = await sql\`SELECT id, slug, cover_image, tags, author, date, read_time, published, content, created_at, updated_at FROM blog_posts ORDER BY created_at DESC\`;
-                const formattedPosts = posts.map(p => ({
-                  id: p.id,
-                  slug: p.slug,
-                  coverImage: p.cover_image || '',
-                  tags: p.tags || [],
-                  author: p.author || '',
-                  date: p.date || '',
-                  readTime: p.read_time || '',
-                  published: p.published,
-                  content: p.content,
-                  createdAt: p.created_at,
-                  updatedAt: p.updated_at
-                }));
+              // Query blog posts
+              const posts = await sql`SELECT id, slug, cover_image, tags, author, date, read_time, published, content, created_at, updated_at FROM blog_posts ORDER BY created_at DESC`;
+              const formattedPosts = posts.map(p => ({
+                id: p.id,
+                slug: p.slug,
+                coverImage: p.cover_image || '',
+                tags: p.tags || [],
+                author: p.author || '',
+                date: p.date || '',
+                readTime: p.read_time || '',
+                published: p.published,
+                content: p.content,
+                createdAt: p.created_at,
+                updatedAt: p.updated_at
+              }));
 
-                fs.writeFileSync('data/blog.json', JSON.stringify(formattedPosts, null, 2));
-                console.log('Backed up', formattedPosts.length, 'posts');
+              fs.writeFileSync('data/blog.json', JSON.stringify(formattedPosts, null, 2));
+              console.log('Backed up', formattedPosts.length, 'posts');
 
-              } catch (error) {
-                console.error('Backup failed:', error);
-                process.exit(1);
-              }
+            } catch (error) {
+              console.error('Backup failed:', error);
+              process.exit(1);
             }
+          }
 
-            backup();
-          "
+          backup();
+          NODESCRIPT
 
       - name: Commit and push backup
         run: |
