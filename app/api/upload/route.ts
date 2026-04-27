@@ -44,6 +44,7 @@ export async function POST(request: NextRequest) {
     // Try Uploadcare first if configured
     if (UPLOADCARE_PUBLIC_KEY && UPLOADCARE_SECRET_KEY) {
       try {
+        console.log('Attempting Uploadcare upload with key length:', UPLOADCARE_PUBLIC_KEY.length);
         url = await uploadToUploadcare(buffer, fileName, file.type);
         console.log('Uploaded to Uploadcare:', url);
       } catch (ucError) {
