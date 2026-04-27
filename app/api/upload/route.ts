@@ -87,8 +87,9 @@ async function uploadToUploadcare(buffer: Buffer, fileName: string, contentType:
     throw new Error('Uploadcare response missing file uuid');
   }
 
-  // Return CDN URL
-  return `https://ucarecdn.com/${data.file}/${encodeURIComponent(fileName)}`;
+  const cdnHost = process.env.UPLOADCARE_CDN_HOST || 'ucarecdn.com';
+  // Return CDN URL - use custom CDN domain if configured
+  return `https://${cdnHost}/${data.file}/${encodeURIComponent(fileName)}`;
 }
 
 async function saveLocally(buffer: Buffer, fileName: string): Promise<string> {
