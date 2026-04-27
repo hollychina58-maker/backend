@@ -64,7 +64,8 @@ export async function POST(request: NextRequest) {
 async function uploadToUploadcare(buffer: Buffer, fileName: string, contentType: string): Promise<string> {
   // Uploadcare REST API - upload endpoint
   const formData = new FormData();
-  const blob = new Blob([buffer], { type: contentType });
+  const uint8Array = new Uint8Array(buffer);
+  const blob = new Blob([uint8Array], { type: contentType });
   formData.append('file', blob, fileName);
   formData.append('pub_key', UPLOADCARE_PUBLIC_KEY!);
 
