@@ -43,6 +43,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   const handleLogout = () => {
     localStorage.removeItem('admin_user');
+    localStorage.removeItem('admin_api_key');
+    setUser(undefined);
     router.push('/admin/login');
   };
 

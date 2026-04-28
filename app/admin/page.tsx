@@ -36,20 +36,24 @@ export default function DashboardPage() {
   useEffect(() => {
     async function fetchStats() {
       try {
-        const [productsRes] = await Promise.all([
+        const [productsRes, blogRes] = await Promise.all([
           fetch('/api/products'),
+          fetch('/api/blog'),
         ]);
 
         const productsData = await productsRes.json();
         const products = productsData.data || [];
 
+        const blogData = await blogRes.json();
+        const posts = blogData.data || [];
+
         setStats({
           totalProducts: products.length,
           publishedProducts: products.filter((p: { published: boolean }) => p.published).length,
           draftProducts: products.filter((p: { published: boolean }) => !p.published).length,
-          totalPosts: 0,
-          publishedPosts: 0,
-          draftPosts: 0,
+          totalPosts: posts.length,
+          publishedPosts: posts.filter((p: { published: boolean }) => p.published).length,
+          draftPosts: posts.filter((p: { published: boolean }) => !p.published).length,
         });
       } catch (error) {
         console.error('Failed to fetch stats:', error);
@@ -204,6 +208,7 @@ export default function DashboardPage() {
                 value={oldPassword}
                 onChange={(e) => setOldPassword(e.target.value)}
                 placeholder="请输入旧密码"
+                autoComplete="off"
                 required
               />
             </div>
