@@ -1,7 +1,6 @@
 import bcrypt from 'bcryptjs';
 import { getDb, isDatabaseAvailable, initializeDatabase } from './db';
 
-const FALLBACK_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123';
 const SALT_ROUNDS = 10;
 
 let dbInitialized = false;
@@ -15,25 +14,25 @@ async function ensureDbInitialized(): Promise<void> {
 
 export async function verifyPassword(password: string): Promise<boolean> {
   if (!isDatabaseAvailable()) {
-    return password === FALLBACK_PASSWORD;
+    return false;
   }
 
   await ensureDbInitialized();
 
   const sql = getDb();
-  if (!sql) return password === FALLBACK_PASSWORD;
+  if (!sql) {
+    return false;
+  }
 
   try {
     const result = await sql`SELECT password_hash FROM admin_users WHERE id = 'admin'`;
     if (result.length === 0) {
-      const hash = await bcrypt.hash(FALLBACK_PASSWORD, SALT_ROUNDS);
-      await sql`INSERT INTO admin_users (id, password_hash) VALUES ('admin', ${hash})`;
-      return password === FALLBACK_PASSWORD;
+      return false;
     }
     const storedHash = result[0].password_hash;
     return bcrypt.compare(password, storedHash);
   } catch {
-    return password === FALLBACK_PASSWORD;
+    return false;
   }
 }
 

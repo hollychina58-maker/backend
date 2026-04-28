@@ -2,40 +2,41 @@ import { NextRequest, NextResponse } from 'next/server';
 import { writeFile, mkdir } from 'fs/promises';
 import { existsSync } from 'fs';
 import path from 'path';
+import { getCorsHeaders } from '../../../lib/cors';
 
 const UPLOADCARE_PUBLIC_KEY = process.env.UPLOADCARE_PUBLIC_KEY;
 const UPLOADCARE_SECRET_KEY = process.env.UPLOADCARE_SECRET_KEY;
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type',
-};
+const ALLOWED_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.webp', '.gif'];
 
 export async function POST(request: NextRequest) {
+  const headers = getCorsHeaders(request.headers.get('origin'));
   try {
     const formData = await request.formData();
     const file = formData.get('file') as File | null;
 
     if (!file) {
-      return NextResponse.json({ error: '没有文件' }, { status: 400, headers: corsHeaders });
+      return NextResponse.json({ error: '没有文件' }, { status: 400, headers });
     }
 
     if (!file.type.startsWith('image/')) {
-      return NextResponse.json({ error: '请上传图片文件' }, { status: 400, headers: corsHeaders });
+      return NextResponse.json({ error: '请上传图片文件' }, { status: 400, headers });
     }
 
     // Max 10MB
     if (file.size > 10 * 1024 * 1024) {
-      return NextResponse.json({ error: '图片大小不能超过10MB' }, { status: 400, headers: corsHeaders });
+      return NextResponse.json({ error: '图片大小不能超过10MB' }, { status: 400, headers });
     }
 
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    // Generate unique filename
+    // Generate unique filename with validated extension
     const timestamp = Date.now();
-    const ext = path.extname(file.name);
+    const ext = path.extname(file.name).toLowerCase();
+    if (!ALLOWED_EXTENSIONS.includes(ext)) {
+      return NextResponse.json({ error: '不支持的图片格式' }, { status: 400, headers });
+    }
     const baseName = path.basename(file.name, ext).replace(/[^a-zA-Z0-9]/g, '-');
     const fileName = `${baseName}-${timestamp}${ext}`;
 
@@ -44,21 +45,17 @@ export async function POST(request: NextRequest) {
     // Try Uploadcare first if configured
     if (UPLOADCARE_PUBLIC_KEY && UPLOADCARE_SECRET_KEY) {
       try {
-        console.log('Attempting Uploadcare upload with key length:', UPLOADCARE_PUBLIC_KEY.length);
         url = await uploadToUploadcare(buffer, fileName, file.type);
-        console.log('Uploaded to Uploadcare:', url);
-      } catch (ucError) {
-        console.error('Uploadcare upload failed, falling back to local:', ucError);
+      } catch {
         url = await saveLocally(buffer, fileName);
       }
     } else {
       url = await saveLocally(buffer, fileName);
     }
 
-    return NextResponse.json({ url }, { headers: corsHeaders });
-  } catch (error) {
-    console.error('Upload error:', error);
-    return NextResponse.json({ error: '上传失败' }, { status: 500, headers: corsHeaders });
+    return NextResponse.json({ url }, { headers });
+  } catch {
+    return NextResponse.json({ error: '上传失败' }, { status: 500, headers });
   }
 }
 
@@ -104,6 +101,7 @@ async function saveLocally(buffer: Buffer, fileName: string): Promise<string> {
   return `/images/products/${fileName}`;
 }
 
-export async function OPTIONS() {
-  return new NextResponse(null, { status: 204, headers: corsHeaders });
+export async function OPTIONS(request: NextRequest) {
+  const headers = getCorsHeaders(request.headers.get('origin'));
+  return new NextResponse(null, { status: 204, headers });
 }

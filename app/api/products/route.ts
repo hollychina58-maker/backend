@@ -1,38 +1,36 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getProducts, createProduct } from '../../../lib/product-data';
 import { ProductInput } from '../../../types/product';
+import { getCorsHeaders } from '../../../lib/cors';
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type',
-};
-
-export async function GET() {
+export async function GET(request: NextRequest) {
+  const headers = getCorsHeaders(request.headers.get('origin'));
   try {
     const products = await getProducts();
-    return NextResponse.json({ success: true, data: products }, { headers: corsHeaders });
+    return NextResponse.json({ success: true, data: products }, { headers });
   } catch {
     return NextResponse.json(
       { success: false, error: 'Failed to fetch products' },
-      { status: 500, headers: corsHeaders }
+      { status: 500, headers }
     );
   }
 }
 
 export async function POST(request: NextRequest) {
+  const headers = getCorsHeaders(request.headers.get('origin'));
   try {
     const body = await request.json();
     const product = await createProduct(body as ProductInput);
-    return NextResponse.json({ success: true, data: product }, { status: 201, headers: corsHeaders });
+    return NextResponse.json({ success: true, data: product }, { status: 201, headers });
   } catch {
     return NextResponse.json(
       { success: false, error: 'Failed to create product' },
-      { status: 500, headers: corsHeaders }
+      { status: 500, headers }
     );
   }
 }
 
-export async function OPTIONS() {
-  return new NextResponse(null, { status: 204, headers: corsHeaders });
+export async function OPTIONS(request: NextRequest) {
+  const headers = getCorsHeaders(request.headers.get('origin'));
+  return new NextResponse(null, { status: 204, headers });
 }
