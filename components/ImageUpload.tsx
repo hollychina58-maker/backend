@@ -31,9 +31,13 @@ export function ImageUpload({ value, onChange, label }: ImageUploadProps) {
         formData.append('file', file);
         formData.append('upload_preset', 'products');
 
+        const authHeader = getAuthHeader();
+        // Don't set Content-Type for FormData - browser needs to set it with boundary
+        delete authHeader['Content-Type'];
+
         const res = await fetch('/api/upload', {
           method: 'POST',
-          headers: getAuthHeader(),
+          headers: authHeader,
           body: formData,
         });
 
