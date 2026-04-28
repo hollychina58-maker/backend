@@ -13,30 +13,23 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const isLoginPage = pathname === '/admin/login';
 
   useEffect(() => {
-    console.log('[AdminLayout] Initial render, pathname:', pathname);
     try {
       const stored = localStorage.getItem('admin_user');
-      console.log('[AdminLayout] localStorage admin_user:', stored);
       if (stored && stored !== 'null' && stored !== 'undefined') {
         const parsed = JSON.parse(stored);
-        console.log('[AdminLayout] parsed user:', parsed);
         if (parsed && typeof parsed === 'object' && parsed.name) {
           setUser(parsed);
         }
       }
-    } catch (error) {
-      console.error('Failed to load admin user:', error);
+    } catch {
       localStorage.removeItem('admin_user');
     } finally {
-      console.log('[AdminLayout] Setting loading to false');
       setLoading(false);
     }
   }, []);
 
   useEffect(() => {
-    console.log('[AdminLayout] Auth check - loading:', loading, 'user:', user, 'isLoginPage:', isLoginPage);
     if (!loading && !user && !isLoginPage) {
-      console.log('[AdminLayout] Redirecting to login');
       router.push('/admin/login');
     }
   }, [loading, user, router, isLoginPage]);
@@ -48,10 +41,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     router.push('/admin/login');
   };
 
-  console.log('[AdminLayout] Rendering - loading:', loading, 'user:', user, 'isLoginPage:', isLoginPage);
-
   if (!user && isLoginPage) {
-    console.log('[AdminLayout] Showing login children (no user, is login page)');
     return <>{children}</>;
   }
 

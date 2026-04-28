@@ -12,37 +12,28 @@ export default function LoginPage() {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('[LoginPage] handleLogin called, password length:', password.length);
     setError('');
     setLoading(true);
 
     try {
-      console.log('[LoginPage] Fetching /api/admin/login');
       const res = await fetch('/api/admin/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password }),
       });
-      console.log('[LoginPage] Response status:', res.status);
 
       const data = await res.json();
-      console.log('[LoginPage] Response data:', JSON.stringify(data));
 
       if (data.success) {
-        console.log('[LoginPage] Login successful, saving to storage');
         saveApiKey(password);
         localStorage.setItem('admin_user', JSON.stringify(data.user));
-        console.log('[LoginPage] Redirecting to /admin');
         window.location.href = '/admin';
       } else {
-        console.log('[LoginPage] Login failed:', data.error);
         setError(data.error || '登录失败');
       }
-    } catch (err) {
-      console.error('[LoginPage] Login error:', err);
+    } catch {
       setError('发生错误');
     } finally {
-      console.log('[LoginPage] Setting loading to false');
       setLoading(false);
     }
   };
