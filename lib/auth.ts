@@ -36,16 +36,35 @@ export async function verifyPassword(password: string): Promise<boolean> {
   }
 }
 
+export function validatePasswordStrength(password: string): { valid: boolean; error?: string } {
+  if (password.length < 8) {
+    return { valid: false, error: '密码至少8位' };
+  }
+  if (!/[A-Z]/.test(password)) {
+    return { valid: false, error: '需包含大写字母' };
+  }
+  if (!/[a-z]/.test(password)) {
+    return { valid: false, error: '需包含小写字母' };
+  }
+  if (!/[0-9]/.test(password)) {
+    return { valid: false, error: '需包含数字' };
+  }
+  return { valid: true };
+}
+
 export async function changePassword(oldPassword: string, newPassword: string): Promise<{ success: boolean; error?: string }> {
   if (!isDatabaseAvailable()) {
     return { success: false, error: 'Database not available' };
   }
 
-  await ensureDbInitialized();
-
   const isValid = await verifyPassword(oldPassword);
   if (!isValid) {
     return { success: false, error: '旧密码错误' };
+  }
+
+  const passwordCheck = validatePasswordStrength(newPassword);
+  if (!passwordCheck.valid) {
+    return { success: false, error: passwordCheck.error };
   }
 
   const sql = getDb();

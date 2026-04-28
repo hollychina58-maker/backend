@@ -7,9 +7,38 @@ const MAX_ATTEMPTS = 5;
 const WINDOW_MS = 60 * 1000; // 1 minute
 
 function getClientIp(request: NextRequest): string {
-  const forwarded = request.headers.get('x-forwarded-for');
-  const ip = forwarded?.split(',')[0]?.trim() || request.headers.get('x-real-ip') || 'unknown';
-  return ip;
+  // Priority order for IP detection (most reliable first)
+  const forwardedFor = request.headers.get('x-forwarded-for');
+  const realIp = request.headers.get('x-real-ip');
+  const cfConnectingIp = request.headers.get('cf-connecting-ip'); // Cloudflare
+
+  // Use CF-IP if behind Cloudflare CDN (most trusted CDN header)
+  if (cfConnectingIp) {
+    return cfConnectingIp.split(',')[0].trim();
+  }
+
+  // If x-forwarded-for has many IPs, it's likely spoofed - use x-real-ip instead
+  if (forwardedFor) {
+    const ips = forwardedFor.split(',').map(ip => ip.trim()).filter(ip => ip);
+    if (ips.length === 1) {
+      // Single IP in forwarded-for, likely legitimate
+      return ips[0];
+    }
+    // Multiple IPs - could be spoofed, check x-real-ip as fallback
+    if (realIp) {
+      return realIp.split(',')[0].trim();
+    }
+    // Fall back to first IP but this is less reliable
+    return ips[0];
+  }
+
+  // Fall back to x-real-ip
+  if (realIp) {
+    return realIp.split(',')[0].trim();
+  }
+
+  // Last resort - use a placeholder (would need middleware-level solution)
+  return 'unknown';
 }
 
 function isRateLimited(ip: string): boolean {

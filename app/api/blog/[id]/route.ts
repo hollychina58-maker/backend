@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getPost, updatePost, deletePost } from '../../../../lib/blog-data';
 import { BlogPostInput } from '../../../../types/blog';
 import { getCorsHeaders } from '../../../../lib/cors';
+import { requireAuth } from '../../../../lib/auth-middleware';
+import { validateBlogPostInput } from '../../../../lib/validation';
 
 export async function GET(
   request: NextRequest,
@@ -31,9 +33,19 @@ export async function PUT(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const headers = getCorsHeaders(request.headers.get('origin'));
+  const authError = requireAuth(request);
+  if (authError) return authError;
+
   try {
     const { id } = await params;
     const body = await request.json();
+    const validation = validateBlogPostInput(body);
+    if (!validation.success) {
+      return NextResponse.json(
+        { success: false, error: 'Invalid input', details: validation.error.issues },
+        { status: 400, headers }
+      );
+    }
     const post = await updatePost(id, body as Partial<BlogPostInput>);
     if (!post) {
       return NextResponse.json(
@@ -55,6 +67,9 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const headers = getCorsHeaders(request.headers.get('origin'));
+  const authError = requireAuth(request);
+  if (authError) return authError;
+
   try {
     const { id } = await params;
     const deleted = await deletePost(id);

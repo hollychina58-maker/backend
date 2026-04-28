@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getProduct, updateProduct, deleteProduct } from '../../../../lib/product-data';
 import { ProductInput } from '../../../../types/product';
 import { getCorsHeaders } from '../../../../lib/cors';
+import { requireAuth } from '../../../../lib/auth-middleware';
+import { validateProductInput } from '../../../../lib/validation';
 
 export async function GET(
   request: NextRequest,
@@ -31,9 +33,19 @@ export async function PUT(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const headers = getCorsHeaders(request.headers.get('origin'));
+  const authError = requireAuth(request);
+  if (authError) return authError;
+
   try {
     const { id } = await params;
     const body = await request.json();
+    const validation = validateProductInput(body);
+    if (!validation.success) {
+      return NextResponse.json(
+        { success: false, error: 'Invalid input', details: validation.error.issues },
+        { status: 400, headers }
+      );
+    }
     const product = await updateProduct(id, body as Partial<ProductInput>);
     if (!product) {
       return NextResponse.json(
@@ -55,6 +67,9 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const headers = getCorsHeaders(request.headers.get('origin'));
+  const authError = requireAuth(request);
+  if (authError) return authError;
+
   try {
     const { id } = await params;
     const deleted = await deleteProduct(id);

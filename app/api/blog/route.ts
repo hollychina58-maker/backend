@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getPosts, createPost } from '../../../lib/blog-data';
 import { BlogPostInput } from '../../../types/blog';
 import { getCorsHeaders } from '../../../lib/cors';
+import { requireAuth } from '../../../lib/auth-middleware';
+import { validateBlogPostInput } from '../../../lib/validation';
 
 export async function GET(request: NextRequest) {
   const headers = getCorsHeaders(request.headers.get('origin'));
@@ -18,8 +20,18 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   const headers = getCorsHeaders(request.headers.get('origin'));
+  const authError = requireAuth(request);
+  if (authError) return authError;
+
   try {
     const body = await request.json();
+    const validation = validateBlogPostInput(body);
+    if (!validation.success) {
+      return NextResponse.json(
+        { success: false, error: 'Invalid input', details: validation.error.issues },
+        { status: 400, headers }
+      );
+    }
     const post = await createPost(body as BlogPostInput);
     return NextResponse.json({ success: true, data: post }, { status: 201, headers });
   } catch {

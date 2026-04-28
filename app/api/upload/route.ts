@@ -3,14 +3,48 @@ import { writeFile, mkdir } from 'fs/promises';
 import { existsSync } from 'fs';
 import path from 'path';
 import { getCorsHeaders } from '../../../lib/cors';
+import { requireAuth } from '../../../lib/auth-middleware';
 
 const UPLOADCARE_PUBLIC_KEY = process.env.UPLOADCARE_PUBLIC_KEY;
 const UPLOADCARE_SECRET_KEY = process.env.UPLOADCARE_SECRET_KEY;
 
 const ALLOWED_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.webp', '.gif'];
 
+// Magic byte signatures for image validation
+const MAGIC_BYTES: Record<string, number[][]> = {
+  '.jpg': [[0xFF, 0xD8, 0xFF]],
+  '.jpeg': [[0xFF, 0xD8, 0xFF]],
+  '.png': [[0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A]],
+  '.gif': [[0x47, 0x49, 0x46, 0x38, 0x37, 0x61], [0x47, 0x49, 0x46, 0x38, 0x39, 0x61]],
+  '.webp': [[0x52, 0x49, 0x46, 0x46]], // RIFF header
+};
+
+function validateMagicBytes(buffer: Buffer, ext: string): boolean {
+  const signatures = MAGIC_BYTES[ext];
+  if (!signatures) return false;
+
+  for (const signature of signatures) {
+    if (buffer.slice(0, signature.length).equals(Buffer.from(signature))) {
+      return true;
+    }
+  }
+
+  // For webp, also check RIFF container
+  if (ext === '.webp' && buffer.length >= 12) {
+    const riff = buffer.slice(0, 4).toString('ascii');
+    const webp = buffer.slice(8, 12).toString('ascii');
+    if (riff === 'RIFF' && webp === 'WEBP') {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 export async function POST(request: NextRequest) {
   const headers = getCorsHeaders(request.headers.get('origin'));
+  const authError = requireAuth(request);
+  if (authError) return authError;
   try {
     const formData = await request.formData();
     const file = formData.get('file') as File | null;
@@ -37,6 +71,12 @@ export async function POST(request: NextRequest) {
     if (!ALLOWED_EXTENSIONS.includes(ext)) {
       return NextResponse.json({ error: '不支持的图片格式' }, { status: 400, headers });
     }
+
+    // Validate magic bytes to confirm actual file type
+    if (!validateMagicBytes(buffer, ext)) {
+      return NextResponse.json({ error: '文件类型验证失败' }, { status: 400, headers });
+    }
+
     const baseName = path.basename(file.name, ext).replace(/[^a-zA-Z0-9]/g, '-');
     const fileName = `${baseName}-${timestamp}${ext}`;
 
