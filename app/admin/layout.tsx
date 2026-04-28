@@ -13,11 +13,20 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const isLoginPage = pathname === '/admin/login';
 
   useEffect(() => {
-    const stored = localStorage.getItem('admin_user');
-    if (stored) {
-      setUser(JSON.parse(stored));
+    try {
+      const stored = localStorage.getItem('admin_user');
+      if (stored && stored !== 'null' && stored !== 'undefined') {
+        const parsed = JSON.parse(stored);
+        if (parsed && typeof parsed === 'object' && parsed.name) {
+          setUser(parsed);
+        }
+      }
+    } catch (error) {
+      console.error('Failed to load admin user:', error);
+      localStorage.removeItem('admin_user');
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   }, []);
 
   useEffect(() => {
