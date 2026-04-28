@@ -42,7 +42,7 @@ export async function PUT(
     const validation = validateBlogPostInput(body);
     if (!validation.success) {
       return NextResponse.json(
-        { success: false, error: 'Invalid input', details: validation.error.issues },
+        { success: false, error: 'Invalid input' },
         { status: 400, headers }
       );
     }

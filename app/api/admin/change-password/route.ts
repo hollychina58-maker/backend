@@ -12,13 +12,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (newPassword.length < 6) {
-      return NextResponse.json(
-        { success: false, error: '新密码长度至少6位' },
-        { status: 400 }
-      );
-    }
-
     const result = await changePassword(oldPassword, newPassword);
 
     if (result.success) {
@@ -34,7 +27,7 @@ export async function POST(request: NextRequest) {
     );
   } catch {
     return NextResponse.json(
-      { success: false, error: 'Internal server error' },
+      { success: false, error: '修改密码失败' },
       { status: 500 }
     );
   }

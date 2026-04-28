@@ -3,9 +3,7 @@ const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGINS || 'http://localhost:3000,h
 
 export function isOriginAllowed(origin: string | null): boolean {
   if (!origin) return false;
-  return ALLOWED_ORIGINS.some(allowed =>
-    allowed.trim() === origin || allowed.trim() === '*'
-  );
+  return ALLOWED_ORIGINS.some(allowed => allowed.trim() === origin);
 }
 
 export const corsHeaders = {
@@ -18,8 +16,6 @@ export function getCorsHeaders(requestOrigin: string | null): Record<string, str
 
   if (requestOrigin && isOriginAllowed(requestOrigin)) {
     headers['Access-Control-Allow-Origin'] = requestOrigin;
-  } else if (isOriginAllowed('*')) {
-    headers['Access-Control-Allow-Origin'] = '*';
   }
 
   return headers;

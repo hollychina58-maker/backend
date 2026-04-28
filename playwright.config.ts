@@ -8,8 +8,9 @@ export default defineConfig({
   workers: 1,
   reporter: 'list',
   use: {
-    baseURL: 'http://localhost:3001',
+    baseURL: process.env.BASE_URL || 'https://backend-production-d2c5.up.railway.app',
     trace: 'on-first-retry',
+    screenshot: 'only-on-failure',
   },
   projects: [
     {
