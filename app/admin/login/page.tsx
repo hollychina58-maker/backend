@@ -10,8 +10,11 @@ export default function LoginPage() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
+  console.log('[LoginPage] Rendering - password length:', password.length, 'loading:', loading, 'error:', error);
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('[LoginPage] handleLogin called');
     setError('');
     setLoading(true);
 
