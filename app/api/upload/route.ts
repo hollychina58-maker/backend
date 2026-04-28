@@ -86,7 +86,8 @@ export async function POST(request: NextRequest) {
     if (UPLOADCARE_PUBLIC_KEY && UPLOADCARE_SECRET_KEY) {
       try {
         url = await uploadToUploadcare(buffer, fileName, file.type);
-      } catch {
+      } catch (err) {
+        console.error('Uploadcare upload failed:', err);
         url = await saveLocally(buffer, fileName);
       }
     } else {
@@ -94,7 +95,8 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json({ url }, { headers });
-  } catch {
+  } catch (err) {
+    console.error('Upload error:', err);
     return NextResponse.json({ error: '上传失败' }, { status: 500, headers });
   }
 }

@@ -41,12 +41,14 @@ export function ImageUpload({ value, onChange, label }: ImageUploadProps) {
           body: formData,
         });
 
-        if (!res.ok) throw new Error('上传失败');
-
         const data = await res.json();
+        if (!res.ok) {
+          throw new Error(data.error || '上传失败');
+        }
+
         onChange(data.url);
-      } catch {
-        setError('图片上传失败');
+      } catch (err) {
+        setError(err instanceof Error ? err.message : '图片上传失败');
       } finally {
         setUploading(false);
       }
