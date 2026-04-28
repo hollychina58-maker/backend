@@ -3,6 +3,9 @@
 import { useState } from 'react';
 import { Button } from '../../../components/Button';
 import { Input } from '../../../components/Input';
+import { saveApiKey } from '../../../lib/api-auth';
+
+const ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || 'admin123';
 
 export default function LoginPage() {
   const [password, setPassword] = useState('');
@@ -24,6 +27,7 @@ export default function LoginPage() {
       const data = await res.json();
 
       if (data.success) {
+        saveApiKey(ADMIN_PASSWORD);
         localStorage.setItem('admin_user', JSON.stringify(data.user));
         window.location.href = '/admin';
       } else {

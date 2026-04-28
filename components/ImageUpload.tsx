@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useCallback } from 'react';
+import { getAuthHeader } from '../lib/api-auth';
 
 interface ImageUploadProps {
   value?: string;
@@ -32,6 +33,7 @@ export function ImageUpload({ value, onChange, label }: ImageUploadProps) {
 
         const res = await fetch('/api/upload', {
           method: 'POST',
+          headers: getAuthHeader(),
           body: formData,
         });
 

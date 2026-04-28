@@ -11,6 +11,7 @@ import { StatusBadge } from '../../../components/StatusBadge';
 import { ImageUpload } from '../../../components/ImageUpload';
 import { LanguageTabs } from '../../../components/LanguageTabs';
 import { BlogPost, BlogPostInput } from '../../../types/blog';
+import { getAuthHeader } from '../../../lib/api-auth';
 
 const ALL_LANG_CODES = ['en', 'zh', 'ru', 'ar', 'fa', 'la'];
 
@@ -60,7 +61,7 @@ export default function BlogPage() {
 
   const fetchPosts = useCallback(async () => {
     try {
-      const res = await fetch('/api/blog');
+      const res = await fetch('/api/blog', { headers: getAuthHeader() });
       const data = await res.json();
       setPosts(data.data || []);
     } catch (error) {
@@ -131,7 +132,7 @@ export default function BlogPage() {
 
       const res = await fetch(url, {
         method,
-        headers: { 'Content-Type': 'application/json' },
+        headers: getAuthHeader(),
         body: JSON.stringify(payload),
       });
 
@@ -150,7 +151,7 @@ export default function BlogPage() {
     if (!deletingId) return;
     setSaving(true);
     try {
-      const res = await fetch(`/api/blog/${deletingId}`, { method: 'DELETE' });
+      const res = await fetch(`/api/blog/${deletingId}`, { method: 'DELETE', headers: getAuthHeader() });
       if (!res.ok) throw new Error('Failed to delete');
       await fetchPosts();
       setIsDeleteModalOpen(false);
@@ -191,7 +192,7 @@ export default function BlogPage() {
 
       const res = await fetch('/api/translate', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { ...getAuthHeader(), 'Content-Type': 'application/json' },
         body: JSON.stringify({
           type: 'blog',
           sourceLang: activeLang,

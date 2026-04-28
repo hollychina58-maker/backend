@@ -12,6 +12,7 @@ import { ImageUpload } from '../../../components/ImageUpload';
 import { LanguageTabs } from '../../../components/LanguageTabs';
 import { ParameterTable, SpecItem } from '../../../components/ParameterTable';
 import { Product, ProductInput } from '../../../types/product';
+import { getAuthHeader } from '../../../lib/api-auth';
 
 const LOCALES = [
   { code: 'en', label: 'English' },
@@ -69,7 +70,7 @@ export default function ProductsPage() {
 
   const fetchProducts = useCallback(async () => {
     try {
-      const res = await fetch('/api/products');
+      const res = await fetch('/api/products', { headers: getAuthHeader() });
       const data = await res.json();
       setProducts(data.data || []);
     } catch (error) {
@@ -143,7 +144,7 @@ export default function ProductsPage() {
 
       const res = await fetch('/api/translate', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { ...getAuthHeader(), 'Content-Type': 'application/json' },
         body: JSON.stringify({
           type: 'product',
           sourceLang: activeLang,
@@ -192,6 +193,7 @@ export default function ProductsPage() {
 
       const res = await fetch('/api/import-products-excel', {
         method: 'POST',
+        headers: { ...getAuthHeader() },
         body: formData,
       });
 
@@ -234,7 +236,7 @@ export default function ProductsPage() {
 
       const res = await fetch(url, {
         method,
-        headers: { 'Content-Type': 'application/json' },
+        headers: getAuthHeader(),
         body: JSON.stringify(payload),
       });
 
@@ -253,7 +255,7 @@ export default function ProductsPage() {
     if (!deletingId) return;
     setSaving(true);
     try {
-      const res = await fetch(`/api/products/${deletingId}`, { method: 'DELETE' });
+      const res = await fetch(`/api/products/${deletingId}`, { method: 'DELETE', headers: getAuthHeader() });
       if (!res.ok) throw new Error('Failed to delete');
       await fetchProducts();
       setIsDeleteModalOpen(false);
