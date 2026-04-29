@@ -33,7 +33,7 @@ export async function PUT(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const headers = getCorsHeaders(request.headers.get('origin'));
-  const authError = requireAuth(request);
+  const authError = await requireAuth(request);
   if (authError) return authError;
 
   try {
@@ -67,7 +67,7 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const headers = getCorsHeaders(request.headers.get('origin'));
-  const authError = requireAuth(request);
+  const authError = await requireAuth(request);
   if (authError) return authError;
 
   try {

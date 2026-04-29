@@ -43,7 +43,7 @@ function validateMagicBytes(buffer: Buffer, ext: string): boolean {
 
 export async function POST(request: NextRequest) {
   const headers = getCorsHeaders(request.headers.get('origin'));
-  const authError = requireAuth(request);
+  const authError = await requireAuth(request);
   if (authError) return authError;
   try {
     const formData = await request.formData();

@@ -1,15 +1,26 @@
 import { NextRequest, NextResponse } from 'next/server';
+import bcrypt from 'bcryptjs';
+import { getDb, isDatabaseAvailable, initializeDatabase } from './db';
 
-const ADMIN_API_KEY_HASH = process.env.ADMIN_API_KEY_HASH;
+let dbInitialized = false;
 
-export function verifyApiKey(request: NextRequest): NextResponse | null {
-  if (!ADMIN_API_KEY_HASH) {
-    console.error('ADMIN_API_KEY_HASH environment variable not set');
+async function ensureDbInitialized(): Promise<void> {
+  if (!dbInitialized) {
+    await initializeDatabase();
+    dbInitialized = true;
+  }
+}
+
+export async function verifyApiKey(request: NextRequest): Promise<NextResponse | null> {
+  if (!isDatabaseAvailable()) {
+    console.error('Database not available for API key verification');
     return NextResponse.json(
       { success: false, error: 'Server configuration error' },
       { status: 500 }
     );
   }
+
+  await ensureDbInitialized();
 
   const authHeader = request.headers.get('Authorization');
 
@@ -22,14 +33,48 @@ export function verifyApiKey(request: NextRequest): NextResponse | null {
 
   const token = authHeader.slice(7);
 
-  if (!token || token !== ADMIN_API_KEY_HASH) {
+  if (!token) {
     return NextResponse.json(
       { success: false, error: 'Invalid API key' },
       { status: 401 }
     );
   }
 
-  return null;
+  try {
+    const sql = getDb();
+    if (!sql) {
+      return NextResponse.json(
+        { success: false, error: 'Database connection failed' },
+        { status: 500 }
+      );
+    }
+
+    const result = await sql`SELECT password_hash FROM admin_users WHERE id = 'admin'`;
+    if (result.length === 0) {
+      return NextResponse.json(
+        { success: false, error: 'Invalid API key' },
+        { status: 401 }
+      );
+    }
+
+    const storedHash = result[0].password_hash;
+    const isValid = await bcrypt.compare(token, storedHash);
+
+    if (!isValid) {
+      return NextResponse.json(
+        { success: false, error: 'Invalid API key' },
+        { status: 401 }
+      );
+    }
+
+    return null;
+  } catch (error) {
+    console.error('API key verification error:', error);
+    return NextResponse.json(
+      { success: false, error: 'Invalid API key' },
+      { status: 401 }
+    );
+  }
 }
 
 export function requireAuth(request: NextRequest) {
