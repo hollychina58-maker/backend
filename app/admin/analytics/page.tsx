@@ -12,6 +12,12 @@ interface Stats {
   topPages: { page_url: string; views: number }[];
 }
 
+interface StatsResponse {
+  success: boolean;
+  data?: Stats;
+  error?: string;
+}
+
 export default function AnalyticsPage() {
   const [stats, setStats] = useState<Stats | null>(null);
   const [loading, setLoading] = useState(true);
@@ -22,14 +28,44 @@ export default function AnalyticsPage() {
     async function fetchStats() {
       try {
         const res = await fetch(`/api/analytics/stats?days=${days}`);
-        const data = await res.json();
-        if (data.success) {
-          setStats(data.data);
-        } else {
-          setError(data.error || 'Failed to load stats');
+
+        // Check response status before attempting to parse JSON
+        if (!res.ok) {
+          let errorDetail = `HTTP ${res.status}: ${res.statusText}`;
+          try {
+            const errorData = await res.json();
+            if (errorData.error) {
+              errorDetail = errorData.error;
+            }
+          } catch {
+            // Response body might be empty or not JSON
+          }
+          setError(`加载失败: ${errorDetail}`);
+          setLoading(false);
+          return;
         }
-      } catch {
-        setError('Failed to load analytics');
+
+        // Check Content-Type to ensure we get JSON
+        const contentType = res.headers.get('content-type');
+        if (!contentType || !contentType.includes('application/json')) {
+          const text = await res.text();
+          console.error('[Analytics Admin] Non-JSON response:', text.substring(0, 500));
+          setError('服务器返回了无效响应');
+          setLoading(false);
+          return;
+        }
+
+        const data: StatsResponse = await res.json();
+
+        if (data.success && data.data) {
+          setStats(data.data);
+          setError('');
+        } else {
+          setError(data.error || '获取统计数据失败');
+        }
+      } catch (err) {
+        console.error('[Analytics Admin] Fetch error:', err);
+        setError('网络错误');
       } finally {
         setLoading(false);
       }

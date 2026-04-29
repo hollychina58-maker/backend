@@ -6,16 +6,18 @@ export async function GET(request: NextRequest) {
     // Ensure database is initialized (creates tables if needed)
     await initializeDatabase();
   } catch (error) {
-    console.error('Failed to initialize database:', error);
+    console.error('[Analytics Stats] Database initialization failed:', error);
     return NextResponse.json({ success: false, error: 'Database initialization failed: ' + (error instanceof Error ? error.message : String(error)) }, { status: 500 });
   }
 
   if (!isDatabaseAvailable()) {
+    console.error('[Analytics Stats] Database not available');
     return NextResponse.json({ success: false, error: 'Database not available' }, { status: 503 });
   }
 
   const sql = getDb();
   if (!sql) {
+    console.error('[Analytics Stats] Failed to get database connection');
     return NextResponse.json({ success: false, error: 'Database connection failed' }, { status: 500 });
   }
 
@@ -77,19 +79,40 @@ export async function GET(request: NextRequest) {
       LIMIT 10
     ` as { page_url: string; views: number }[];
 
+    // Safely serialize dates - handle both Date objects and string dates from Neon
+    const serializedViewsByDay = viewsByDay.map((v: { date: Date | string; views: number }) => {
+      const dateValue = v.date;
+      let dateStr: string;
+      if (dateValue instanceof Date) {
+        dateStr = dateValue.toISOString().split('T')[0];
+      } else {
+        dateStr = String(dateValue).split('T')[0];
+      }
+      return { date: dateStr, views: Number(v.views) };
+    });
+
     return NextResponse.json({
       success: true,
       data: {
-        totalViews: parseInt(viewsResult[0].count, 10),
-        uniqueVisitors: parseInt(visitorsResult[0].count, 10),
-        viewsByDay: viewsByDay.map(v => ({ date: v.date.toISOString().split('T')[0], views: v.views })),
-        topProducts,
-        topCountries,
-        topPages,
+        totalViews: parseInt(viewsResult[0]?.count ?? '0', 10),
+        uniqueVisitors: parseInt(visitorsResult[0]?.count ?? '0', 10),
+        viewsByDay: serializedViewsByDay,
+        topProducts: topProducts.map(p => ({
+          product_id: p.product_id,
+          clicks: Number(p.clicks)
+        })),
+        topCountries: topCountries.map(c => ({
+          country: c.country,
+          views: Number(c.views)
+        })),
+        topPages: topPages.map(p => ({
+          page_url: p.page_url,
+          views: Number(p.views)
+        })),
       },
     });
   } catch (error) {
-    console.error('Analytics stats error:', error);
+    console.error('[Analytics Stats] Failed to fetch stats:', error);
     return NextResponse.json({ success: false, error: 'Failed to fetch stats: ' + (error instanceof Error ? error.message : String(error)) }, { status: 500 });
   }
 }
