@@ -4,6 +4,7 @@ import { BlogPostInput } from '../../../../types/blog';
 import { getCorsHeaders } from '../../../../lib/cors';
 import { requireAuth } from '../../../../lib/auth-middleware';
 import { validateBlogPostInput } from '../../../../lib/validation';
+import { initializeDatabase } from '../../../../lib/db';
 
 export async function GET(
   request: NextRequest,
@@ -11,6 +12,7 @@ export async function GET(
 ) {
   const headers = getCorsHeaders(request.headers.get('origin'));
   try {
+    await initializeDatabase();
     const { id } = await params;
     const post = await getPost(id);
     if (!post) {
@@ -37,6 +39,7 @@ export async function PUT(
   if (authError) return authError;
 
   try {
+    await initializeDatabase();
     const { id } = await params;
     const body = await request.json();
     const validation = validateBlogPostInput(body);
@@ -71,6 +74,7 @@ export async function DELETE(
   if (authError) return authError;
 
   try {
+    await initializeDatabase();
     const { id } = await params;
     const deleted = await deletePost(id);
     if (!deleted) {

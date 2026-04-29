@@ -4,10 +4,12 @@ import { ProductInput } from '../../../types/product';
 import { getCorsHeaders } from '../../../lib/cors';
 import { requireAuth } from '../../../lib/auth-middleware';
 import { validateProductInput } from '../../../lib/validation';
+import { initializeDatabase } from '../../../lib/db';
 
 export async function GET(request: NextRequest) {
   const headers = getCorsHeaders(request.headers.get('origin'));
   try {
+    await initializeDatabase();
     const products = await getProducts();
     return NextResponse.json({ success: true, data: products }, { headers });
   } catch {
@@ -24,6 +26,7 @@ export async function POST(request: NextRequest) {
   if (authError) return authError;
 
   try {
+    await initializeDatabase();
     const body = await request.json();
     const validation = validateProductInput(body);
     if (!validation.success) {

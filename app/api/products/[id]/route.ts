@@ -4,6 +4,7 @@ import { ProductInput } from '../../../../types/product';
 import { getCorsHeaders } from '../../../../lib/cors';
 import { requireAuth } from '../../../../lib/auth-middleware';
 import { validateProductInput } from '../../../../lib/validation';
+import { initializeDatabase } from '../../../../lib/db';
 
 export async function GET(
   request: NextRequest,
@@ -11,6 +12,7 @@ export async function GET(
 ) {
   const headers = getCorsHeaders(request.headers.get('origin'));
   try {
+    await initializeDatabase();
     const { id } = await params;
     const product = await getProduct(id);
     if (!product) {
@@ -37,6 +39,7 @@ export async function PUT(
   if (authError) return authError;
 
   try {
+    await initializeDatabase();
     const { id } = await params;
     const body = await request.json();
     const validation = validateProductInput(body);
@@ -71,6 +74,7 @@ export async function DELETE(
   if (authError) return authError;
 
   try {
+    await initializeDatabase();
     const { id } = await params;
     const deleted = await deleteProduct(id);
     if (!deleted) {
