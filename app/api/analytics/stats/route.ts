@@ -1,24 +1,28 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getDb, isDatabaseAvailable, initializeDatabase } from '../../../../lib/db';
+import { getCorsHeaders } from '../../../../lib/cors';
 
 export async function GET(request: NextRequest) {
+  const origin = request.headers.get('origin');
+  const corsHeaders = getCorsHeaders(origin);
+
   try {
     // Ensure database is initialized (creates tables if needed)
     await initializeDatabase();
   } catch (error) {
     console.error('[Analytics Stats] Database initialization failed:', error);
-    return NextResponse.json({ success: false, error: 'Database initialization failed: ' + (error instanceof Error ? error.message : String(error)) }, { status: 500 });
+    return NextResponse.json({ success: false, error: 'Database initialization failed: ' + (error instanceof Error ? error.message : String(error)) }, { status: 500, headers: corsHeaders });
   }
 
   if (!isDatabaseAvailable()) {
     console.error('[Analytics Stats] Database not available');
-    return NextResponse.json({ success: false, error: 'Database not available' }, { status: 503 });
+    return NextResponse.json({ success: false, error: 'Database not available' }, { status: 503, headers: corsHeaders });
   }
 
   const sql = getDb();
   if (!sql) {
     console.error('[Analytics Stats] Failed to get database connection');
-    return NextResponse.json({ success: false, error: 'Database connection failed' }, { status: 500 });
+    return NextResponse.json({ success: false, error: 'Database connection failed' }, { status: 500, headers: corsHeaders });
   }
 
   try {
@@ -110,9 +114,9 @@ export async function GET(request: NextRequest) {
           views: Number(p.views)
         })),
       },
-    });
+    }, { headers: corsHeaders });
   } catch (error) {
     console.error('[Analytics Stats] Failed to fetch stats:', error);
-    return NextResponse.json({ success: false, error: 'Failed to fetch stats: ' + (error instanceof Error ? error.message : String(error)) }, { status: 500 });
+    return NextResponse.json({ success: false, error: 'Failed to fetch stats: ' + (error instanceof Error ? error.message : String(error)) }, { status: 500, headers: corsHeaders });
   }
 }

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getDb, isDatabaseAvailable, initializeDatabase } from '../../../../lib/db';
+import { getCorsHeaders } from '../../../../lib/cors';
 
 // Simple in-memory rate limiter for analytics
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
@@ -49,6 +50,7 @@ async function cleanupOldData(sql: any): Promise<{ deletedViews: number; deleted
 }
 
 export async function POST(request: NextRequest) {
+  const headers = getCorsHeaders(request.headers.get('origin'));
   const clientIp = getClientIp(request);
 
   if (isRateLimited(clientIp)) {
