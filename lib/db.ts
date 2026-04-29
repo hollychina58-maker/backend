@@ -81,10 +81,10 @@ export async function initializeDatabase(): Promise<void> {
     await sql`
       CREATE TABLE IF NOT EXISTS page_views (
         id SERIAL PRIMARY KEY,
-        visitor_id VARCHAR(32) NOT NULL,
+        visitor_id VARCHAR(64) NOT NULL,
         page_url TEXT NOT NULL,
-        country VARCHAR(2),
-        language VARCHAR(5),
+        country VARCHAR(50),
+        language VARCHAR(10),
         referrer TEXT,
         created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
       )
@@ -93,13 +93,33 @@ export async function initializeDatabase(): Promise<void> {
     await sql`
       CREATE TABLE IF NOT EXISTS product_clicks (
         id SERIAL PRIMARY KEY,
-        visitor_id VARCHAR(32) NOT NULL,
+        visitor_id VARCHAR(64) NOT NULL,
         product_id VARCHAR(50) NOT NULL,
-        country VARCHAR(2),
-        language VARCHAR(5),
+        country VARCHAR(50),
+        language VARCHAR(10),
         created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
       )
     `;
+
+    // Fix column sizes if they were created with wrong size (VARCHAR(2))
+    try {
+      await sql`ALTER TABLE page_views ALTER COLUMN country TYPE VARCHAR(50)`;
+    } catch { /* ignore if already correct */ }
+    try {
+      await sql`ALTER TABLE product_clicks ALTER COLUMN country TYPE VARCHAR(50)`;
+    } catch { /* ignore if already correct */ }
+    try {
+      await sql`ALTER TABLE page_views ALTER COLUMN visitor_id TYPE VARCHAR(64)`;
+    } catch { /* ignore if already correct */ }
+    try {
+      await sql`ALTER TABLE product_clicks ALTER COLUMN visitor_id TYPE VARCHAR(64)`;
+    } catch { /* ignore if already correct */ }
+    try {
+      await sql`ALTER TABLE page_views ALTER COLUMN language TYPE VARCHAR(10)`;
+    } catch { /* ignore if already correct */ }
+    try {
+      await sql`ALTER TABLE product_clicks ALTER COLUMN language TYPE VARCHAR(10)`;
+    } catch { /* ignore if already correct */ }
 
     console.log('Database schema initialized successfully');
 
