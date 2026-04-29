@@ -530,7 +530,7 @@
   {
     "id": "PA-GS02",
     "slug": "PA-GS02",
-    "image": "https://mmes-website-production.up.railway.app/images/PA-GS02.jpg",
+    "image": "https://61mzpm7grh.ucarecd.net/44bc40e8-056f-4a07-b487-60945563e9c3/PA-GS02-1777367577701.jpg",
     "specs": {
       "ar": [
         {
@@ -1077,439 +1077,7 @@
       }
     },
     "createdAt": "2026-04-26T01:50:51.280Z",
-    "updatedAt": "2026-04-26T03:29:47.801Z"
-  },
-  {
-    "id": "PA-GS",
-    "slug": "PA-GS",
-    "image": "https://mmes-website-production.up.railway.app/images/PA-GS.jpg",
-    "specs": {
-      "ar": [
-        {
-          "name": "دقة العنوان (مغناطيسي)",
-          "value": "1° (جذر متوسط المربع)"
-        },
-        {
-          "name": "دقة العنوان (L1/B1)",
-          "value": "0.5 درجة (جذر متوسط المربع)"
-        },
-        {
-          "name": "دقة الموقف",
-          "value": "0.3 درجة (جذر متوسط المربع)"
-        },
-        {
-          "name": "نطاق الجيروسكوب",
-          "value": "± 300 درجة/ثانية (قابلة للتخصيص)"
-        },
-        {
-          "name": "جيروسكوب صفر إزاحة الاستقرار",
-          "value": "8 درجات/ساعة (محيط، تباين ألين)"
-        },
-        {
-          "name": "الدوران غير الخطي",
-          "value": "0. 05"
-        },
-        {
-          "name": "عرض نطاق الجيروسكوب",
-          "value": "50 هرتز"
-        },
-        {
-          "name": "نطاق مقياس التسارع",
-          "value": "± 2 - ± 20 جرام"
-        },
-        {
-          "name": "ثبات عدم الانحياز لمقياس التسارع",
-          "value": "≤ 5 ملغ"
-        },
-        {
-          "name": "المشي العشوائي بمقياس التسارع",
-          "value": "≤ 20 ميكروغرام (درجة حرارة الغرفة، تباين ألين)"
-        },
-        {
-          "name": "مقياس التسارع غير الخطي",
-          "value": "0. 05"
-        },
-        {
-          "name": "وضع التشغيل",
-          "value": "BD2 B1/GPS L1"
-        },
-        {
-          "name": "بدء التشغيل على البارد",
-          "value": "الستينيات"
-        },
-        {
-          "name": "بداية دافئة",
-          "value": "10 ثوانٍ"
-        },
-        {
-          "name": "دقة الموقع",
-          "value": "5 م (جذر متوسط المربع)"
-        },
-        {
-          "name": "دقة السرعة",
-          "value": "0.15 م/ث (جذر متوسط المربع)"
-        }
-      ],
-      "en": [
-        {
-          "name": "Heading accuracy (magnetic)",
-          "value": "1° (rms)"
-        },
-        {
-          "name": "Heading accuracy (L1/B1)",
-          "value": "0.5° (rms)"
-        },
-        {
-          "name": "Attitude Accuracy",
-          "value": "0.3° (rms)"
-        },
-        {
-          "name": "Gyroscope Range",
-          "value": "± 300°/s (customizable)"
-        },
-        {
-          "name": "Gyro Zero Offset Stability",
-          "value": "8°/h (ambient, Allen variance)"
-        },
-        {
-          "name": "Gyro Nonlinearity",
-          "value": "0.05%"
-        },
-        {
-          "name": "Gyroscope bandwidth",
-          "value": "50Hz"
-        },
-        {
-          "name": "Accelerometer Range",
-          "value": "± 2- ± 20g"
-        },
-        {
-          "name": "Zero bias stability of the accelerometer",
-          "value": "5mg,"
-        },
-        {
-          "name": "Accelerometer random walk",
-          "value": "≤ 20μg (room temperature, Allen variance)"
-        },
-        {
-          "name": "Accelerometer Nonlinearity",
-          "value": "0.05%"
-        },
-        {
-          "name": "working mode",
-          "value": "BD2 B1/GPS L1"
-        },
-        {
-          "name": "CAUCASUS Cold Start",
-          "value": "60S"
-        },
-        {
-          "name": "Hot start",
-          "value": "10s"
-        },
-        {
-          "name": "Location Accuracy",
-          "value": "5m (rms)"
-        },
-        {
-          "name": "Speed accuracy",
-          "value": "0.15 m/s (rms)"
-        }
-      ],
-      "fa": [
-        {
-          "name": "دقت جهت (مغناطیسی)",
-          "value": "۱ درجه (rms)"
-        },
-        {
-          "name": "دقت جهت (L1/B1)",
-          "value": "0.5 درجه (rms)"
-        },
-        {
-          "name": "دقت نگرش",
-          "value": "۰.۳ درجه (rms)"
-        },
-        {
-          "name": "برد ژیروسکوپ",
-          "value": "±۳۰۰ درجه بر ثانیه (قابل تنظیم)"
-        },
-        {
-          "name": "پایداری بایاس صفر ژیروسکوپ",
-          "value": "۸ درجه سانتیگراد در ساعت (دمای معمولی، واریانس آلن)"
-        },
-        {
-          "name": "غیرخطی بودن ژیروسکوپ",
-          "value": "۰/ ۰۵"
-        },
-        {
-          "name": "پهنای باند ژیروسکوپ",
-          "value": "۵۰ هرتز"
-        },
-        {
-          "name": "محدوده شتاب‌سنج",
-          "value": "±۲ تا ±۲۰ گرم"
-        },
-        {
-          "name": "پایداری بایاس صفر شتاب‌سنج",
-          "value": "≤5 میلی‌گرم"
-        },
-        {
-          "name": "گام تصادفی شتاب‌سنج",
-          "value": "≤20 میکروگرم (دمای اتاق، واریانس آلن)"
-        },
-        {
-          "name": "غیرخطی بودن شتاب‌سنج",
-          "value": "۰/ ۰۵"
-        },
-        {
-          "name": "حالت کار",
-          "value": "BD2 B1 / GPS L1"
-        },
-        {
-          "name": "استارت سرد",
-          "value": "دهه ۶۰ میلادی"
-        },
-        {
-          "name": "شروع گرم",
-          "value": "ده‌ها"
-        },
-        {
-          "name": "دقت موقعیت",
-          "value": "۵ متر (مجاز)"
-        },
-        {
-          "name": "دقت سرعت",
-          "value": "۰.۱۵ متر بر ثانیه (rms)"
-        }
-      ],
-      "la": [
-        {
-          "name": "Genus accuracyum (magnetic)",
-          "value": "1° (rms)"
-        },
-        {
-          "name": "Genus accuracyum (L1/B1)",
-          "value": "0.5° (rms)"
-        },
-        {
-          "name": "QUAE PERFECTUM",
-          "value": "0.3° (rms)"
-        },
-        {
-          "name": "Range de Gyroscope",
-          "value": "± 300°/s (customizable)"
-        },
-        {
-          "name": "Gyro Zero Stabilis",
-          "value": "8°/h (ambientis, varia Allen)"
-        },
-        {
-          "name": "Gyro Nonlinearity",
-          "value": "0.05%"
-        },
-        {
-          "name": "bandwidth Gyroscope",
-          "value": "50Hz"
-        },
-        {
-          "name": "Rangeus acelerometer",
-          "value": "± 2- ± 20g"
-        },
-        {
-          "name": "Zero bias stability del accelerometer",
-          "value": "≤ 5mg"
-        },
-        {
-          "name": "Accelerometer randomis walk",
-          "value": "≤ 20μg (cellus temperature, allen variance)"
-        },
-        {
-          "name": "Accelerometer Nonlinearity",
-          "value": "0.05%"
-        },
-        {
-          "name": "Modus Operatingis",
-          "value": "BD2 B1/GPS L1"
-        },
-        {
-          "name": "STARTUS CURRENT",
-          "value": "60s"
-        },
-        {
-          "name": "Warm Start",
-          "value": "10s"
-        },
-        {
-          "name": "Location accuracy",
-          "value": "5m (rms)"
-        },
-        {
-          "name": "Speed accuracy",
-          "value": "0.15 m/s (rms)"
-        }
-      ],
-      "ru": [
-        {
-          "name": "Точность курса (магнитная)",
-          "value": "1° (среднеквадратичное значение)"
-        },
-        {
-          "name": "Точность курса (L1/B1)",
-          "value": "0,5° (среднеквадратичное значение)"
-        },
-        {
-          "name": "Точность отношения",
-          "value": "0,3° (среднеквадратичное значение)"
-        },
-        {
-          "name": "Диапазон гироскопа",
-          "value": "± 300°/с (настраивается)"
-        },
-        {
-          "name": "Стабильность смещения нуля гироскопа",
-          "value": "8°/ч (температура окружающей среды, отклонение Аллена)"
-        },
-        {
-          "name": "Нелинейность гироскопа",
-          "value": "0.05%"
-        },
-        {
-          "name": "Полоса пропускания гироскопа",
-          "value": "50Гц"
-        },
-        {
-          "name": "Диапазон акселерометра",
-          "value": "± 2- ± 20 г"
-        },
-        {
-          "name": "Стабильность нулевого смещения акселерометра",
-          "value": "≤ 5 мг"
-        },
-        {
-          "name": "Случайная прогулка с акселеромет",
-          "value": "≤ 20 мкг (комнатная температура, отклонение шероховатости)"
-        },
-        {
-          "name": "Нелинейность акселерометра",
-          "value": "0.05%"
-        },
-        {
-          "name": "Рабочий режим",
-          "value": "BD2 B1/GPS L1"
-        },
-        {
-          "name": "Холодный запуск",
-          "value": "60-е годы"
-        },
-        {
-          "name": "Теплый старт",
-          "value": "(10 с)"
-        },
-        {
-          "name": "Точность определения местоположения",
-          "value": "5 м (среднеквадратичное значение)"
-        },
-        {
-          "name": "Точность скорости",
-          "value": "0,15 м/с (среднеквадратичное значение)"
-        }
-      ],
-      "zh": [
-        {
-          "name": "航向精度（磁）",
-          "value": "1°(rms)"
-        },
-        {
-          "name": "航向精度（L1/B1）",
-          "value": "0.5°(rms)"
-        },
-        {
-          "name": "姿态精度",
-          "value": "0.3°(rms)"
-        },
-        {
-          "name": "陀螺仪量程",
-          "value": "±300°/s(可定制)"
-        },
-        {
-          "name": "陀螺仪零偏稳定性",
-          "value": "8°/h（常温，阿伦方差）"
-        },
-        {
-          "name": "陀螺仪非线性",
-          "value": "0.05%"
-        },
-        {
-          "name": "陀螺仪带宽",
-          "value": "50Hz"
-        },
-        {
-          "name": "加速度计量程",
-          "value": "±2-±20g"
-        },
-        {
-          "name": "加速度计零偏稳定性",
-          "value": "≤5mg"
-        },
-        {
-          "name": "加速度计随机游走",
-          "value": "≤20μg（常温，阿伦方差）"
-        },
-        {
-          "name": "加速度计非线性",
-          "value": "0.05%"
-        },
-        {
-          "name": "工作模式",
-          "value": "BD2 B1 / GPS L1"
-        },
-        {
-          "name": "冷启动",
-          "value": "60s"
-        },
-        {
-          "name": "热启动",
-          "value": "10s"
-        },
-        {
-          "name": "位置精度",
-          "value": "5m(rms)"
-        },
-        {
-          "name": "速度精度",
-          "value": "0.15m/s(rms)"
-        }
-      ]
-    },
-    "published": true,
-    "content": {
-      "ar": {
-        "name": "نظام ملاحة متكامل منخفض التكلفة PA - GS",
-        "description": "النظام عبارة عن نظام ملاحة متكامل عالي الدقة يعتمد على منصة بالقصور الذاتي تدمج تكنولوجيا الملاحة عبر الأقمار الصناعية.جهاز مدمج عالي الدقة يعمل بالقصور الذاتي، ونظام الملاحة عبر الأقمار الصناعية أحادي التردد GPS/BD، ومقياس مغناطيسي ثلاثي المحاور، ومستشعر ضغط بارومتري.التبديل المرن لأوضاع التشغيل المتعددة مثل الملاحة المتكاملة، AHRS، الجيروسكوب الرأسي، إلخ.\r\nخوارزمية دمج الملاحة المتكاملة، مستقرة وناضجة.المحاذاة السريعة، والاستجابة السريعة، والتقارب السريع، وتحديد المواقع بدقة.ثلاثة أوضاع مستقرة وموثوقة، ولا يتأثر الارتفاع بالبيئة، ويكون الوضع سريعًا ودقيقًا.تطبيقات التنقل للمدن والغابات والأودية وغيرها."
-      },
-      "en": {
-        "name": "Low cost integrated navigation system PA-GS",
-        "description": "The system is a high-precision integrated navigation system based on an inertial platform that integrates satellite navigation technology.Built-in high-precision inertial device, GPS/BD single-frequency dual-mode satellite navigation system, three-axis magnetometer, barometric pressure sensor.Flexible switching for multiple operating modes such as integrated navigation, AHRS, vertical gyroscope, etc.\r\nIntegrated navigation fusion algorithm, stable and mature.Fast alignment, quick response, fast convergence, accurate positioning.Three postures are stable and reliable, the height is not affected by the environment, and the positioning is fast and accurate.Navigation apps for cities, forests, canyons, and more."
-      },
-      "fa": {
-        "name": "سیستم ناوبری یکپارچه کم‌هزینه PA-GS",
-        "description": "این سیستم، یک سیستم ناوبری یکپارچه با دقت بالا مبتنی بر پلتفرم اینرسی و شامل فناوری ناوبری ماهواره‌ای است. این سیستم شامل دستگاه‌های اینرسی با دقت بالا، یک سیستم ناوبری ماهواره‌ای دو حالته تک فرکانسه GPS/BD، یک مغناطیس‌سنج سه محوره و یک حسگر فشار بارومتریک است. این سیستم می‌تواند به صورت انعطاف‌پذیر بین چندین حالت عملیاتی، از جمله ناوبری یکپارچه، AHRS و ژیروسکوپ عمودی، تغییر حالت دهد.&#10; الگوریتم ادغام ناوبری یکپارچه پایدار و بالغ است. این سیستم دارای هم‌ترازی سریع، پاسخ سریع، همگرایی سریع و موقعیت‌یابی دقیق است. پایداری سه‌گانه آن قابل اعتماد است، ارتفاع تحت تأثیر محیط قرار نمی‌گیرد و موقعیت‌یابی سریع و دقیقی دارد. این سیستم می‌تواند نیازهای کاربردهای ناوبری را در مناطق شهری، جنگل‌ها، دره‌ها و سایر مناطق مرتفع برآورده کند."
-      },
-      "la": {
-        "name": "Low Coste Integrated System PA-GS",
-        "description": "Systema est systema est systema navigation systema high-precision, mifototra amin'ny sehatra inertial iray izay mampifandray ny teknolojia navigation satelita.Nambole in in inertial device, GPS/BD single-frequency dual-mode Satellite navigation system, 3 mpiray magnetometer, barometric pressure sensor.Flexible switching for multiple operating modes such as integrated navigation, AHRS, vertical gyroscope, etc.\r\nalgorithm navigation fusione Integrated, stable and mature.QUAE REGIONATIONE, QUAE RECTUM PERVENTIAE, QUE CONSTIFIUS.Three postures es stable and reliable, height es not affected per le environment, and locutio est fast and accurate.apps Navigationis ad civitatis, ala, canyons, et aliquam."
-      },
-      "ru": {
-        "name": "Недорогая интегрированная навигационная система PA-GS",
-        "description": "Система представляет собой высокоточную интегрированную навигационную систему, основанную на инерциальной платформе, которая интегрирует технологию спутниковой навигации.Встроенный высокоточный инерциальный прибор, одночастотная двухрежимная спутниковая навигационная система GPS/BD, трехосевой магнитометр, датчик барометрического давления.Гибкое переключение для нескольких режимов работы, таких как интегрированная навигация, AHRS, вертикальный гироскоп и т. д.\r\nИнтегрированный алгоритм слияния навигации, стабильный и зрелый.Быстрое выравнивание, быстрый отклик, быстрое сближение, точное позиционирование.Три позы стабильны и надежны, на высоту не влияет окружающая среда, а позиционирование быстрое и точное.Навигационные приложения для городов, лесов, каньонов и многого другого."
-      },
-      "zh": {
-        "name": "低成本组合导航系统 PA-GS",
-        "description": "该系统是一款基于惯性平台,融合了卫星导航技术的高精度组合导航系统。内置高精度惯性器件,GPS/BD单频双模卫星导航系统,三轴磁强计,气压传感器。可实现组合导航、AHRS、垂直陀螺等多种工作模式的灵活切换。\r\n组合导航融合算法,稳定、成熟。快速对准、快速响应、快速收敛,准确定位。三姿态稳定可靠,高度不受环境影响,定位快速准确。可满足城市、森林、峡谷等地形的导航应用。"
-      }
-    },
-    "createdAt": "2024-01-01T00:00:00.000Z",
-    "updatedAt": "2026-04-26T07:43:02.661Z"
+    "updatedAt": "2026-04-28T09:13:03.949Z"
   },
   {
     "id": "PA-3ARG",
@@ -2016,9 +1584,441 @@
     "updatedAt": "2026-04-26T07:45:29.685Z"
   },
   {
+    "id": "PA-GS",
+    "slug": "PA-GS",
+    "image": "https://61mzpm7grh.ucarecd.net/2bc57abe-966c-4ddf-9d20-1c0c53ab6deb/PA-GS-1777367657466.jpg",
+    "specs": {
+      "ar": [
+        {
+          "name": "دقة العنوان (مغناطيسي)",
+          "value": "1° (جذر متوسط المربع)"
+        },
+        {
+          "name": "دقة العنوان (L1/B1)",
+          "value": "0.5 درجة (جذر متوسط المربع)"
+        },
+        {
+          "name": "دقة الموقف",
+          "value": "0.3 درجة (جذر متوسط المربع)"
+        },
+        {
+          "name": "نطاق الجيروسكوب",
+          "value": "± 300 درجة/ثانية (قابلة للتخصيص)"
+        },
+        {
+          "name": "جيروسكوب صفر إزاحة الاستقرار",
+          "value": "8 درجات/ساعة (محيط، تباين ألين)"
+        },
+        {
+          "name": "الدوران غير الخطي",
+          "value": "0. 05"
+        },
+        {
+          "name": "عرض نطاق الجيروسكوب",
+          "value": "50 هرتز"
+        },
+        {
+          "name": "نطاق مقياس التسارع",
+          "value": "± 2 - ± 20 جرام"
+        },
+        {
+          "name": "ثبات عدم الانحياز لمقياس التسارع",
+          "value": "≤ 5 ملغ"
+        },
+        {
+          "name": "المشي العشوائي بمقياس التسارع",
+          "value": "≤ 20 ميكروغرام (درجة حرارة الغرفة، تباين ألين)"
+        },
+        {
+          "name": "مقياس التسارع غير الخطي",
+          "value": "0. 05"
+        },
+        {
+          "name": "وضع التشغيل",
+          "value": "BD2 B1/GPS L1"
+        },
+        {
+          "name": "بدء التشغيل على البارد",
+          "value": "الستينيات"
+        },
+        {
+          "name": "بداية دافئة",
+          "value": "10 ثوانٍ"
+        },
+        {
+          "name": "دقة الموقع",
+          "value": "5 م (جذر متوسط المربع)"
+        },
+        {
+          "name": "دقة السرعة",
+          "value": "0.15 م/ث (جذر متوسط المربع)"
+        }
+      ],
+      "en": [
+        {
+          "name": "Heading accuracy (magnetic)",
+          "value": "1° (rms)"
+        },
+        {
+          "name": "Heading accuracy (L1/B1)",
+          "value": "0.5° (rms)"
+        },
+        {
+          "name": "Attitude Accuracy",
+          "value": "0.3° (rms)"
+        },
+        {
+          "name": "Gyroscope Range",
+          "value": "± 300°/s (customizable)"
+        },
+        {
+          "name": "Gyro Zero Offset Stability",
+          "value": "8°/h (ambient, Allen variance)"
+        },
+        {
+          "name": "Gyro Nonlinearity",
+          "value": "0.05%"
+        },
+        {
+          "name": "Gyroscope bandwidth",
+          "value": "50Hz"
+        },
+        {
+          "name": "Accelerometer Range",
+          "value": "± 2- ± 20g"
+        },
+        {
+          "name": "Zero bias stability of the accelerometer",
+          "value": "5mg,"
+        },
+        {
+          "name": "Accelerometer random walk",
+          "value": "≤ 20μg (room temperature, Allen variance)"
+        },
+        {
+          "name": "Accelerometer Nonlinearity",
+          "value": "0.05%"
+        },
+        {
+          "name": "working mode",
+          "value": "BD2 B1/GPS L1"
+        },
+        {
+          "name": "CAUCASUS Cold Start",
+          "value": "60S"
+        },
+        {
+          "name": "Hot start",
+          "value": "10s"
+        },
+        {
+          "name": "Location Accuracy",
+          "value": "5m (rms)"
+        },
+        {
+          "name": "Speed accuracy",
+          "value": "0.15 m/s (rms)"
+        }
+      ],
+      "fa": [
+        {
+          "name": "دقت جهت (مغناطیسی)",
+          "value": "۱ درجه (rms)"
+        },
+        {
+          "name": "دقت جهت (L1/B1)",
+          "value": "0.5 درجه (rms)"
+        },
+        {
+          "name": "دقت نگرش",
+          "value": "۰.۳ درجه (rms)"
+        },
+        {
+          "name": "برد ژیروسکوپ",
+          "value": "±۳۰۰ درجه بر ثانیه (قابل تنظیم)"
+        },
+        {
+          "name": "پایداری بایاس صفر ژیروسکوپ",
+          "value": "۸ درجه سانتیگراد در ساعت (دمای معمولی، واریانس آلن)"
+        },
+        {
+          "name": "غیرخطی بودن ژیروسکوپ",
+          "value": "۰/ ۰۵"
+        },
+        {
+          "name": "پهنای باند ژیروسکوپ",
+          "value": "۵۰ هرتز"
+        },
+        {
+          "name": "محدوده شتاب‌سنج",
+          "value": "±۲ تا ±۲۰ گرم"
+        },
+        {
+          "name": "پایداری بایاس صفر شتاب‌سنج",
+          "value": "≤5 میلی‌گرم"
+        },
+        {
+          "name": "گام تصادفی شتاب‌سنج",
+          "value": "≤20 میکروگرم (دمای اتاق، واریانس آلن)"
+        },
+        {
+          "name": "غیرخطی بودن شتاب‌سنج",
+          "value": "۰/ ۰۵"
+        },
+        {
+          "name": "حالت کار",
+          "value": "BD2 B1 / GPS L1"
+        },
+        {
+          "name": "استارت سرد",
+          "value": "دهه ۶۰ میلادی"
+        },
+        {
+          "name": "شروع گرم",
+          "value": "ده‌ها"
+        },
+        {
+          "name": "دقت موقعیت",
+          "value": "۵ متر (مجاز)"
+        },
+        {
+          "name": "دقت سرعت",
+          "value": "۰.۱۵ متر بر ثانیه (rms)"
+        }
+      ],
+      "la": [
+        {
+          "name": "Genus accuracyum (magnetic)",
+          "value": "1° (rms)"
+        },
+        {
+          "name": "Genus accuracyum (L1/B1)",
+          "value": "0.5° (rms)"
+        },
+        {
+          "name": "QUAE PERFECTUM",
+          "value": "0.3° (rms)"
+        },
+        {
+          "name": "Range de Gyroscope",
+          "value": "± 300°/s (customizable)"
+        },
+        {
+          "name": "Gyro Zero Stabilis",
+          "value": "8°/h (ambientis, varia Allen)"
+        },
+        {
+          "name": "Gyro Nonlinearity",
+          "value": "0.05%"
+        },
+        {
+          "name": "bandwidth Gyroscope",
+          "value": "50Hz"
+        },
+        {
+          "name": "Rangeus acelerometer",
+          "value": "± 2- ± 20g"
+        },
+        {
+          "name": "Zero bias stability del accelerometer",
+          "value": "≤ 5mg"
+        },
+        {
+          "name": "Accelerometer randomis walk",
+          "value": "≤ 20μg (cellus temperature, allen variance)"
+        },
+        {
+          "name": "Accelerometer Nonlinearity",
+          "value": "0.05%"
+        },
+        {
+          "name": "Modus Operatingis",
+          "value": "BD2 B1/GPS L1"
+        },
+        {
+          "name": "STARTUS CURRENT",
+          "value": "60s"
+        },
+        {
+          "name": "Warm Start",
+          "value": "10s"
+        },
+        {
+          "name": "Location accuracy",
+          "value": "5m (rms)"
+        },
+        {
+          "name": "Speed accuracy",
+          "value": "0.15 m/s (rms)"
+        }
+      ],
+      "ru": [
+        {
+          "name": "Точность курса (магнитная)",
+          "value": "1° (среднеквадратичное значение)"
+        },
+        {
+          "name": "Точность курса (L1/B1)",
+          "value": "0,5° (среднеквадратичное значение)"
+        },
+        {
+          "name": "Точность отношения",
+          "value": "0,3° (среднеквадратичное значение)"
+        },
+        {
+          "name": "Диапазон гироскопа",
+          "value": "± 300°/с (настраивается)"
+        },
+        {
+          "name": "Стабильность смещения нуля гироскопа",
+          "value": "8°/ч (температура окружающей среды, отклонение Аллена)"
+        },
+        {
+          "name": "Нелинейность гироскопа",
+          "value": "0.05%"
+        },
+        {
+          "name": "Полоса пропускания гироскопа",
+          "value": "50Гц"
+        },
+        {
+          "name": "Диапазон акселерометра",
+          "value": "± 2- ± 20 г"
+        },
+        {
+          "name": "Стабильность нулевого смещения акселерометра",
+          "value": "≤ 5 мг"
+        },
+        {
+          "name": "Случайная прогулка с акселеромет",
+          "value": "≤ 20 мкг (комнатная температура, отклонение шероховатости)"
+        },
+        {
+          "name": "Нелинейность акселерометра",
+          "value": "0.05%"
+        },
+        {
+          "name": "Рабочий режим",
+          "value": "BD2 B1/GPS L1"
+        },
+        {
+          "name": "Холодный запуск",
+          "value": "60-е годы"
+        },
+        {
+          "name": "Теплый старт",
+          "value": "(10 с)"
+        },
+        {
+          "name": "Точность определения местоположения",
+          "value": "5 м (среднеквадратичное значение)"
+        },
+        {
+          "name": "Точность скорости",
+          "value": "0,15 м/с (среднеквадратичное значение)"
+        }
+      ],
+      "zh": [
+        {
+          "name": "航向精度（磁）",
+          "value": "1°(rms)"
+        },
+        {
+          "name": "航向精度（L1/B1）",
+          "value": "0.5°(rms)"
+        },
+        {
+          "name": "姿态精度",
+          "value": "0.3°(rms)"
+        },
+        {
+          "name": "陀螺仪量程",
+          "value": "±300°/s(可定制)"
+        },
+        {
+          "name": "陀螺仪零偏稳定性",
+          "value": "8°/h（常温，阿伦方差）"
+        },
+        {
+          "name": "陀螺仪非线性",
+          "value": "0.05%"
+        },
+        {
+          "name": "陀螺仪带宽",
+          "value": "50Hz"
+        },
+        {
+          "name": "加速度计量程",
+          "value": "±2-±20g"
+        },
+        {
+          "name": "加速度计零偏稳定性",
+          "value": "≤5mg"
+        },
+        {
+          "name": "加速度计随机游走",
+          "value": "≤20μg（常温，阿伦方差）"
+        },
+        {
+          "name": "加速度计非线性",
+          "value": "0.05%"
+        },
+        {
+          "name": "工作模式",
+          "value": "BD2 B1 / GPS L1"
+        },
+        {
+          "name": "冷启动",
+          "value": "60s"
+        },
+        {
+          "name": "热启动",
+          "value": "10s"
+        },
+        {
+          "name": "位置精度",
+          "value": "5m(rms)"
+        },
+        {
+          "name": "速度精度",
+          "value": "0.15m/s(rms)"
+        }
+      ]
+    },
+    "published": true,
+    "content": {
+      "ar": {
+        "name": "نظام ملاحة متكامل منخفض التكلفة PA - GS",
+        "description": "النظام عبارة عن نظام ملاحة متكامل عالي الدقة يعتمد على منصة بالقصور الذاتي تدمج تكنولوجيا الملاحة عبر الأقمار الصناعية.جهاز مدمج عالي الدقة يعمل بالقصور الذاتي، ونظام الملاحة عبر الأقمار الصناعية أحادي التردد GPS/BD، ومقياس مغناطيسي ثلاثي المحاور، ومستشعر ضغط بارومتري.التبديل المرن لأوضاع التشغيل المتعددة مثل الملاحة المتكاملة، AHRS، الجيروسكوب الرأسي، إلخ.\r\nخوارزمية دمج الملاحة المتكاملة، مستقرة وناضجة.المحاذاة السريعة، والاستجابة السريعة، والتقارب السريع، وتحديد المواقع بدقة.ثلاثة أوضاع مستقرة وموثوقة، ولا يتأثر الارتفاع بالبيئة، ويكون الوضع سريعًا ودقيقًا.تطبيقات التنقل للمدن والغابات والأودية وغيرها."
+      },
+      "en": {
+        "name": "Low cost integrated navigation system PA-GS",
+        "description": "The system is a high-precision integrated navigation system based on an inertial platform that integrates satellite navigation technology.Built-in high-precision inertial device, GPS/BD single-frequency dual-mode satellite navigation system, three-axis magnetometer, barometric pressure sensor.Flexible switching for multiple operating modes such as integrated navigation, AHRS, vertical gyroscope, etc.\r\nIntegrated navigation fusion algorithm, stable and mature.Fast alignment, quick response, fast convergence, accurate positioning.Three postures are stable and reliable, the height is not affected by the environment, and the positioning is fast and accurate.Navigation apps for cities, forests, canyons, and more."
+      },
+      "fa": {
+        "name": "سیستم ناوبری یکپارچه کم‌هزینه PA-GS",
+        "description": "این سیستم، یک سیستم ناوبری یکپارچه با دقت بالا مبتنی بر پلتفرم اینرسی و شامل فناوری ناوبری ماهواره‌ای است. این سیستم شامل دستگاه‌های اینرسی با دقت بالا، یک سیستم ناوبری ماهواره‌ای دو حالته تک فرکانسه GPS/BD، یک مغناطیس‌سنج سه محوره و یک حسگر فشار بارومتریک است. این سیستم می‌تواند به صورت انعطاف‌پذیر بین چندین حالت عملیاتی، از جمله ناوبری یکپارچه، AHRS و ژیروسکوپ عمودی، تغییر حالت دهد.&#10; الگوریتم ادغام ناوبری یکپارچه پایدار و بالغ است. این سیستم دارای هم‌ترازی سریع، پاسخ سریع، همگرایی سریع و موقعیت‌یابی دقیق است. پایداری سه‌گانه آن قابل اعتماد است، ارتفاع تحت تأثیر محیط قرار نمی‌گیرد و موقعیت‌یابی سریع و دقیقی دارد. این سیستم می‌تواند نیازهای کاربردهای ناوبری را در مناطق شهری، جنگل‌ها، دره‌ها و سایر مناطق مرتفع برآورده کند."
+      },
+      "la": {
+        "name": "Low Coste Integrated System PA-GS",
+        "description": "Systema est systema est systema navigation systema high-precision, mifototra amin'ny sehatra inertial iray izay mampifandray ny teknolojia navigation satelita.Nambole in in inertial device, GPS/BD single-frequency dual-mode Satellite navigation system, 3 mpiray magnetometer, barometric pressure sensor.Flexible switching for multiple operating modes such as integrated navigation, AHRS, vertical gyroscope, etc.\r\nalgorithm navigation fusione Integrated, stable and mature.QUAE REGIONATIONE, QUAE RECTUM PERVENTIAE, QUE CONSTIFIUS.Three postures es stable and reliable, height es not affected per le environment, and locutio est fast and accurate.apps Navigationis ad civitatis, ala, canyons, et aliquam."
+      },
+      "ru": {
+        "name": "Недорогая интегрированная навигационная система PA-GS",
+        "description": "Система представляет собой высокоточную интегрированную навигационную систему, основанную на инерциальной платформе, которая интегрирует технологию спутниковой навигации.Встроенный высокоточный инерциальный прибор, одночастотная двухрежимная спутниковая навигационная система GPS/BD, трехосевой магнитометр, датчик барометрического давления.Гибкое переключение для нескольких режимов работы, таких как интегрированная навигация, AHRS, вертикальный гироскоп и т. д.\r\nИнтегрированный алгоритм слияния навигации, стабильный и зрелый.Быстрое выравнивание, быстрый отклик, быстрое сближение, точное позиционирование.Три позы стабильны и надежны, на высоту не влияет окружающая среда, а позиционирование быстрое и точное.Навигационные приложения для городов, лесов, каньонов и многого другого."
+      },
+      "zh": {
+        "name": "低成本组合导航系统 PA-GS",
+        "description": "该系统是一款基于惯性平台,融合了卫星导航技术的高精度组合导航系统。内置高精度惯性器件,GPS/BD单频双模卫星导航系统,三轴磁强计,气压传感器。可实现组合导航、AHRS、垂直陀螺等多种工作模式的灵活切换。\r\n组合导航融合算法,稳定、成熟。快速对准、快速响应、快速收敛,准确定位。三姿态稳定可靠,高度不受环境影响,定位快速准确。可满足城市、森林、峡谷等地形的导航应用。"
+      }
+    },
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2026-04-28T09:14:23.798Z"
+  },
+  {
     "id": "PA-LASI",
     "slug": "PA-LASI",
-    "image": "https://mmes-website-production.up.railway.app/images/PA-LASI-A.jpg",
+    "image": "https://61mzpm7grh.ucarecd.net/25d1dc9d-65e1-41d5-bdab-57d01fb82076/PA-LASI-A-1777367695802.jpg",
     "specs": {
       "ar": [
         {
@@ -2541,12 +2541,12 @@
       }
     },
     "createdAt": "2024-01-01T00:00:00.000Z",
-    "updatedAt": "2026-04-26T07:40:26.787Z"
+    "updatedAt": "2026-04-28T09:15:01.966Z"
   },
   {
     "id": "PA-VG11",
     "slug": "PA-VG11",
-    "image": "https://mmes-website-production.up.railway.app/images/PA-VG11.jpg",
+    "image": "https://61mzpm7grh.ucarecd.net/56a73cab-9013-4f70-bf52-9f68d392dba4/PA-VG11-1777367715293.jpg",
     "specs": {
       "ar": [
         {
@@ -3189,12 +3189,12 @@
       }
     },
     "createdAt": "2024-01-01T00:00:00.000Z",
-    "updatedAt": "2026-04-26T03:48:11.486Z"
+    "updatedAt": "2026-04-28T09:15:22.807Z"
   },
   {
     "id": "PA-LAMIII",
     "slug": "PA-LAMIII",
-    "image": "https://mmes-website-production.up.railway.app/images/PA-LASIII-A.jpg",
+    "image": "https://61mzpm7grh.ucarecd.net/60662b49-45af-4e4d-8c29-6097b4c280fe/PA-LAMIII-D-1777367739711.jpg",
     "specs": {
       "ar": [
         {
@@ -3645,583 +3645,559 @@
       }
     },
     "createdAt": "2024-01-01T00:00:00.000Z",
-    "updatedAt": "2026-04-26T03:50:20.483Z"
+    "updatedAt": "2026-04-28T09:15:46.824Z"
   },
   {
-    "id": "PA-GSAUTO",
-    "slug": "PA-GSAUTO",
-    "image": "https://mmes-website-production.up.railway.app/images/PA-GSAUTO.jpg",
+    "id": "PA-IMU-02",
+    "slug": "PA-IMU-02",
+    "image": "https://mmes-website-production.up.railway.app/images/PA-IMU-02D03D.jpg",
     "specs": {
       "ar": [
         {
-          "name": "لفة/خطوة (1 σ)",
-          "value": "0. 1"
+          "name": "وقت (أوقات) التفعيل",
+          "value": "≤1"
         },
         {
-          "name": "انحراف وضع نظام تحديد المواقع العالمي (GPS) خارج القفل (1 كم أو دقيقتان)",
-          "value": "2. 0"
+          "name": "نطاق الجيروسكوب (درجة/ثانية)",
+          "value": "± 100-10800 (قابل للتخصيص)"
         },
         {
-          "name": "انحراف اتجاه القفل المفقود لنظام تحديد المواقع العالمي (دقيقة واحدة)",
-          "value": "0. 15"
+          "name": "الإزاحة الصفرية للدوران (درجة/ثانية)",
+          "value": "≤ ± 0.1 (عند 450 درجة/ثانية)"
         },
         {
-          "name": "نطاق الجيروسكوب",
-          "value": "250 درجة/ثانية"
+          "name": "استقرار الانحياز الدوراني (درجة/ساعة)",
+          "value": "≤ 0.5 أو ≤ 0.2"
         },
         {
-          "name": "الجيروسكوب صفر إزاحة الاستقرار",
-          "value": "10 درجات/ساعة"
+          "name": "الجيروسكوب صفر إزاحة التكرار (درجة/ثانية)",
+          "value": "≤ 0.05 أو ≤ 0.02"
         },
         {
-          "name": "إزاحة صفر درجة حرارة الدوران الكامل",
-          "value": "0.15 درجة/ثانية"
+          "name": "الدوران غير الخطي (جزء في المليون)",
+          "value": "≤ 500 أو ≤ 300"
         },
         {
-          "name": "عامل مقياس الجيروسكوب غير الخطي",
-          "value": "500 جزء في المليون"
+          "name": "نطاق مقياس التسارع (جم)",
+          "value": "± 50 (قابل للتخصيص)"
         },
         {
-          "name": "عرض نطاق الجيروسكوب",
-          "value": "100 هرتز"
+          "name": "مقياس التسارع صفر إزاحة (ملغ)",
+          "value": "≤ 5 أو ≤ 3"
         },
         {
-          "name": "نطاق مقياس التسارع",
-          "value": "± 2 جرام"
+          "name": "مقياس التسارع صفر التحيز الاستقرار (ملغ)",
+          "value": "≤ 0.5 أو ≤ 0.1"
         },
         {
-          "name": "ثبات عدم الانحياز لمقياس التسارع",
-          "value": "0.2 ملغ"
+          "name": "مقياس التسارع صفر الانحياز التكرار (ملغ)",
+          "value": "≤ 3 أو ≤ 1"
         },
         {
-          "name": "مقياس التسارع درجة الحرارة الكاملة صفر إزاحة",
-          "value": "2 ملغ"
+          "name": "الموثوقية (KH MTBF)",
+          "value": "10"
         },
         {
-          "name": "عرض النطاق الترددي لمقياس التسارع",
-          "value": "100 هرتز"
+          "name": "مصدر الطاقة (V)",
+          "value": "DC9 -36"
         },
         {
-          "name": "دقة موضع الملاحة عبر الأقمار الصناعية (RMS) - نقطة واحدة L1/L2",
-          "value": "1.2 مليون"
+          "name": "استهلاك الطاقة (W @ 5V DC)",
+          "value": "≤ 0.8"
         },
         {
-          "name": "دقة موضع الملاحة عبر الأقمار الصناعية (RMS) - RTK",
-          "value": "2 سم + 1 جزء في المليون"
+          "name": "أرقام الواجهة الكهربائية",
+          "value": "RS422"
         },
         {
-          "name": "دقة سرعة الملاحة عبر الأقمار الصناعية (RMS)",
-          "value": "0.03 م/ث"
+          "name": "معدل تحديث البيانات (اختياري)",
+          "value": "200 (هرتز @ 460800)"
         },
         {
-          "name": "دقة عنوان الملاحة عبر الأقمار الصناعية (RMS)",
-          "value": "0.2 درجة/م"
+          "name": "درجة حرارة التشغيل (درجة مئوية)",
+          "value": "-40 ~ +70"
         },
         {
-          "name": "نطاق GPS للملاحة عبر الأقمار الصناعية",
-          "value": "L1, L2, L2C"
+          "name": "درجة حرارة التخزين (درجة مئوية)",
+          "value": "-55 ~ +85"
         },
         {
-          "name": "نطاق الملاحة عبر الأقمار الصناعية GLONASS",
-          "value": "L1, L2"
+          "name": "الاهتزاز (جم @ 20 ~ 2000 هرتز)",
+          "value": "6"
         },
         {
-          "name": "شريط Beidou للملاحة عبر الأقمار الصناعية",
-          "value": "B1, B2"
+          "name": "الصدمة (غرام، 0.5 مللي ثانية، 1/2 جيب)",
+          "value": "12000"
         },
         {
-          "name": "جهد الإدخال",
-          "value": "9-36 فولت"
+          "name": "البعد المميز (ملم)",
+          "value": "40 × 40 × 26.7 مم"
         },
         {
-          "name": "تيار التشغيل",
-          "value": "0.35 أمبير"
-        },
-        {
-          "name": "نوع الواجهة",
-          "value": "RS422/RS232/CAN"
+          "name": "الوزن (جم)",
+          "value": "100"
         }
       ],
       "en": [
         {
-          "name": "Roll/Pitch (1σ)",
-          "value": "1. 0"
+          "name": "active %s",
+          "value": "≤1"
         },
         {
-          "name": "GPS out of lock position drift (1km or 2min)",
-          "value": "0.2%"
+          "name": "Gyroscope Range (deg/s)",
+          "value": "± 100-10800 (customizable)"
         },
         {
-          "name": "GPS lost lock heading drift (1min)",
-          "value": "0.15"
+          "name": "Gyro Zero Offset (deg/s)",
+          "value": "≤ ± 0.1 (at 450°/s)"
         },
         {
-          "name": "Gyroscope Range",
-          "value": "250°/s"
+          "name": "Gyro bias stability (deg/h)",
+          "value": "≤ 0.5 or ≤ 0.2"
         },
         {
-          "name": "Gyro Zero Offset Stability",
-          "value": "10°/h"
+          "name": "Gyro Zero Offset Repeatability (deg/s)",
+          "value": "≤ 0.05 or ≤ 0.02"
         },
         {
-          "name": "Gyro Full Temperature Zero Offset",
-          "value": "0.15°/s"
+          "name": "Gyro Nonlinear (ppm)",
+          "value": "≤ 500 or ≤ 300"
         },
         {
-          "name": "Gyroscope Scale Factor Nonlinearity",
-          "value": "500ppm"
+          "name": "Accelerometer Range (g)",
+          "value": "± 50 (customizable)"
         },
         {
-          "name": "Gyroscope bandwidth",
-          "value": "100Hz"
+          "name": "Accelerometer Zero Offset (mg)",
+          "value": "≤ 5 or ≤ 3"
         },
         {
-          "name": "Accelerometer Range",
-          "value": "±2g"
+          "name": "Accelerometer Zero Bias Stability (mg)",
+          "value": "≤ 0.5 or ≤ 0.1"
         },
         {
-          "name": "Zero bias stability of the accelerometer",
-          "value": "0.2mg"
+          "name": "Accelerometer Zero Bias Repeatability (mg)",
+          "value": "≤ 3 or ≤ 1"
         },
         {
-          "name": "Accelerometer Full Temperature Zero Offset",
-          "value": "2mg"
+          "name": "Reliability (Kh MTBF)",
+          "value": "10"
         },
         {
-          "name": "Accelerometer Bandwidth",
-          "value": "100Hz"
+          "name": "Power Supply (V)",
+          "value": "DC9-36"
         },
         {
-          "name": "Satellite Navigation Position Accuracy (RMS) - Single Point L1/L2",
-          "value": "1.2M"
+          "name": "Power Consumption (W @ 5V DC)",
+          "value": "≤0.8"
         },
         {
-          "name": "Satellite Navigation Position Accuracy (RMS) - RTK",
-          "value": "2cm +1ppm"
+          "name": "Electrical Interface Numbers",
+          "value": "RS422"
         },
         {
-          "name": "Satellite navigation speed accuracy (RMS)",
-          "value": "0.03 m/s"
+          "name": "Data update rate (optional)",
+          "value": "200 (Hz @ 460800)"
         },
         {
-          "name": "Satellite navigation heading accuracy (RMS)",
-          "value": "0.2 m"
+          "name": "Operating Temperature (°C)",
+          "value": "40-70"
         },
         {
-          "name": "Satellite navigation GPS band",
-          "value": "L1, L2, L2C"
+          "name": "Storage Temperature (°C)",
+          "value": "-55～+85℃"
         },
         {
-          "name": "Satellite navigation GLONASS band",
-          "value": "L1, L2"
+          "name": "Vibration (g @ 20 ~ 2000 Hz)",
+          "value": "6"
         },
         {
-          "name": "Satellite Navigation Beidou Band",
-          "value": "B1,B2"
+          "name": "Shock (g, 0.5 ms, 1/2 Sine)",
+          "value": "12000"
         },
         {
-          "name": "Input Voltage",
-          "value": "9-36V"
+          "name": "Characteristic dimension (mm)",
+          "value": "40 × 40 × 26.7mm"
         },
         {
-          "name": "Operating Current",
-          "value": "0.35A"
-        },
-        {
-          "name": "Interface Type",
-          "value": "RS422 / RS232 / CAN"
+          "name": "Weight (g)",
+          "value": "≤100"
         }
       ],
       "fa": [
         {
-          "name": "رول/پیچ (1σ)",
-          "value": "۰/ ۱"
+          "name": "زمان فعال‌سازی (ها)",
+          "value": "- 2 1 شديد"
         },
         {
-          "name": "تغییر مکان GPS پس از از دست دادن قفل (۱ کیلومتر یا ۲ دقیقه)",
-          "value": "۲/ ۰"
+          "name": "برد ژیروسکوپ (درجه بر ثانیه)",
+          "value": "±100-10800 (قابل تنظیم)"
         },
         {
-          "name": "گم شدن مسیر توسط GPS و انحراف مسیر (۱ دقیقه)",
-          "value": "۰/ ۱۵"
+          "name": "بایاس صفر ژیروسکوپ (درجه بر ثانیه)",
+          "value": "≤±0.1 (با سرعت ۴۵۰ درجه بر ثانیه)"
         },
         {
-          "name": "برد ژیروسکوپ",
-          "value": "۲۵۰ درجه بر ثانیه"
+          "name": "پایداری ژیروسکوپ در حالت بایاس صفر (درجه بر ساعت)",
+          "value": "≤0.5 یا ≤0.2"
         },
         {
-          "name": "پایداری بایاس صفر ژیروسکوپ",
-          "value": "۱۰ درجه در ساعت"
+          "name": "تکرارپذیری ژیروسکوپ در حالت بایاس صفر (درجه بر ثانیه)",
+          "value": "≤0.05 یا ≤0.02"
         },
         {
-          "name": "ژیروسکوپ با بایاس صفر در دمای کامل",
-          "value": "۰.۱۵ درجه بر ثانیه"
+          "name": "غیرخطی بودن ژیروسکوپ (ppm)",
+          "value": "۵۰۰≤ یا ۳۰۰≤"
         },
         {
-          "name": "غیرخطی بودن ضریب مقیاس‌بندی ژیروسکوپ",
-          "value": "۵۰۰ پی‌پی‌ام"
+          "name": "برد شتاب‌سنج (گرم)",
+          "value": "±50 (قابل تنظیم)"
         },
         {
-          "name": "پهنای باند ژیروسکوپ",
-          "value": "۱۰۰ هرتز"
+          "name": "بایاس صفر شتاب‌سنج (میلی‌گرم)",
+          "value": "۵≤ یا ۳≤"
         },
         {
-          "name": "محدوده شتاب‌سنج",
-          "value": "±۲ گرم"
+          "name": "پایداری شتاب‌سنج در حالت بایاس صفر (میلی‌گرم)",
+          "value": "≤0.5 یا ≤0.1"
         },
         {
-          "name": "پایداری بایاس صفر شتاب‌سنج",
-          "value": "۰.۲ میلی‌گرم"
+          "name": "تکرارپذیری شتاب‌سنج در حالت بایاس صفر (میلی‌گرم)",
+          "value": "≤۳ یا ≤۱"
         },
         {
-          "name": "شتاب‌سنج با بایاس صفر در دمای کامل",
-          "value": "۲ میلی‌گرم"
+          "name": "قابلیت اطمینان (میانگین زمان بین خرابی‌ها)",
+          "value": "10"
         },
         {
-          "name": "پهنای باند شتاب‌سنج",
-          "value": "۱۰۰ هرتز"
+          "name": "منبع تغذیه (ولت)",
+          "value": "دی‌سی۹-۳۶"
         },
         {
-          "name": "دقت موقعیت یابی ماهواره ای (RMS) - تک نقطه ای L1/L2",
-          "value": "۱.۲ متر"
+          "name": "مصرف برق (وات @ 5 ولت DC)",
+          "value": "≤0.8"
         },
         {
-          "name": "دقت موقعیت‌یابی ناوبری ماهواره‌ای (RMS) - RTK",
-          "value": "2 سانتی‌متر + 1 پی‌پی‌ام"
+          "name": "رابط برق دیجیتال",
+          "value": "RS422"
         },
         {
-          "name": "دقت سرعت ناوبری ماهواره‌ای (RMS)",
-          "value": "0.03 متر بر ثانیه"
+          "name": "نرخ به‌روزرسانی داده‌ها (قابل تنظیم)",
+          "value": "۲۰۰ (هرتز @ ۴۶۰۸۰۰)"
         },
         {
-          "name": "دقت جهت‌یابی ماهواره‌ای (RMS)",
-          "value": "0.2 درجه بر متر"
+          "name": "دمای عملیاتی (°C)",
+          "value": "-40 ~ +70"
         },
         {
-          "name": "باند فرکانسی GPS",
-          "value": "L1، L2، L2C"
+          "name": "دمای نگهداری (°C)",
+          "value": "-55 ~ +85"
         },
         {
-          "name": "باند گلوناس برای ناوبری ماهواره‌ای",
-          "value": "L1، L2"
+          "name": "لرزش (g @ 20 ~ 2000 هرتز)",
+          "value": "0 2 1 تماس بگير ، روز خوش"
         },
         {
-          "name": "باند فرکانسی ناوبری ماهواره BeiDou",
-          "value": "ب۱، ب۲"
+          "name": "ضربه (g، 0.5 ms، 1/2 سینوس)",
+          "value": "۱۲۰۰۰"
         },
         {
-          "name": "ولتاژ ورودی",
-          "value": "۹-۳۶ ولت"
+          "name": "ابعاد مشخصه (میلی‌متر)",
+          "value": "۴۰×۴۰×۲۶.۷ میلی‌متر"
         },
         {
-          "name": "جریان عملیاتی",
-          "value": "0.35 آمپر"
-        },
-        {
-          "name": "نوع رابط",
-          "value": "RS422 / RS232 / CAN"
+          "name": "وزن (گرم)",
+          "value": "- 100."
         }
       ],
       "la": [
         {
-          "name": "Roll/Pitch (1σ)",
+          "name": "Activation time (s)",
           "value": "Unus"
         },
         {
-          "name": "GPS alc mihidy positione drift (1km or 2min)",
-          "value": "Duo"
+          "name": "Rangee Gyroscope (deg/s)",
+          "value": "± 100-10800 (customizable)"
         },
         {
-          "name": "GPS perdigulo aestimus (1min)",
-          "value": "0.15°"
+          "name": "Gyro Zero Offset (deg/s)",
+          "value": "≤ ± 0.1 (at 450°/s)"
         },
         {
-          "name": "Range de Gyroscope",
-          "value": "250°/s"
+          "name": "Datum Gyro bias (deg/h)",
+          "value": "≤ 0.5 vel ≤ 0.2"
         },
         {
-          "name": "Gyro Zero Stabilis",
-          "value": "10°/h"
+          "name": "Gyro aero Offset Repeatability (deg/s)",
+          "value": "≤ 0.05 vel ≤ 0.02"
         },
         {
-          "name": "Gyro Full Temperature Zero Offset",
-          "value": "0.15°/s"
+          "name": "Gyro Nonlinearis (PPM)",
+          "value": "≤ 500 vel ≤ 300"
         },
         {
-          "name": "Nullam Gyroscope Scale Factor Nonlinearity",
-          "value": "500ppm"
+          "name": "Range de Accelerometer (g)",
+          "value": "± 50 (customizable)"
         },
         {
-          "name": "bandwidth Gyroscope",
-          "value": "100Hz"
+          "name": "Accelerometer Zero Offset (mg)",
+          "value": "≤ 5 or ≤ 3"
         },
         {
-          "name": "Rangeus acelerometer",
-          "value": "± 2g"
+          "name": "Accelerometer Zero Bias Stability (mg)",
+          "value": "≤ 0.5 vel ≤ 0.1"
         },
         {
-          "name": "Zero bias stability del accelerometer",
-          "value": "0.2mg."
+          "name": "Accelerometer Zero Repeatability (mg)",
+          "value": "≤ 3 or ≤ 1"
         },
         {
-          "name": "Accelerometer Full Temperature Zero Offset",
-          "value": "2mg"
+          "name": "Reliability (Kh MTBF)",
+          "value": "Decem"
         },
         {
-          "name": "Bandwidth acelerometer",
-          "value": "100Hz"
+          "name": "POWER APECTUM (V)",
+          "value": "DC9-36"
         },
         {
-          "name": "Satellite Navigation Position Accuracy (RMS) - Single Point L1/L2",
-          "value": "1.2m"
+          "name": "Consumptione potest (W @ 5V DC)",
+          "value": "≤ 0.8"
         },
         {
-          "name": "Satellite Navigation Position Accuracy (RMS) - RTK",
-          "value": "2cm + 1ppm"
+          "name": "Nomerika Interface electrium",
+          "value": "RS422"
         },
         {
-          "name": "Satellite navigation speed accuracy (RMS)",
-          "value": "0.03 m/s"
+          "name": "Próximo tabularium (optionalis)",
+          "value": "200 (Hz @ 460800)"
         },
         {
-          "name": "QUAE SERVITATION DIRECTIONAL (RMS)",
-          "value": "0.2°/m"
+          "name": "Imperium exemplarum (° C)",
+          "value": "-40 ~ +70"
         },
         {
-          "name": "Satellite navigation GPS band",
-          "value": "L1, L2, L2C"
+          "name": "Storage Temperature (° C)",
+          "value": "-55 ~ +85"
         },
         {
-          "name": "GLONASS bandis Satellite Navigationis",
-          "value": "L1, L2"
+          "name": "Vibration (g @ 20 ~ 2000 Hz)",
+          "value": "6"
         },
         {
-          "name": "Band Beidou Satellite Navigation",
-          "value": "B1, B2"
+          "name": "Shock (g, 0.5 ms, 1/2 Sinus)",
+          "value": "12000"
         },
         {
-          "name": "Vulerum INTERNATION",
-          "value": "9-36V"
+          "name": "Characteristic dimensionis (mm)",
+          "value": "40 × 40 × 26.7mm"
         },
         {
-          "name": "QUITI CURRENTIS QUA",
-          "value": "0.35 A"
-        },
-        {
-          "name": "Interface type",
-          "value": "RS422/RS232/can"
+          "name": "Weight (g)",
+          "value": "Centum"
         }
       ],
       "ru": [
         {
-          "name": "Крен/шаг (1σ)",
-          "value": "0.1°"
+          "name": "Время активации (с)",
+          "value": "≤1"
         },
         {
-          "name": "Дрейф положения GPS вне замка (1 км или 2 минуты)",
-          "value": "0.2%"
+          "name": "Диапазон гироскопа (град/с)",
+          "value": "± 100-10800 (настраивается)"
         },
         {
-          "name": "GPS потерянный дрейф курса блокировки (1 мин)",
-          "value": "0.15°"
+          "name": "Смещение нуля гироскопа (град/с)",
+          "value": "≤ ± 0,1 (при 450°/с)"
         },
         {
-          "name": "Диапазон гироскопа",
-          "value": "250°/s"
+          "name": "Стабильность гироскопического смещения (град/ч)",
+          "value": "≤ 0,5 или ≤ 0,2"
         },
         {
-          "name": "Стабильность смещения нуля гироскопа",
-          "value": "10°/ч"
+          "name": "Повторяемость смещения нуля гироскопа (град/с)",
+          "value": "≤ 0,05 или ≤ 0,02"
         },
         {
-          "name": "Смещение нуля полной температуры гироскопа",
-          "value": "0,15°/с"
+          "name": "Нелинейный гироскоп (ч./млн.)",
+          "value": "≤ 500 или ≤ 300"
         },
         {
-          "name": "Нелинейность масштабного коэффициента гироскопа",
-          "value": "500 ppm"
+          "name": "Диапазон акселерометра (г)",
+          "value": "± 50 (настраивается)"
         },
         {
-          "name": "Полоса пропускания гироскопа",
-          "value": "100 Гц"
+          "name": "Смещение нуля акселерометра (мг)",
+          "value": "≤ 5 или ≤ 3"
         },
         {
-          "name": "Диапазон акселерометра",
-          "value": "±2g"
+          "name": "Стабильность нулевого смещения акселерометра (мг)",
+          "value": "≤ 0,5 или ≤ 0,1"
         },
         {
-          "name": "Стабильность нулевого смещения акселерометра",
-          "value": "0,2 мг"
+          "name": "Повторяемость нулевого смещения акселерометра (мг)",
+          "value": "≤ 3 или ≤ 1"
         },
         {
-          "name": "Смещение нуля полной температуры акселерометра",
-          "value": "2 мг"
+          "name": "Надежность (Kh MTBF)",
+          "value": "10"
         },
         {
-          "name": "Полоса пропускания акселерометра",
-          "value": "100 Гц"
+          "name": "Источник питания (В)",
+          "value": "DC9-36"
         },
         {
-          "name": "Точность спутниковой навигации (RMS) - одноточечная L1/L2",
-          "value": "1,2 м"
+          "name": "Потребляемая мощность (Вт при 5 В постоянного тока)",
+          "value": "≤0.8"
         },
         {
-          "name": "Точность спутниковой навигации (RMS) - RTK",
-          "value": "2 см +1 ч./млн."
+          "name": "Номера электрических интерфейсов",
+          "value": "RS422"
         },
         {
-          "name": "Точность скорости спутниковой навигации (RMS)",
-          "value": "0,03 м/с"
+          "name": "Частота обновления данных (необязательно)",
+          "value": "200 (Гц при 460800)"
         },
         {
-          "name": "Точность курса спутниковой навигации (RMS)",
-          "value": "0,2°/м"
+          "name": "Рабочая температура (°C)",
+          "value": "-40–70"
         },
         {
-          "name": "Спутниковый навигационный GPS-диапазон",
-          "value": "L1, L2, L2C"
+          "name": "Температура хранения (°C)",
+          "value": "-55 ~ +85"
         },
         {
-          "name": "Спутниковая навигация полоса ГЛОНАСС",
-          "value": "L1, L2"
+          "name": "Вибрация (g при 20 ~ 2000 Гц)",
+          "value": "6"
         },
         {
-          "name": "Спутниковая навигация Beidou Band",
-          "value": "B1, B2"
+          "name": "Удар (г, 0,5 мс, 1/2 синуса)",
+          "value": "12000"
         },
         {
-          "name": "Входное напряжение",
-          "value": "9-36 В"
+          "name": "Нормативный размер (мм)",
+          "value": "40 × 40 × 26,7 мм"
         },
         {
-          "name": "Рабочий ток:",
-          "value": "0.35A"
-        },
-        {
-          "name": "Тип интерфейса",
-          "value": "RS422/RS232/CAN"
+          "name": "Вес (г)",
+          "value": "≤100"
         }
       ],
       "zh": [
         {
-          "name": "横滚/俯仰 (1σ)",
-          "value": "0.1°"
+          "name": "激活时间 (s)",
+          "value": "≤1"
         },
         {
-          "name": "GPS失锁位置漂移 (1km或2min)",
-          "value": "0.2%"
+          "name": "陀螺仪量程 (deg/s)",
+          "value": "±100-10800 (可定制)"
         },
         {
-          "name": "GPS失锁航向漂移 (1min)",
-          "value": "0.15°"
+          "name": "陀螺仪零偏 (deg/s)",
+          "value": "≤±0.1 (在450°/s)"
         },
         {
-          "name": "陀螺仪量程",
-          "value": "250°/s"
+          "name": "陀螺仪零偏稳定性 (deg/h)",
+          "value": "≤0.5 或者 ≤0.2"
         },
         {
-          "name": "陀螺仪零偏稳定性",
-          "value": "10°/h"
+          "name": "陀螺仪零偏重复性 (deg/s)",
+          "value": "≤0.05 或者 ≤0.02"
         },
         {
-          "name": "陀螺仪全温零偏",
-          "value": "0.15°/s"
+          "name": "陀螺仪非线性 (ppm)",
+          "value": "≤500 或者 ≤300"
         },
         {
-          "name": "陀螺仪标度因素非线性",
-          "value": "500ppm"
+          "name": "加速度计量程 (g)",
+          "value": "±50 (可定制)"
         },
         {
-          "name": "陀螺仪带宽",
-          "value": "100Hz"
+          "name": "加速度计零偏 (mg)",
+          "value": "≤5 或者 ≤3"
         },
         {
-          "name": "加速度计量程",
-          "value": "±2g"
+          "name": "加速度计零偏稳定性 (mg)",
+          "value": "≤0.5 或者≤0.1"
         },
         {
-          "name": "加速度计零偏稳定性",
-          "value": "0.2mg"
+          "name": "加速度计零偏重复性 (mg)",
+          "value": "≤3 或者 ≤1"
         },
         {
-          "name": "加速度计全温零偏",
-          "value": "2mg"
+          "name": "可靠性 (Kh MTBF)",
+          "value": "10"
         },
         {
-          "name": "加速度计带宽",
-          "value": "100Hz"
+          "name": "电源 (V)",
+          "value": "DC9-36"
         },
         {
-          "name": "卫星导航位置精度 (RMS) - 单点L1/L2",
-          "value": "1.2m"
+          "name": "功耗 (W @5V DC)",
+          "value": "≤0.8"
         },
         {
-          "name": "卫星导航位置精度 (RMS) - RTK",
-          "value": "2cm+1ppm"
+          "name": "电气接口数字",
+          "value": "RS422"
         },
         {
-          "name": "卫星导航速度精度 (RMS)",
-          "value": "0.03m/s"
+          "name": "数据更新率 (可设)",
+          "value": "200 (Hz@460800)"
         },
         {
-          "name": "卫星导航航向精度 (RMS)",
-          "value": "0.2°/m"
+          "name": "工作温度 (°C)",
+          "value": "-40~+70"
         },
         {
-          "name": "卫星导航GPS频段",
-          "value": "L1, L2, L2C"
+          "name": "存储温度 (°C)",
+          "value": "-55~+85"
         },
         {
-          "name": "卫星导航GLONASS频段",
-          "value": "L1, L2"
+          "name": "振动 (g @ 20~2000 Hz)",
+          "value": "6"
         },
         {
-          "name": "卫星导航北斗频段",
-          "value": "B1, B2"
+          "name": "冲击 (g, 0.5 ms, 1/2 Sine)",
+          "value": "12000"
         },
         {
-          "name": "输入电压",
-          "value": "9-36V"
+          "name": "特性尺寸 (mm)",
+          "value": "40×40×26.7mm"
         },
         {
-          "name": "工作电流",
-          "value": "0.35A"
-        },
-        {
-          "name": "接口类型",
-          "value": "RS422 / RS232 / CAN"
+          "name": "重量 (g)",
+          "value": "≤100"
         }
       ]
     },
     "published": true,
     "content": {
       "ar": {
-        "name": "نظام تحديد المواقع المدمج متعدد الإشارات القائم على الملاحة PA - SAUTO",
-        "description": "PA - GSAUTO، وهو نظام تحديد المواقع متعدد الإشارات لمركبات الانصهار يعتمد على تقنية الملاحة المتكاملة، وهو نظام ملاحة وتحديد المواقع يعتمد على تقنية القصور الذاتي، والذي يدمج نظام تحديد المواقع التفاضلي ويدعم RTK مع أداء عالي التكلفة للغاية. يدمج النظام معلومات مثل مقياس سرعة دوران السيارة، وركن عجلة القيادة، وما إلى ذلك. يمكن أن يوفر للسيارة معلومات عن جميع الأحوال الجوية والوضعية والمسار والموقع وغيرها من المعلومات في أي سيناريو. يمكن أن يتطابق النظام مع نظام ليدار للسيارة في الوقت الفعلي، مما يوفر ضمانًا نشطًا للسلامة للسيارة في حالة القيادة بدون طيار."
+        "name": "وحدة قياس قصور ذات دقة عالية PA - IMU -02D/03D",
+        "description": "PA - IMU -02D/03d هو جهاز قياس بالقصور الذاتي محلي بالكامل وعالي الأداء وصغير الحجم وعالي المقاومة للحمل الزائد يمكن استخدامه للملاحة الدقيقة والتحكم والقياس الديناميكي للأسلحة. تستخدم هذه السلسلة من المنتجات أجهزة القصور الذاتي MEMS المحلية بالكامل مع موثوقية عالية وقوة عالية، والتي لا يزال بإمكانها قياس السرعة الزاوية ومعلومات التسارع بدقة للناقل المتحرك في ظل البيئات القاسية، ويمكن أن توفر معلومات موقف موثوقة. يتميز PA - IMU -02D/03D بنطاق درجة حرارة تشغيل واسع، وعرض نطاق ترددي واسع، وحجم صغير، وبدء تشغيل سريع، ودقة عالية، والمزيد. يمكن استخدامه على نطاق واسع في التوجيه والتحكم الدقيق في الأسلحة، والتحكم في المعدات الهندسية، واستقرار المنصة، وروبوتات خطوط الأنابيب، والمركبات تحت الماء وغيرها من الأنظمة."
       },
       "en": {
-        "name": "Integrated navigation-based multi-signal fusion vehicle positioning system PA-GSAUTO",
-        "description": "PA-GSAUTO, a multi-signal fusion vehicle positioning system based on integrated navigation technology, is a navigation and positioning system based on inertial technology, which integrates differential GPS and supports RTK with extremely high cost performance. The system integrates information such as the vehicle's tachometer, steering wheel corner, etc. It can provide the vehicle with all-weather, posture, trajectory, location and other information in any scenario. The system can match the lidar system of the vehicle in real time, providing active safety guarantee for the vehicle in the case of unmanned driving."
+        "name": "High precision inertial measurement unit PA-IMU-02D/03D",
+        "description": "The PA-IMU-02D/03d is a fully domestic, high-performance, small-volume, high overload-resistant inertial measurement device that can be used for accurate navigation, control, and dynamic measurement of weapons. This series of products uses fully domestic MEMS inertial devices with high reliability and high robustness, which can still accurately measure the angular velocity and acceleration information of the moving carrier under harsh environments, and can provide reliable attitude information. PA-IMU-02D/03D features a wide operating temperature range, wide bandwidth, small size, fast startup, high accuracy, and more. It can be widely used in weapons precision guidance and control, engineering equipment control, platform stability, pipeline robots, underwater vehicles and other systems."
       },
       "fa": {
-        "name": "PA-GSAUTO، یک سیستم موقعیت‌یابی خودرو با ادغام چند سیگنال مبتنی بر ناوبری یکپارچه",
-        "description": "PA-GSAUTO، یک سیستم موقعیت‌یابی خودرو با فیوژن چند سیگنالی مبتنی بر فناوری ناوبری یکپارچه، یک سیستم ناوبری و موقعیت‌یابی مقرون‌به‌صرفه است که فناوری اینرسی، GPS تفاضلی و پشتیبانی RTK را ادغام می‌کند. این سیستم اطلاعاتی مانند خوانش سرعت‌سنج چرخ و زوایای فرمان را در بر می‌گیرد و اطلاعات مربوط به وضعیت، مسیر و موقعیت خودرو را در تمام شرایط آب و هوایی و هر سناریویی در اختیار خودرو قرار می‌دهد. این سیستم همچنین می‌تواند به صورت بلادرنگ با سیستم LiDAR خودرو ادغام شود و تضمین ایمنی فعال را در سناریوهای رانندگی خودکار فراهم کند."
+        "name": "واحد اندازه‌گیری اینرسی با دقت بالا PA-IMU-02D/03D",
+        "description": "PA-IMU-02D/03D یک واحد اندازه‌گیری اینرسی (IMU) کاملاً تولید داخل، با کارایی بالا، جمع و جور و مقاوم در برابر اضافه بار بالا برای ناوبری دقیق سلاح، کنترل و اندازه‌گیری دینامیکی است. این سری از دستگاه‌های اینرسی MEMS تولید داخل استفاده می‌کند که قابلیت اطمینان و استحکام بالایی را نشان می‌دهد. حتی در محیط‌های سخت، می‌تواند سرعت زاویه‌ای و شتاب وسایل نقلیه در حال حرکت را به طور دقیق اندازه‌گیری کرده و اطلاعات وضعیت قابل اعتمادی را ارائه دهد. PA-IMU-02D/03D دارای محدوده دمای عملیاتی گسترده، پهنای باند وسیع، اندازه کوچک، راه‌اندازی سریع و دقت بالا است. این واحد می‌تواند به طور گسترده در هدایت و کنترل دقیق سلاح، کنترل تجهیزات مهندسی، تثبیت سکو، ربات‌های خط لوله، وسایل نقلیه زیر آب و سایر سیستم‌ها مورد استفاده قرار گیرد."
       },
       "la": {
-        "name": "Integrated navigation-based multisignal fusion car positioning system PA-GSAUTO",
-        "description": "PA-GSAUTO, systema multius Signal fusion car positioning based on Integrated navigation technology, is un navigation and positioning system based in inertial technology, which integrates differential GPS and supports RTK with extremely high cost performance. Systema informationes integrate such as the car's tachometer, steering wheel corner, etc. Potestate autem car with all-weather, posture, trajectory, location et alia informationes in aliquo scenario. Systema autem consecutum lidar systemum car in tempore rerum, civitatis security pro caritatis in case de unmannedu."
+        "name": "High precision inertialis measurement unit PA-IMU -02D/03D",
+        "description": "PA-IMU-02D/03d est aequalis domestic, high-fampisehoana, small-bolume, inertialis overloadis resistant device that can be used for accurate navigation, control, and dynamic measurement of weapons. This series of products uses fully domestic MEMS inertial devices with high trustiability and high robustibus, quia لاهم үнэн зөв کولی شي velocity angularis et acceleration information of the move carrier under hard environments, and can provide reliable attitude information. PA-IMU-02D/03D dia manasongadina ny mari-pana malalaka, wide bandwidth, small size, startup fast, high accuracy, et more. It be used in weapons precision guidance and control, engineering equipment control, platform stability, pipeline robots, inwater vehicles and ali system."
       },
       "ru": {
-        "name": "Интегрированная навигационная МНОГОСИГНАЛЬНАЯ система позиционирования транспортного средства PA-GSAUTO",
-        "description": "PA-GSAUTO, многосигнальная система позиционирования транспортного средства, основанная на интегрированной навигационной технологии, представляет собой систему навигации и позиционирования, основанную на инерциальной технологии, которая интегрирует дифференциальный GPS и поддерживает RTK с чрезвычайно высокой стоимостью. Система интегрирует такую информацию, как тахометр автомобиля, угол рулевого колеса и т. д. Он может предоставить транспортному средству всепогодную информацию, информацию о позе, траектории, местоположении и другую информацию в любом сценарии. Система может соответствовать лидарной системе транспортного средства в режиме реального времени, обеспечивая активную гарантию безопасности транспортного средства в случае беспилотного вождения."
+        "name": "Высокоточный инерциальный измерительный блок PA-IMU-02D/03D",
+        "description": "PA-IMU-02D/03D - это полностью отечественный, высокопроизводительный, малообъемный, устойчивый к высоким перегрузкам инерциальный измерительный прибор, который может использоваться для точной навигации, управления и динамического измерения оружия. В этой серии продуктов используются полностью отечественные инерциальные устройства MEMS с высокой надежностью и высокой прочностью, которые все еще могут точно измерять информацию об угловой скорости и ускорении движущегося носителя в суровых условиях и могут предоставлять надежную информацию об ориентации. PA-IMU-02D/03D имеет широкий диапазон рабочих температур, широкую полосу пропускания, небольшой размер, быстрый запуск, высокую точность и многое другое. Он может широко использоваться в высокоточном наведении и управлении оружием, управлении инженерным оборудованием, устойчивости платформы, трубопроводных роботах, подводных аппаратах и других системах."
       },
       "zh": {
-        "name": "基于组合导航的多信号 融合车辆定位系统 PA-GSAUTO",
-        "description": "基于组合导航技术的多信号融合车辆定位系统PA-GSAUTO,是一款基于 惯性技术,融合了差分GPS,支持RTK的性价比极高的导航定位系统。该系统 融合了车辆的轮速计、方向盘转角等信息。可以为车辆提供全天候、任意场景 下的姿态、轨迹、位置等信息。该系统可以实时匹配车辆的激光雷达系统,为 车辆提供无人驾驶情况下的主动安全保障。"
+        "name": "高精度惯性测量单元 PA-IMU-02D/03D",
+        "description": "PA-IMU-02D/03D是一款完全国产化的高性能、小体积、耐高过载的惯性 测量设备,可用于武器的精确导航、控制和动态测量。此系列产品采用完全国 产化的MEMS惯性器件,具有高可靠性和高坚固性,在恶劣环境下仍能精密的 测量运动载体的角速度和加速度信息,并能提供可靠的姿态信息。 PA-IMU-02D/03D具有宽的工作温度范围、宽的带宽、小体积、快速 启 动、精度高等特点。它可广泛用于武器精确制导与控制、工程装备控制、平台 稳定、管道机器人、水下航行器等系统。"
       }
     },
     "createdAt": "2024-01-01T00:00:00.000Z",
-    "updatedAt": "2026-04-26T07:40:01.951Z"
+    "updatedAt": "2026-04-27T05:40:30.970Z"
   },
   {
     "id": "PA-LASIII",
@@ -4680,414 +4656,6 @@
     "updatedAt": "2026-04-26T03:45:08.503Z"
   },
   {
-    "id": "PM-TS-VG",
-    "slug": "PM-TS-VG",
-    "image": "https://mmes-website-production.up.railway.app/images/PM-TS-VG.jpg",
-    "specs": {
-      "ar": [
-        {
-          "name": "جهد الإمداد",
-          "value": "7-15 فولت تيار مستمر"
-        },
-        {
-          "name": "تيار الدخل",
-          "value": "< 30 مللي أمبير"
-        },
-        {
-          "name": "نطاق القياس",
-          "value": "ذو محورين: 0 - ± 90 درجة"
-        },
-        {
-          "name": "قرار",
-          "value": "01)&#10;"
-        },
-        {
-          "name": "ثبات المركز الصفري على المدى القصير (100 ساعة)",
-          "value": "0. 05 "
-        },
-        {
-          "name": "ثبات المركز الصفري على المدى الطويل (سنة واحدة)",
-          "value": "1/0"
-        },
-        {
-          "name": "عدم التكرار",
-          "value": "0. 05 "
-        },
-        {
-          "name": "انحراف درجة الحرارة (-40 ~ 80 درجة مئوية)",
-          "value": "0. 05 "
-        },
-        {
-          "name": "خطأ ديناميكي",
-          "value": "≤ 0.5 درجة (الحمل الزائد ≤ 20 جرام، الاهتزاز ≤ 50 هرتز)"
-        },
-        {
-          "name": "التردد المناظر الديناميكي",
-          "value": "0.1-20 هرتز"
-        },
-        {
-          "name": "طريقة الإخراج",
-          "value": "RS485"
-        },
-        {
-          "name": "تحديث التكرار",
-          "value": "10-50 هرتز"
-        },
-        {
-          "name": "وقت الاستقرار",
-          "value": "< دقيقتان"
-        },
-        {
-          "name": "درجة حرارة التشغيل",
-          "value": "-40 ~ 80 درجة مئوية"
-        },
-        {
-          "name": "وقت البدء",
-          "value": "< 0.5 ثانية"
-        }
-      ],
-      "en": [
-        {
-          "name": "voltage supply",
-          "value": "7-15VDC"
-        },
-        {
-          "name": "Input current",
-          "value": "＜30mA"
-        },
-        {
-          "name": "Measuring range",
-          "value": "Biaxial: 0 - ± 90°"
-        },
-        {
-          "name": "Resolution",
-          "value": "<0.01°"
-        },
-        {
-          "name": "Zero position short term stability (100h)",
-          "value": "0.05°"
-        },
-        {
-          "name": "Zero position long-term stability (1 year)",
-          "value": "< 0.1°"
-        },
-        {
-          "name": "Zero Repeatability",
-          "value": "< 0.05°"
-        },
-        {
-          "name": "Temperature drift (-40 ~ 80°C)",
-          "value": "<± 0.05°"
-        },
-        {
-          "name": "Dynamic error",
-          "value": "≤ 0.5° (overload ≤ 20g, vibration ≤ 50Hz)"
-        },
-        {
-          "name": "Dynamic Corresponding Frequency",
-          "value": "0.1-20Hz"
-        },
-        {
-          "name": "Output mode",
-          "value": "RS485"
-        },
-        {
-          "name": "Update frequency",
-          "value": "10-50Hz"
-        },
-        {
-          "name": "Stabilization time",
-          "value": "<2min"
-        },
-        {
-          "name": "Operating Temperature",
-          "value": "-40℃~+80℃"
-        },
-        {
-          "name": "startup time",
-          "value": "< 0.5s"
-        }
-      ],
-      "fa": [
-        {
-          "name": "ولتاژ منبع تغذیه",
-          "value": "۷ تا ۱۵ ولت جریان مستقیم"
-        },
-        {
-          "name": "جریان ورودی",
-          "value": "&lt;30 میلی آمپر"
-        },
-        {
-          "name": "محدوده اندازه‌گیری",
-          "value": "دو محوره: 0 - ±90 درجه"
-        },
-        {
-          "name": "& دقت رومیزی: ‌",
-          "value": "- 01: 06"
-        },
-        {
-          "name": "پایداری کوتاه مدت در موقعیت صفر (100 ساعت)",
-          "value": "۰/ ۰۵"
-        },
-        {
-          "name": "پایداری بلندمدت موقعیت صفر (۱ سال)",
-          "value": "۰/ ۱"
-        },
-        {
-          "name": "تکرارپذیری صفر",
-          "value": "۰/ ۰۵"
-        },
-        {
-          "name": "رانش دما (-40 ~ 80 درجه سانتیگراد)",
-          "value": "۰/ ۰۵"
-        },
-        {
-          "name": "خطای دینامیکی",
-          "value": "≤ 0.5° (بار بیش از حد ≤ 20g، لرزش ≤ 50Hz)"
-        },
-        {
-          "name": "فرکانس پاسخ دینامیکی",
-          "value": "0.1-20 هرتز"
-        },
-        {
-          "name": "روش خروجی",
-          "value": "RS485"
-        },
-        {
-          "name": "فرکانس به‌روزرسانی",
-          "value": "۱۰-۵۰ هرتز"
-        },
-        {
-          "name": "زمان تثبیت",
-          "value": "&lt;2 دقیقه"
-        },
-        {
-          "name": "دمای عملیاتی",
-          "value": "-40 ~ 80℃"
-        },
-        {
-          "name": "زمان راه‌اندازی",
-          "value": "&lt;0.5s"
-        }
-      ],
-      "la": [
-        {
-          "name": "PERENTIA ACADEMIAE",
-          "value": "7-15 VDC"
-        },
-        {
-          "name": "Próximo INTERNATION",
-          "value": "< 30mA"
-        },
-        {
-          "name": "Measuremente range",
-          "value": "Biaxialis: 0 - ± 90°"
-        },
-        {
-          "name": "Resolutionis",
-          "value": "< 0.01°"
-        },
-        {
-          "name": "Zero positionem short term stability (100h)",
-          "value": "< 0.05°"
-        },
-        {
-          "name": "Zero positione long stability (1 year)",
-          "value": "Unus"
-        },
-        {
-          "name": "0 Repeatability",
-          "value": "< 0.05°"
-        },
-        {
-          "name": "Temperature drift (-40 ~ 80° C)",
-          "value": "< ± 0.05°"
-        },
-        {
-          "name": "Dynamic error",
-          "value": "≤ 0.5° (overload ≤ 20g, vibration ≤ 50Hz)"
-        },
-        {
-          "name": "Frequency dynamicas",
-          "value": "0.1-20Hz"
-        },
-        {
-          "name": "methodum outputum",
-          "value": "RS485"
-        },
-        {
-          "name": "Frequency Updatee",
-          "value": "10-50Hz"
-        },
-        {
-          "name": "Stabilization time",
-          "value": "< 2min"
-        },
-        {
-          "name": "Imperium exemplaria",
-          "value": "-40 ~ 80 ℃"
-        },
-        {
-          "name": "Paginae",
-          "value": "< 0.5s"
-        }
-      ],
-      "ru": [
-        {
-          "name": "Напряжение питания",
-          "value": "7-15VDC"
-        },
-        {
-          "name": "Входной ток",
-          "value": "0-30 мА"
-        },
-        {
-          "name": "Диапазон измерения",
-          "value": "Двухосный: 0 - ± 90°"
-        },
-        {
-          "name": "Разрешение",
-          "value": "< 0,01°"
-        },
-        {
-          "name": "Краткосрочная стабильность нулевого положения (100 ч)",
-          "value": "＜0,05°"
-        },
-        {
-          "name": "Долгосрочная стабильность нулевой позиции (1 год)",
-          "value": "＜0,1°"
-        },
-        {
-          "name": "Нулевая повторяемость",
-          "value": "＜0,05°"
-        },
-        {
-          "name": "Температурный дрейф (-40 ~ 80°C)",
-          "value": "< ±0,05°"
-        },
-        {
-          "name": "Динамическая ошибка",
-          "value": "≤ 0,5° (перегрузка ≤ 20 г, вибрация ≤ 50 Гц)"
-        },
-        {
-          "name": "Динамическая соответствующая частота",
-          "value": "0,1-20 Гц"
-        },
-        {
-          "name": "Метод вывода",
-          "value": "RS485"
-        },
-        {
-          "name": "Частота обновления",
-          "value": "10-50 Гц"
-        },
-        {
-          "name": "Время стабилизации",
-          "value": "< 2 мин"
-        },
-        {
-          "name": "Рабочая температура",
-          "value": "-40 ~ 80 ℃"
-        },
-        {
-          "name": "Дата ввода",
-          "value": "< 0,5 с"
-        }
-      ],
-      "zh": [
-        {
-          "name": "供电电压",
-          "value": "7~15VDC"
-        },
-        {
-          "name": "输入电流",
-          "value": "< 30mA"
-        },
-        {
-          "name": "测量范围",
-          "value": "双轴：0 - ±90°"
-        },
-        {
-          "name": "分辨率",
-          "value": "< 0.01°"
-        },
-        {
-          "name": "零位短期稳定性 (100h)",
-          "value": "< 0.05°"
-        },
-        {
-          "name": "零位长期稳定性 (1年)",
-          "value": "< 0.1°"
-        },
-        {
-          "name": "零位重复性",
-          "value": "< 0.05°"
-        },
-        {
-          "name": "温度漂移 (-40~80°C)",
-          "value": "< ±0.05°"
-        },
-        {
-          "name": "动态误差",
-          "value": "≤ 0.5° (过载 ≤ 20g, 振动 ≤ 50Hz)"
-        },
-        {
-          "name": "动态相应频率",
-          "value": "0.1-20Hz"
-        },
-        {
-          "name": "输出方式",
-          "value": "RS485"
-        },
-        {
-          "name": "更新频率",
-          "value": "10-50Hz"
-        },
-        {
-          "name": "稳定时间",
-          "value": "< 2min"
-        },
-        {
-          "name": "工作温度",
-          "value": "-40~80℃"
-        },
-        {
-          "name": "启动时间",
-          "value": "< 0.5s"
-        }
-      ]
-    },
-    "published": true,
-    "content": {
-      "ar": {
-        "name": "الميل الديناميكي (الدوران العمودي) PM - TS - VG",
-        "description": "تقنية اختبار ديناميكية جديدة متمايزة عن التعويض الديناميكي بنية نظام خوارزمية موقف الملاحة الفريدة استخدم تصميم امتصاص الصدمات لتلبية بيئة الاختبار الديناميكية الكاملة نظام اختبار الموقف القائم على أجهزة القصور الذاتي تقنية مرشح كالمان سرعة الاستجابة نطاق درجة حرارة التشغيل السريع -40 درجة مئوية إلى +80 درجة مئوية"
-      },
-      "en": {
-        "name": "Dynamic Inclination (Vertical Gyro) PM-TS-VG",
-        "description": "New dynamic test technology differentiated from dynamic compensation Unique strapdown navigation attitude algorithm system structure Use shock absorption design to meet the full dynamic test environment Attitude test system based on inertial devices Kalman filter technology Response speed Fast operating temperature range -40 ℃ to +80 ℃"
-      },
-      "fa": {
-        "name": "زاویه شیب دینامیکی (ژیروسکوپ عمودی) PM-TS-VG",
-        "description": "برخلاف جبران‌سازی دینامیکی، این فناوری جدید تست دینامیکی دارای یک ساختار سیستم الگوریتم وضعیت ناوبری تسمه‌ای منحصر به فرد با طراحی میرایی ارتعاش است تا الزامات یک محیط تست کاملاً دینامیکی را برآورده کند. سیستم تست وضعیت مبتنی بر دستگاه‌های اینرسی از فناوری فیلتر کالمن برای پاسخ سریع استفاده می‌کند و در محدوده دمایی -40℃ تا +80℃ عمل می‌کند."
-      },
-      "la": {
-        "name": "Inclinatione dynamicis (Gyro Vertical) PM-TS-VG",
-        "description": "New dynamic test technology differentiated from dynamic compensation Unique strapdown navigation attitude algorithm system structure Use shock absorption design to meet the full dynamic test environment Attitude test system based inertial devices Kalman filter technology Response speed Fast operating temperature range -40 ℃ to +80 ℃"
-      },
-      "ru": {
-        "name": "Динамическое наклонение (вертикальный гироскоп) PM-TS-VG",
-        "description": "Новая технология динамических испытаний, отличающаяся от динамической компенсации Уникальная структура алгоритма навигации без привязки Используйте конструкцию амортизации, чтобы соответствовать полной динамической тестовой среде Система тестирования отношения на основе инерциальных устройств Технология фильтра Калмана Скорость отклика Быстрый диапазон рабочих температур от -40 ℃ до +80 ℃"
-      },
-      "zh": {
-        "name": "动态倾角(垂直陀螺) PM-TS-VG",
-        "description": "区别于动态补偿的全新动态测试技术 独特的捷联导航姿态算法 系统结构运用减震设计 满足全动态测试环境 基于惯性器件的姿态测试系统 卡尔曼滤波技术 响应速度快 工作温度范围-40℃到+80℃"
-      }
-    },
-    "createdAt": "2024-01-01T00:00:00.000Z",
-    "updatedAt": "2026-04-26T07:52:28.418Z"
-  },
-  {
     "id": "PA-AHRS01",
     "slug": "PA-AHRS01",
     "image": "https://mmes-website-production.up.railway.app/images/PA-AHRS01.jpg",
@@ -5494,6 +5062,414 @@
     },
     "createdAt": "2024-01-01T00:00:00.000Z",
     "updatedAt": "2026-04-26T07:57:15.654Z"
+  },
+  {
+    "id": "PM-TS-VG",
+    "slug": "PM-TS-VG",
+    "image": "https://61mzpm7grh.ucarecd.net/df8a38a4-e5f3-4927-ae5c-a881bb781875/PM-TS-VG-1777368128685.jpg",
+    "specs": {
+      "ar": [
+        {
+          "name": "جهد الإمداد",
+          "value": "7-15 فولت تيار مستمر"
+        },
+        {
+          "name": "تيار الدخل",
+          "value": "< 30 مللي أمبير"
+        },
+        {
+          "name": "نطاق القياس",
+          "value": "ذو محورين: 0 - ± 90 درجة"
+        },
+        {
+          "name": "قرار",
+          "value": "01)&#10;"
+        },
+        {
+          "name": "ثبات المركز الصفري على المدى القصير (100 ساعة)",
+          "value": "0. 05 "
+        },
+        {
+          "name": "ثبات المركز الصفري على المدى الطويل (سنة واحدة)",
+          "value": "1/0"
+        },
+        {
+          "name": "عدم التكرار",
+          "value": "0. 05 "
+        },
+        {
+          "name": "انحراف درجة الحرارة (-40 ~ 80 درجة مئوية)",
+          "value": "0. 05 "
+        },
+        {
+          "name": "خطأ ديناميكي",
+          "value": "≤ 0.5 درجة (الحمل الزائد ≤ 20 جرام، الاهتزاز ≤ 50 هرتز)"
+        },
+        {
+          "name": "التردد المناظر الديناميكي",
+          "value": "0.1-20 هرتز"
+        },
+        {
+          "name": "طريقة الإخراج",
+          "value": "RS485"
+        },
+        {
+          "name": "تحديث التكرار",
+          "value": "10-50 هرتز"
+        },
+        {
+          "name": "وقت الاستقرار",
+          "value": "< دقيقتان"
+        },
+        {
+          "name": "درجة حرارة التشغيل",
+          "value": "-40 ~ 80 درجة مئوية"
+        },
+        {
+          "name": "وقت البدء",
+          "value": "< 0.5 ثانية"
+        }
+      ],
+      "en": [
+        {
+          "name": "voltage supply",
+          "value": "7-15VDC"
+        },
+        {
+          "name": "Input current",
+          "value": "＜30mA"
+        },
+        {
+          "name": "Measuring range",
+          "value": "Biaxial: 0 - ± 90°"
+        },
+        {
+          "name": "Resolution",
+          "value": "<0.01°"
+        },
+        {
+          "name": "Zero position short term stability (100h)",
+          "value": "0.05°"
+        },
+        {
+          "name": "Zero position long-term stability (1 year)",
+          "value": "< 0.1°"
+        },
+        {
+          "name": "Zero Repeatability",
+          "value": "< 0.05°"
+        },
+        {
+          "name": "Temperature drift (-40 ~ 80°C)",
+          "value": "<± 0.05°"
+        },
+        {
+          "name": "Dynamic error",
+          "value": "≤ 0.5° (overload ≤ 20g, vibration ≤ 50Hz)"
+        },
+        {
+          "name": "Dynamic Corresponding Frequency",
+          "value": "0.1-20Hz"
+        },
+        {
+          "name": "Output mode",
+          "value": "RS485"
+        },
+        {
+          "name": "Update frequency",
+          "value": "10-50Hz"
+        },
+        {
+          "name": "Stabilization time",
+          "value": "<2min"
+        },
+        {
+          "name": "Operating Temperature",
+          "value": "-40℃~+80℃"
+        },
+        {
+          "name": "startup time",
+          "value": "< 0.5s"
+        }
+      ],
+      "fa": [
+        {
+          "name": "ولتاژ منبع تغذیه",
+          "value": "۷ تا ۱۵ ولت جریان مستقیم"
+        },
+        {
+          "name": "جریان ورودی",
+          "value": "&lt;30 میلی آمپر"
+        },
+        {
+          "name": "محدوده اندازه‌گیری",
+          "value": "دو محوره: 0 - ±90 درجه"
+        },
+        {
+          "name": "& دقت رومیزی: ‌",
+          "value": "- 01: 06"
+        },
+        {
+          "name": "پایداری کوتاه مدت در موقعیت صفر (100 ساعت)",
+          "value": "۰/ ۰۵"
+        },
+        {
+          "name": "پایداری بلندمدت موقعیت صفر (۱ سال)",
+          "value": "۰/ ۱"
+        },
+        {
+          "name": "تکرارپذیری صفر",
+          "value": "۰/ ۰۵"
+        },
+        {
+          "name": "رانش دما (-40 ~ 80 درجه سانتیگراد)",
+          "value": "۰/ ۰۵"
+        },
+        {
+          "name": "خطای دینامیکی",
+          "value": "≤ 0.5° (بار بیش از حد ≤ 20g، لرزش ≤ 50Hz)"
+        },
+        {
+          "name": "فرکانس پاسخ دینامیکی",
+          "value": "0.1-20 هرتز"
+        },
+        {
+          "name": "روش خروجی",
+          "value": "RS485"
+        },
+        {
+          "name": "فرکانس به‌روزرسانی",
+          "value": "۱۰-۵۰ هرتز"
+        },
+        {
+          "name": "زمان تثبیت",
+          "value": "&lt;2 دقیقه"
+        },
+        {
+          "name": "دمای عملیاتی",
+          "value": "-40 ~ 80℃"
+        },
+        {
+          "name": "زمان راه‌اندازی",
+          "value": "&lt;0.5s"
+        }
+      ],
+      "la": [
+        {
+          "name": "PERENTIA ACADEMIAE",
+          "value": "7-15 VDC"
+        },
+        {
+          "name": "Próximo INTERNATION",
+          "value": "< 30mA"
+        },
+        {
+          "name": "Measuremente range",
+          "value": "Biaxialis: 0 - ± 90°"
+        },
+        {
+          "name": "Resolutionis",
+          "value": "< 0.01°"
+        },
+        {
+          "name": "Zero positionem short term stability (100h)",
+          "value": "< 0.05°"
+        },
+        {
+          "name": "Zero positione long stability (1 year)",
+          "value": "Unus"
+        },
+        {
+          "name": "0 Repeatability",
+          "value": "< 0.05°"
+        },
+        {
+          "name": "Temperature drift (-40 ~ 80° C)",
+          "value": "< ± 0.05°"
+        },
+        {
+          "name": "Dynamic error",
+          "value": "≤ 0.5° (overload ≤ 20g, vibration ≤ 50Hz)"
+        },
+        {
+          "name": "Frequency dynamicas",
+          "value": "0.1-20Hz"
+        },
+        {
+          "name": "methodum outputum",
+          "value": "RS485"
+        },
+        {
+          "name": "Frequency Updatee",
+          "value": "10-50Hz"
+        },
+        {
+          "name": "Stabilization time",
+          "value": "< 2min"
+        },
+        {
+          "name": "Imperium exemplaria",
+          "value": "-40 ~ 80 ℃"
+        },
+        {
+          "name": "Paginae",
+          "value": "< 0.5s"
+        }
+      ],
+      "ru": [
+        {
+          "name": "Напряжение питания",
+          "value": "7-15VDC"
+        },
+        {
+          "name": "Входной ток",
+          "value": "0-30 мА"
+        },
+        {
+          "name": "Диапазон измерения",
+          "value": "Двухосный: 0 - ± 90°"
+        },
+        {
+          "name": "Разрешение",
+          "value": "< 0,01°"
+        },
+        {
+          "name": "Краткосрочная стабильность нулевого положения (100 ч)",
+          "value": "＜0,05°"
+        },
+        {
+          "name": "Долгосрочная стабильность нулевой позиции (1 год)",
+          "value": "＜0,1°"
+        },
+        {
+          "name": "Нулевая повторяемость",
+          "value": "＜0,05°"
+        },
+        {
+          "name": "Температурный дрейф (-40 ~ 80°C)",
+          "value": "< ±0,05°"
+        },
+        {
+          "name": "Динамическая ошибка",
+          "value": "≤ 0,5° (перегрузка ≤ 20 г, вибрация ≤ 50 Гц)"
+        },
+        {
+          "name": "Динамическая соответствующая частота",
+          "value": "0,1-20 Гц"
+        },
+        {
+          "name": "Метод вывода",
+          "value": "RS485"
+        },
+        {
+          "name": "Частота обновления",
+          "value": "10-50 Гц"
+        },
+        {
+          "name": "Время стабилизации",
+          "value": "< 2 мин"
+        },
+        {
+          "name": "Рабочая температура",
+          "value": "-40 ~ 80 ℃"
+        },
+        {
+          "name": "Дата ввода",
+          "value": "< 0,5 с"
+        }
+      ],
+      "zh": [
+        {
+          "name": "供电电压",
+          "value": "7~15VDC"
+        },
+        {
+          "name": "输入电流",
+          "value": "< 30mA"
+        },
+        {
+          "name": "测量范围",
+          "value": "双轴：0 - ±90°"
+        },
+        {
+          "name": "分辨率",
+          "value": "< 0.01°"
+        },
+        {
+          "name": "零位短期稳定性 (100h)",
+          "value": "< 0.05°"
+        },
+        {
+          "name": "零位长期稳定性 (1年)",
+          "value": "< 0.1°"
+        },
+        {
+          "name": "零位重复性",
+          "value": "< 0.05°"
+        },
+        {
+          "name": "温度漂移 (-40~80°C)",
+          "value": "< ±0.05°"
+        },
+        {
+          "name": "动态误差",
+          "value": "≤ 0.5° (过载 ≤ 20g, 振动 ≤ 50Hz)"
+        },
+        {
+          "name": "动态相应频率",
+          "value": "0.1-20Hz"
+        },
+        {
+          "name": "输出方式",
+          "value": "RS485"
+        },
+        {
+          "name": "更新频率",
+          "value": "10-50Hz"
+        },
+        {
+          "name": "稳定时间",
+          "value": "< 2min"
+        },
+        {
+          "name": "工作温度",
+          "value": "-40~80℃"
+        },
+        {
+          "name": "启动时间",
+          "value": "< 0.5s"
+        }
+      ]
+    },
+    "published": true,
+    "content": {
+      "ar": {
+        "name": "الميل الديناميكي (الدوران العمودي) PM - TS - VG",
+        "description": "تقنية اختبار ديناميكية جديدة متمايزة عن التعويض الديناميكي بنية نظام خوارزمية موقف الملاحة الفريدة استخدم تصميم امتصاص الصدمات لتلبية بيئة الاختبار الديناميكية الكاملة نظام اختبار الموقف القائم على أجهزة القصور الذاتي تقنية مرشح كالمان سرعة الاستجابة نطاق درجة حرارة التشغيل السريع -40 درجة مئوية إلى +80 درجة مئوية"
+      },
+      "en": {
+        "name": "Dynamic Inclination (Vertical Gyro) PM-TS-VG",
+        "description": "New dynamic test technology differentiated from dynamic compensation Unique strapdown navigation attitude algorithm system structure Use shock absorption design to meet the full dynamic test environment Attitude test system based on inertial devices Kalman filter technology Response speed Fast operating temperature range -40 ℃ to +80 ℃"
+      },
+      "fa": {
+        "name": "زاویه شیب دینامیکی (ژیروسکوپ عمودی) PM-TS-VG",
+        "description": "برخلاف جبران‌سازی دینامیکی، این فناوری جدید تست دینامیکی دارای یک ساختار سیستم الگوریتم وضعیت ناوبری تسمه‌ای منحصر به فرد با طراحی میرایی ارتعاش است تا الزامات یک محیط تست کاملاً دینامیکی را برآورده کند. سیستم تست وضعیت مبتنی بر دستگاه‌های اینرسی از فناوری فیلتر کالمن برای پاسخ سریع استفاده می‌کند و در محدوده دمایی -40℃ تا +80℃ عمل می‌کند."
+      },
+      "la": {
+        "name": "Inclinatione dynamicis (Gyro Vertical) PM-TS-VG",
+        "description": "New dynamic test technology differentiated from dynamic compensation Unique strapdown navigation attitude algorithm system structure Use shock absorption design to meet the full dynamic test environment Attitude test system based inertial devices Kalman filter technology Response speed Fast operating temperature range -40 ℃ to +80 ℃"
+      },
+      "ru": {
+        "name": "Динамическое наклонение (вертикальный гироскоп) PM-TS-VG",
+        "description": "Новая технология динамических испытаний, отличающаяся от динамической компенсации Уникальная структура алгоритма навигации без привязки Используйте конструкцию амортизации, чтобы соответствовать полной динамической тестовой среде Система тестирования отношения на основе инерциальных устройств Технология фильтра Калмана Скорость отклика Быстрый диапазон рабочих температур от -40 ℃ до +80 ℃"
+      },
+      "zh": {
+        "name": "动态倾角(垂直陀螺) PM-TS-VG",
+        "description": "区别于动态补偿的全新动态测试技术 独特的捷联导航姿态算法 系统结构运用减震设计 满足全动态测试环境 基于惯性器件的姿态测试系统 卡尔曼滤波技术 响应速度快 工作温度范围-40℃到+80℃"
+      }
+    },
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2026-04-28T09:22:22.255Z"
   },
   {
     "id": "PM-C3000",
@@ -5978,7 +5954,7 @@
   {
     "id": "PA-IMU-01",
     "slug": "PA-IMU-01",
-    "image": "https://mmes-website-production.up.railway.app/images/PA-IMU-01D.jpg",
+    "image": "https://61mzpm7grh.ucarecd.net/d410e1b6-ab2d-4981-934e-5db8a0513557/PA-IMU-01D-1777368169173.jpg",
     "specs": {
       "ar": [
         {
@@ -6651,12 +6627,12 @@
       }
     },
     "createdAt": "2024-01-01T00:00:00.000Z",
-    "updatedAt": "2026-04-27T05:30:26.588Z"
+    "updatedAt": "2026-04-28T09:23:13.848Z"
   },
   {
     "id": "PA-GSFA1",
     "slug": "PA-GSFA1",
-    "image": "https://mmes-website-production.up.railway.app/images/PA-GSFA1.jpg",
+    "image": "https://61mzpm7grh.ucarecd.net/c1657a37-84c9-4a45-8113-71b14919ec3c/PA-GSFA1-1777368208202.jpg",
     "specs": {
       "ar": [
         {
@@ -7419,559 +7395,583 @@
       }
     },
     "createdAt": "2024-01-01T00:00:00.000Z",
-    "updatedAt": "2026-04-27T05:35:58.872Z"
+    "updatedAt": "2026-04-28T09:23:39.293Z"
   },
   {
-    "id": "PA-IMU-02",
-    "slug": "PA-IMU-02",
-    "image": "https://mmes-website-production.up.railway.app/images/PA-IMU-02D03D.jpg",
+    "id": "PA-GSAUTO",
+    "slug": "PA-GSAUTO",
+    "image": "https://61mzpm7grh.ucarecd.net/56d009b6-a296-4147-b342-36fa35285e93/PA-GSAUTO-1777368070210.jpg",
     "specs": {
       "ar": [
         {
-          "name": "وقت (أوقات) التفعيل",
-          "value": "≤1"
+          "name": "لفة/خطوة (1 σ)",
+          "value": "0. 1"
         },
         {
-          "name": "نطاق الجيروسكوب (درجة/ثانية)",
-          "value": "± 100-10800 (قابل للتخصيص)"
+          "name": "انحراف وضع نظام تحديد المواقع العالمي (GPS) خارج القفل (1 كم أو دقيقتان)",
+          "value": "2. 0"
         },
         {
-          "name": "الإزاحة الصفرية للدوران (درجة/ثانية)",
-          "value": "≤ ± 0.1 (عند 450 درجة/ثانية)"
+          "name": "انحراف اتجاه القفل المفقود لنظام تحديد المواقع العالمي (دقيقة واحدة)",
+          "value": "0. 15"
         },
         {
-          "name": "استقرار الانحياز الدوراني (درجة/ساعة)",
-          "value": "≤ 0.5 أو ≤ 0.2"
+          "name": "نطاق الجيروسكوب",
+          "value": "250 درجة/ثانية"
         },
         {
-          "name": "الجيروسكوب صفر إزاحة التكرار (درجة/ثانية)",
-          "value": "≤ 0.05 أو ≤ 0.02"
+          "name": "الجيروسكوب صفر إزاحة الاستقرار",
+          "value": "10 درجات/ساعة"
         },
         {
-          "name": "الدوران غير الخطي (جزء في المليون)",
-          "value": "≤ 500 أو ≤ 300"
+          "name": "إزاحة صفر درجة حرارة الدوران الكامل",
+          "value": "0.15 درجة/ثانية"
         },
         {
-          "name": "نطاق مقياس التسارع (جم)",
-          "value": "± 50 (قابل للتخصيص)"
+          "name": "عامل مقياس الجيروسكوب غير الخطي",
+          "value": "500 جزء في المليون"
         },
         {
-          "name": "مقياس التسارع صفر إزاحة (ملغ)",
-          "value": "≤ 5 أو ≤ 3"
+          "name": "عرض نطاق الجيروسكوب",
+          "value": "100 هرتز"
         },
         {
-          "name": "مقياس التسارع صفر التحيز الاستقرار (ملغ)",
-          "value": "≤ 0.5 أو ≤ 0.1"
+          "name": "نطاق مقياس التسارع",
+          "value": "± 2 جرام"
         },
         {
-          "name": "مقياس التسارع صفر الانحياز التكرار (ملغ)",
-          "value": "≤ 3 أو ≤ 1"
+          "name": "ثبات عدم الانحياز لمقياس التسارع",
+          "value": "0.2 ملغ"
         },
         {
-          "name": "الموثوقية (KH MTBF)",
-          "value": "10"
+          "name": "مقياس التسارع درجة الحرارة الكاملة صفر إزاحة",
+          "value": "2 ملغ"
         },
         {
-          "name": "مصدر الطاقة (V)",
-          "value": "DC9 -36"
+          "name": "عرض النطاق الترددي لمقياس التسارع",
+          "value": "100 هرتز"
         },
         {
-          "name": "استهلاك الطاقة (W @ 5V DC)",
-          "value": "≤ 0.8"
+          "name": "دقة موضع الملاحة عبر الأقمار الصناعية (RMS) - نقطة واحدة L1/L2",
+          "value": "1.2 مليون"
         },
         {
-          "name": "أرقام الواجهة الكهربائية",
-          "value": "RS422"
+          "name": "دقة موضع الملاحة عبر الأقمار الصناعية (RMS) - RTK",
+          "value": "2 سم + 1 جزء في المليون"
         },
         {
-          "name": "معدل تحديث البيانات (اختياري)",
-          "value": "200 (هرتز @ 460800)"
+          "name": "دقة سرعة الملاحة عبر الأقمار الصناعية (RMS)",
+          "value": "0.03 م/ث"
         },
         {
-          "name": "درجة حرارة التشغيل (درجة مئوية)",
-          "value": "-40 ~ +70"
+          "name": "دقة عنوان الملاحة عبر الأقمار الصناعية (RMS)",
+          "value": "0.2 درجة/م"
         },
         {
-          "name": "درجة حرارة التخزين (درجة مئوية)",
-          "value": "-55 ~ +85"
+          "name": "نطاق GPS للملاحة عبر الأقمار الصناعية",
+          "value": "L1, L2, L2C"
         },
         {
-          "name": "الاهتزاز (جم @ 20 ~ 2000 هرتز)",
-          "value": "6"
+          "name": "نطاق الملاحة عبر الأقمار الصناعية GLONASS",
+          "value": "L1, L2"
         },
         {
-          "name": "الصدمة (غرام، 0.5 مللي ثانية، 1/2 جيب)",
-          "value": "12000"
+          "name": "شريط Beidou للملاحة عبر الأقمار الصناعية",
+          "value": "B1, B2"
         },
         {
-          "name": "البعد المميز (ملم)",
-          "value": "40 × 40 × 26.7 مم"
+          "name": "جهد الإدخال",
+          "value": "9-36 فولت"
         },
         {
-          "name": "الوزن (جم)",
-          "value": "100"
+          "name": "تيار التشغيل",
+          "value": "0.35 أمبير"
+        },
+        {
+          "name": "نوع الواجهة",
+          "value": "RS422/RS232/CAN"
         }
       ],
       "en": [
         {
-          "name": "active %s",
-          "value": "≤1"
+          "name": "Roll/Pitch (1σ)",
+          "value": "1. 0"
         },
         {
-          "name": "Gyroscope Range (deg/s)",
-          "value": "± 100-10800 (customizable)"
+          "name": "GPS out of lock position drift (1km or 2min)",
+          "value": "0.2%"
         },
         {
-          "name": "Gyro Zero Offset (deg/s)",
-          "value": "≤ ± 0.1 (at 450°/s)"
+          "name": "GPS lost lock heading drift (1min)",
+          "value": "0.15"
         },
         {
-          "name": "Gyro bias stability (deg/h)",
-          "value": "≤ 0.5 or ≤ 0.2"
+          "name": "Gyroscope Range",
+          "value": "250°/s"
         },
         {
-          "name": "Gyro Zero Offset Repeatability (deg/s)",
-          "value": "≤ 0.05 or ≤ 0.02"
+          "name": "Gyro Zero Offset Stability",
+          "value": "10°/h"
         },
         {
-          "name": "Gyro Nonlinear (ppm)",
-          "value": "≤ 500 or ≤ 300"
+          "name": "Gyro Full Temperature Zero Offset",
+          "value": "0.15°/s"
         },
         {
-          "name": "Accelerometer Range (g)",
-          "value": "± 50 (customizable)"
+          "name": "Gyroscope Scale Factor Nonlinearity",
+          "value": "500ppm"
         },
         {
-          "name": "Accelerometer Zero Offset (mg)",
-          "value": "≤ 5 or ≤ 3"
+          "name": "Gyroscope bandwidth",
+          "value": "100Hz"
         },
         {
-          "name": "Accelerometer Zero Bias Stability (mg)",
-          "value": "≤ 0.5 or ≤ 0.1"
+          "name": "Accelerometer Range",
+          "value": "±2g"
         },
         {
-          "name": "Accelerometer Zero Bias Repeatability (mg)",
-          "value": "≤ 3 or ≤ 1"
+          "name": "Zero bias stability of the accelerometer",
+          "value": "0.2mg"
         },
         {
-          "name": "Reliability (Kh MTBF)",
-          "value": "10"
+          "name": "Accelerometer Full Temperature Zero Offset",
+          "value": "2mg"
         },
         {
-          "name": "Power Supply (V)",
-          "value": "DC9-36"
+          "name": "Accelerometer Bandwidth",
+          "value": "100Hz"
         },
         {
-          "name": "Power Consumption (W @ 5V DC)",
-          "value": "≤0.8"
+          "name": "Satellite Navigation Position Accuracy (RMS) - Single Point L1/L2",
+          "value": "1.2M"
         },
         {
-          "name": "Electrical Interface Numbers",
-          "value": "RS422"
+          "name": "Satellite Navigation Position Accuracy (RMS) - RTK",
+          "value": "2cm +1ppm"
         },
         {
-          "name": "Data update rate (optional)",
-          "value": "200 (Hz @ 460800)"
+          "name": "Satellite navigation speed accuracy (RMS)",
+          "value": "0.03 m/s"
         },
         {
-          "name": "Operating Temperature (°C)",
-          "value": "40-70"
+          "name": "Satellite navigation heading accuracy (RMS)",
+          "value": "0.2 m"
         },
         {
-          "name": "Storage Temperature (°C)",
-          "value": "-55～+85℃"
+          "name": "Satellite navigation GPS band",
+          "value": "L1, L2, L2C"
         },
         {
-          "name": "Vibration (g @ 20 ~ 2000 Hz)",
-          "value": "6"
+          "name": "Satellite navigation GLONASS band",
+          "value": "L1, L2"
         },
         {
-          "name": "Shock (g, 0.5 ms, 1/2 Sine)",
-          "value": "12000"
+          "name": "Satellite Navigation Beidou Band",
+          "value": "B1,B2"
         },
         {
-          "name": "Characteristic dimension (mm)",
-          "value": "40 × 40 × 26.7mm"
+          "name": "Input Voltage",
+          "value": "9-36V"
         },
         {
-          "name": "Weight (g)",
-          "value": "≤100"
+          "name": "Operating Current",
+          "value": "0.35A"
+        },
+        {
+          "name": "Interface Type",
+          "value": "RS422 / RS232 / CAN"
         }
       ],
       "fa": [
         {
-          "name": "زمان فعال‌سازی (ها)",
-          "value": "- 2 1 شديد"
+          "name": "رول/پیچ (1σ)",
+          "value": "۰/ ۱"
         },
         {
-          "name": "برد ژیروسکوپ (درجه بر ثانیه)",
-          "value": "±100-10800 (قابل تنظیم)"
+          "name": "تغییر مکان GPS پس از از دست دادن قفل (۱ کیلومتر یا ۲ دقیقه)",
+          "value": "۲/ ۰"
         },
         {
-          "name": "بایاس صفر ژیروسکوپ (درجه بر ثانیه)",
-          "value": "≤±0.1 (با سرعت ۴۵۰ درجه بر ثانیه)"
+          "name": "گم شدن مسیر توسط GPS و انحراف مسیر (۱ دقیقه)",
+          "value": "۰/ ۱۵"
         },
         {
-          "name": "پایداری ژیروسکوپ در حالت بایاس صفر (درجه بر ساعت)",
-          "value": "≤0.5 یا ≤0.2"
+          "name": "برد ژیروسکوپ",
+          "value": "۲۵۰ درجه بر ثانیه"
         },
         {
-          "name": "تکرارپذیری ژیروسکوپ در حالت بایاس صفر (درجه بر ثانیه)",
-          "value": "≤0.05 یا ≤0.02"
+          "name": "پایداری بایاس صفر ژیروسکوپ",
+          "value": "۱۰ درجه در ساعت"
         },
         {
-          "name": "غیرخطی بودن ژیروسکوپ (ppm)",
-          "value": "۵۰۰≤ یا ۳۰۰≤"
+          "name": "ژیروسکوپ با بایاس صفر در دمای کامل",
+          "value": "۰.۱۵ درجه بر ثانیه"
         },
         {
-          "name": "برد شتاب‌سنج (گرم)",
-          "value": "±50 (قابل تنظیم)"
+          "name": "غیرخطی بودن ضریب مقیاس‌بندی ژیروسکوپ",
+          "value": "۵۰۰ پی‌پی‌ام"
         },
         {
-          "name": "بایاس صفر شتاب‌سنج (میلی‌گرم)",
-          "value": "۵≤ یا ۳≤"
+          "name": "پهنای باند ژیروسکوپ",
+          "value": "۱۰۰ هرتز"
         },
         {
-          "name": "پایداری شتاب‌سنج در حالت بایاس صفر (میلی‌گرم)",
-          "value": "≤0.5 یا ≤0.1"
+          "name": "محدوده شتاب‌سنج",
+          "value": "±۲ گرم"
         },
         {
-          "name": "تکرارپذیری شتاب‌سنج در حالت بایاس صفر (میلی‌گرم)",
-          "value": "≤۳ یا ≤۱"
+          "name": "پایداری بایاس صفر شتاب‌سنج",
+          "value": "۰.۲ میلی‌گرم"
         },
         {
-          "name": "قابلیت اطمینان (میانگین زمان بین خرابی‌ها)",
-          "value": "10"
+          "name": "شتاب‌سنج با بایاس صفر در دمای کامل",
+          "value": "۲ میلی‌گرم"
         },
         {
-          "name": "منبع تغذیه (ولت)",
-          "value": "دی‌سی۹-۳۶"
+          "name": "پهنای باند شتاب‌سنج",
+          "value": "۱۰۰ هرتز"
         },
         {
-          "name": "مصرف برق (وات @ 5 ولت DC)",
-          "value": "≤0.8"
+          "name": "دقت موقعیت یابی ماهواره ای (RMS) - تک نقطه ای L1/L2",
+          "value": "۱.۲ متر"
         },
         {
-          "name": "رابط برق دیجیتال",
-          "value": "RS422"
+          "name": "دقت موقعیت‌یابی ناوبری ماهواره‌ای (RMS) - RTK",
+          "value": "2 سانتی‌متر + 1 پی‌پی‌ام"
         },
         {
-          "name": "نرخ به‌روزرسانی داده‌ها (قابل تنظیم)",
-          "value": "۲۰۰ (هرتز @ ۴۶۰۸۰۰)"
+          "name": "دقت سرعت ناوبری ماهواره‌ای (RMS)",
+          "value": "0.03 متر بر ثانیه"
         },
         {
-          "name": "دمای عملیاتی (°C)",
-          "value": "-40 ~ +70"
+          "name": "دقت جهت‌یابی ماهواره‌ای (RMS)",
+          "value": "0.2 درجه بر متر"
         },
         {
-          "name": "دمای نگهداری (°C)",
-          "value": "-55 ~ +85"
+          "name": "باند فرکانسی GPS",
+          "value": "L1، L2، L2C"
         },
         {
-          "name": "لرزش (g @ 20 ~ 2000 هرتز)",
-          "value": "0 2 1 تماس بگير ، روز خوش"
+          "name": "باند گلوناس برای ناوبری ماهواره‌ای",
+          "value": "L1، L2"
         },
         {
-          "name": "ضربه (g، 0.5 ms، 1/2 سینوس)",
-          "value": "۱۲۰۰۰"
+          "name": "باند فرکانسی ناوبری ماهواره BeiDou",
+          "value": "ب۱، ب۲"
         },
         {
-          "name": "ابعاد مشخصه (میلی‌متر)",
-          "value": "۴۰×۴۰×۲۶.۷ میلی‌متر"
+          "name": "ولتاژ ورودی",
+          "value": "۹-۳۶ ولت"
         },
         {
-          "name": "وزن (گرم)",
-          "value": "- 100."
+          "name": "جریان عملیاتی",
+          "value": "0.35 آمپر"
+        },
+        {
+          "name": "نوع رابط",
+          "value": "RS422 / RS232 / CAN"
         }
       ],
       "la": [
         {
-          "name": "Activation time (s)",
+          "name": "Roll/Pitch (1σ)",
           "value": "Unus"
         },
         {
-          "name": "Rangee Gyroscope (deg/s)",
-          "value": "± 100-10800 (customizable)"
+          "name": "GPS alc mihidy positione drift (1km or 2min)",
+          "value": "Duo"
         },
         {
-          "name": "Gyro Zero Offset (deg/s)",
-          "value": "≤ ± 0.1 (at 450°/s)"
+          "name": "GPS perdigulo aestimus (1min)",
+          "value": "0.15°"
         },
         {
-          "name": "Datum Gyro bias (deg/h)",
-          "value": "≤ 0.5 vel ≤ 0.2"
+          "name": "Range de Gyroscope",
+          "value": "250°/s"
         },
         {
-          "name": "Gyro aero Offset Repeatability (deg/s)",
-          "value": "≤ 0.05 vel ≤ 0.02"
+          "name": "Gyro Zero Stabilis",
+          "value": "10°/h"
         },
         {
-          "name": "Gyro Nonlinearis (PPM)",
-          "value": "≤ 500 vel ≤ 300"
+          "name": "Gyro Full Temperature Zero Offset",
+          "value": "0.15°/s"
         },
         {
-          "name": "Range de Accelerometer (g)",
-          "value": "± 50 (customizable)"
+          "name": "Nullam Gyroscope Scale Factor Nonlinearity",
+          "value": "500ppm"
         },
         {
-          "name": "Accelerometer Zero Offset (mg)",
-          "value": "≤ 5 or ≤ 3"
+          "name": "bandwidth Gyroscope",
+          "value": "100Hz"
         },
         {
-          "name": "Accelerometer Zero Bias Stability (mg)",
-          "value": "≤ 0.5 vel ≤ 0.1"
+          "name": "Rangeus acelerometer",
+          "value": "± 2g"
         },
         {
-          "name": "Accelerometer Zero Repeatability (mg)",
-          "value": "≤ 3 or ≤ 1"
+          "name": "Zero bias stability del accelerometer",
+          "value": "0.2mg."
         },
         {
-          "name": "Reliability (Kh MTBF)",
-          "value": "Decem"
+          "name": "Accelerometer Full Temperature Zero Offset",
+          "value": "2mg"
         },
         {
-          "name": "POWER APECTUM (V)",
-          "value": "DC9-36"
+          "name": "Bandwidth acelerometer",
+          "value": "100Hz"
         },
         {
-          "name": "Consumptione potest (W @ 5V DC)",
-          "value": "≤ 0.8"
+          "name": "Satellite Navigation Position Accuracy (RMS) - Single Point L1/L2",
+          "value": "1.2m"
         },
         {
-          "name": "Nomerika Interface electrium",
-          "value": "RS422"
+          "name": "Satellite Navigation Position Accuracy (RMS) - RTK",
+          "value": "2cm + 1ppm"
         },
         {
-          "name": "Próximo tabularium (optionalis)",
-          "value": "200 (Hz @ 460800)"
+          "name": "Satellite navigation speed accuracy (RMS)",
+          "value": "0.03 m/s"
         },
         {
-          "name": "Imperium exemplarum (° C)",
-          "value": "-40 ~ +70"
+          "name": "QUAE SERVITATION DIRECTIONAL (RMS)",
+          "value": "0.2°/m"
         },
         {
-          "name": "Storage Temperature (° C)",
-          "value": "-55 ~ +85"
+          "name": "Satellite navigation GPS band",
+          "value": "L1, L2, L2C"
         },
         {
-          "name": "Vibration (g @ 20 ~ 2000 Hz)",
-          "value": "6"
+          "name": "GLONASS bandis Satellite Navigationis",
+          "value": "L1, L2"
         },
         {
-          "name": "Shock (g, 0.5 ms, 1/2 Sinus)",
-          "value": "12000"
+          "name": "Band Beidou Satellite Navigation",
+          "value": "B1, B2"
         },
         {
-          "name": "Characteristic dimensionis (mm)",
-          "value": "40 × 40 × 26.7mm"
+          "name": "Vulerum INTERNATION",
+          "value": "9-36V"
         },
         {
-          "name": "Weight (g)",
-          "value": "Centum"
+          "name": "QUITI CURRENTIS QUA",
+          "value": "0.35 A"
+        },
+        {
+          "name": "Interface type",
+          "value": "RS422/RS232/can"
         }
       ],
       "ru": [
         {
-          "name": "Время активации (с)",
-          "value": "≤1"
+          "name": "Крен/шаг (1σ)",
+          "value": "0.1°"
         },
         {
-          "name": "Диапазон гироскопа (град/с)",
-          "value": "± 100-10800 (настраивается)"
+          "name": "Дрейф положения GPS вне замка (1 км или 2 минуты)",
+          "value": "0.2%"
         },
         {
-          "name": "Смещение нуля гироскопа (град/с)",
-          "value": "≤ ± 0,1 (при 450°/с)"
+          "name": "GPS потерянный дрейф курса блокировки (1 мин)",
+          "value": "0.15°"
         },
         {
-          "name": "Стабильность гироскопического смещения (град/ч)",
-          "value": "≤ 0,5 или ≤ 0,2"
+          "name": "Диапазон гироскопа",
+          "value": "250°/s"
         },
         {
-          "name": "Повторяемость смещения нуля гироскопа (град/с)",
-          "value": "≤ 0,05 или ≤ 0,02"
+          "name": "Стабильность смещения нуля гироскопа",
+          "value": "10°/ч"
         },
         {
-          "name": "Нелинейный гироскоп (ч./млн.)",
-          "value": "≤ 500 или ≤ 300"
+          "name": "Смещение нуля полной температуры гироскопа",
+          "value": "0,15°/с"
         },
         {
-          "name": "Диапазон акселерометра (г)",
-          "value": "± 50 (настраивается)"
+          "name": "Нелинейность масштабного коэффициента гироскопа",
+          "value": "500 ppm"
         },
         {
-          "name": "Смещение нуля акселерометра (мг)",
-          "value": "≤ 5 или ≤ 3"
+          "name": "Полоса пропускания гироскопа",
+          "value": "100 Гц"
         },
         {
-          "name": "Стабильность нулевого смещения акселерометра (мг)",
-          "value": "≤ 0,5 или ≤ 0,1"
+          "name": "Диапазон акселерометра",
+          "value": "±2g"
         },
         {
-          "name": "Повторяемость нулевого смещения акселерометра (мг)",
-          "value": "≤ 3 или ≤ 1"
+          "name": "Стабильность нулевого смещения акселерометра",
+          "value": "0,2 мг"
         },
         {
-          "name": "Надежность (Kh MTBF)",
-          "value": "10"
+          "name": "Смещение нуля полной температуры акселерометра",
+          "value": "2 мг"
         },
         {
-          "name": "Источник питания (В)",
-          "value": "DC9-36"
+          "name": "Полоса пропускания акселерометра",
+          "value": "100 Гц"
         },
         {
-          "name": "Потребляемая мощность (Вт при 5 В постоянного тока)",
-          "value": "≤0.8"
+          "name": "Точность спутниковой навигации (RMS) - одноточечная L1/L2",
+          "value": "1,2 м"
         },
         {
-          "name": "Номера электрических интерфейсов",
-          "value": "RS422"
+          "name": "Точность спутниковой навигации (RMS) - RTK",
+          "value": "2 см +1 ч./млн."
         },
         {
-          "name": "Частота обновления данных (необязательно)",
-          "value": "200 (Гц при 460800)"
+          "name": "Точность скорости спутниковой навигации (RMS)",
+          "value": "0,03 м/с"
         },
         {
-          "name": "Рабочая температура (°C)",
-          "value": "-40–70"
+          "name": "Точность курса спутниковой навигации (RMS)",
+          "value": "0,2°/м"
         },
         {
-          "name": "Температура хранения (°C)",
-          "value": "-55 ~ +85"
+          "name": "Спутниковый навигационный GPS-диапазон",
+          "value": "L1, L2, L2C"
         },
         {
-          "name": "Вибрация (g при 20 ~ 2000 Гц)",
-          "value": "6"
+          "name": "Спутниковая навигация полоса ГЛОНАСС",
+          "value": "L1, L2"
         },
         {
-          "name": "Удар (г, 0,5 мс, 1/2 синуса)",
-          "value": "12000"
+          "name": "Спутниковая навигация Beidou Band",
+          "value": "B1, B2"
         },
         {
-          "name": "Нормативный размер (мм)",
-          "value": "40 × 40 × 26,7 мм"
+          "name": "Входное напряжение",
+          "value": "9-36 В"
         },
         {
-          "name": "Вес (г)",
-          "value": "≤100"
+          "name": "Рабочий ток:",
+          "value": "0.35A"
+        },
+        {
+          "name": "Тип интерфейса",
+          "value": "RS422/RS232/CAN"
         }
       ],
       "zh": [
         {
-          "name": "激活时间 (s)",
-          "value": "≤1"
+          "name": "横滚/俯仰 (1σ)",
+          "value": "0.1°"
         },
         {
-          "name": "陀螺仪量程 (deg/s)",
-          "value": "±100-10800 (可定制)"
+          "name": "GPS失锁位置漂移 (1km或2min)",
+          "value": "0.2%"
         },
         {
-          "name": "陀螺仪零偏 (deg/s)",
-          "value": "≤±0.1 (在450°/s)"
+          "name": "GPS失锁航向漂移 (1min)",
+          "value": "0.15°"
         },
         {
-          "name": "陀螺仪零偏稳定性 (deg/h)",
-          "value": "≤0.5 或者 ≤0.2"
+          "name": "陀螺仪量程",
+          "value": "250°/s"
         },
         {
-          "name": "陀螺仪零偏重复性 (deg/s)",
-          "value": "≤0.05 或者 ≤0.02"
+          "name": "陀螺仪零偏稳定性",
+          "value": "10°/h"
         },
         {
-          "name": "陀螺仪非线性 (ppm)",
-          "value": "≤500 或者 ≤300"
+          "name": "陀螺仪全温零偏",
+          "value": "0.15°/s"
         },
         {
-          "name": "加速度计量程 (g)",
-          "value": "±50 (可定制)"
+          "name": "陀螺仪标度因素非线性",
+          "value": "500ppm"
         },
         {
-          "name": "加速度计零偏 (mg)",
-          "value": "≤5 或者 ≤3"
+          "name": "陀螺仪带宽",
+          "value": "100Hz"
         },
         {
-          "name": "加速度计零偏稳定性 (mg)",
-          "value": "≤0.5 或者≤0.1"
+          "name": "加速度计量程",
+          "value": "±2g"
         },
         {
-          "name": "加速度计零偏重复性 (mg)",
-          "value": "≤3 或者 ≤1"
+          "name": "加速度计零偏稳定性",
+          "value": "0.2mg"
         },
         {
-          "name": "可靠性 (Kh MTBF)",
-          "value": "10"
+          "name": "加速度计全温零偏",
+          "value": "2mg"
         },
         {
-          "name": "电源 (V)",
-          "value": "DC9-36"
+          "name": "加速度计带宽",
+          "value": "100Hz"
         },
         {
-          "name": "功耗 (W @5V DC)",
-          "value": "≤0.8"
+          "name": "卫星导航位置精度 (RMS) - 单点L1/L2",
+          "value": "1.2m"
         },
         {
-          "name": "电气接口数字",
-          "value": "RS422"
+          "name": "卫星导航位置精度 (RMS) - RTK",
+          "value": "2cm+1ppm"
         },
         {
-          "name": "数据更新率 (可设)",
-          "value": "200 (Hz@460800)"
+          "name": "卫星导航速度精度 (RMS)",
+          "value": "0.03m/s"
         },
         {
-          "name": "工作温度 (°C)",
-          "value": "-40~+70"
+          "name": "卫星导航航向精度 (RMS)",
+          "value": "0.2°/m"
         },
         {
-          "name": "存储温度 (°C)",
-          "value": "-55~+85"
+          "name": "卫星导航GPS频段",
+          "value": "L1, L2, L2C"
         },
         {
-          "name": "振动 (g @ 20~2000 Hz)",
-          "value": "6"
+          "name": "卫星导航GLONASS频段",
+          "value": "L1, L2"
         },
         {
-          "name": "冲击 (g, 0.5 ms, 1/2 Sine)",
-          "value": "12000"
+          "name": "卫星导航北斗频段",
+          "value": "B1, B2"
         },
         {
-          "name": "特性尺寸 (mm)",
-          "value": "40×40×26.7mm"
+          "name": "输入电压",
+          "value": "9-36V"
         },
         {
-          "name": "重量 (g)",
-          "value": "≤100"
+          "name": "工作电流",
+          "value": "0.35A"
+        },
+        {
+          "name": "接口类型",
+          "value": "RS422 / RS232 / CAN"
         }
       ]
     },
     "published": true,
     "content": {
       "ar": {
-        "name": "وحدة قياس قصور ذات دقة عالية PA - IMU -02D/03D",
-        "description": "PA - IMU -02D/03d هو جهاز قياس بالقصور الذاتي محلي بالكامل وعالي الأداء وصغير الحجم وعالي المقاومة للحمل الزائد يمكن استخدامه للملاحة الدقيقة والتحكم والقياس الديناميكي للأسلحة. تستخدم هذه السلسلة من المنتجات أجهزة القصور الذاتي MEMS المحلية بالكامل مع موثوقية عالية وقوة عالية، والتي لا يزال بإمكانها قياس السرعة الزاوية ومعلومات التسارع بدقة للناقل المتحرك في ظل البيئات القاسية، ويمكن أن توفر معلومات موقف موثوقة. يتميز PA - IMU -02D/03D بنطاق درجة حرارة تشغيل واسع، وعرض نطاق ترددي واسع، وحجم صغير، وبدء تشغيل سريع، ودقة عالية، والمزيد. يمكن استخدامه على نطاق واسع في التوجيه والتحكم الدقيق في الأسلحة، والتحكم في المعدات الهندسية، واستقرار المنصة، وروبوتات خطوط الأنابيب، والمركبات تحت الماء وغيرها من الأنظمة."
+        "name": "نظام تحديد المواقع المدمج متعدد الإشارات القائم على الملاحة PA - SAUTO",
+        "description": "PA - GSAUTO، وهو نظام تحديد المواقع متعدد الإشارات لمركبات الانصهار يعتمد على تقنية الملاحة المتكاملة، وهو نظام ملاحة وتحديد المواقع يعتمد على تقنية القصور الذاتي، والذي يدمج نظام تحديد المواقع التفاضلي ويدعم RTK مع أداء عالي التكلفة للغاية. يدمج النظام معلومات مثل مقياس سرعة دوران السيارة، وركن عجلة القيادة، وما إلى ذلك. يمكن أن يوفر للسيارة معلومات عن جميع الأحوال الجوية والوضعية والمسار والموقع وغيرها من المعلومات في أي سيناريو. يمكن أن يتطابق النظام مع نظام ليدار للسيارة في الوقت الفعلي، مما يوفر ضمانًا نشطًا للسلامة للسيارة في حالة القيادة بدون طيار."
       },
       "en": {
-        "name": "High precision inertial measurement unit PA-IMU-02D/03D",
-        "description": "The PA-IMU-02D/03d is a fully domestic, high-performance, small-volume, high overload-resistant inertial measurement device that can be used for accurate navigation, control, and dynamic measurement of weapons. This series of products uses fully domestic MEMS inertial devices with high reliability and high robustness, which can still accurately measure the angular velocity and acceleration information of the moving carrier under harsh environments, and can provide reliable attitude information. PA-IMU-02D/03D features a wide operating temperature range, wide bandwidth, small size, fast startup, high accuracy, and more. It can be widely used in weapons precision guidance and control, engineering equipment control, platform stability, pipeline robots, underwater vehicles and other systems."
+        "name": "Integrated navigation-based multi-signal fusion vehicle positioning system PA-GSAUTO",
+        "description": "PA-GSAUTO, a multi-signal fusion vehicle positioning system based on integrated navigation technology, is a navigation and positioning system based on inertial technology, which integrates differential GPS and supports RTK with extremely high cost performance. The system integrates information such as the vehicle's tachometer, steering wheel corner, etc. It can provide the vehicle with all-weather, posture, trajectory, location and other information in any scenario. The system can match the lidar system of the vehicle in real time, providing active safety guarantee for the vehicle in the case of unmanned driving."
       },
       "fa": {
-        "name": "واحد اندازه‌گیری اینرسی با دقت بالا PA-IMU-02D/03D",
-        "description": "PA-IMU-02D/03D یک واحد اندازه‌گیری اینرسی (IMU) کاملاً تولید داخل، با کارایی بالا، جمع و جور و مقاوم در برابر اضافه بار بالا برای ناوبری دقیق سلاح، کنترل و اندازه‌گیری دینامیکی است. این سری از دستگاه‌های اینرسی MEMS تولید داخل استفاده می‌کند که قابلیت اطمینان و استحکام بالایی را نشان می‌دهد. حتی در محیط‌های سخت، می‌تواند سرعت زاویه‌ای و شتاب وسایل نقلیه در حال حرکت را به طور دقیق اندازه‌گیری کرده و اطلاعات وضعیت قابل اعتمادی را ارائه دهد. PA-IMU-02D/03D دارای محدوده دمای عملیاتی گسترده، پهنای باند وسیع، اندازه کوچک، راه‌اندازی سریع و دقت بالا است. این واحد می‌تواند به طور گسترده در هدایت و کنترل دقیق سلاح، کنترل تجهیزات مهندسی، تثبیت سکو، ربات‌های خط لوله، وسایل نقلیه زیر آب و سایر سیستم‌ها مورد استفاده قرار گیرد."
+        "name": "PA-GSAUTO، یک سیستم موقعیت‌یابی خودرو با ادغام چند سیگنال مبتنی بر ناوبری یکپارچه",
+        "description": "PA-GSAUTO، یک سیستم موقعیت‌یابی خودرو با فیوژن چند سیگنالی مبتنی بر فناوری ناوبری یکپارچه، یک سیستم ناوبری و موقعیت‌یابی مقرون‌به‌صرفه است که فناوری اینرسی، GPS تفاضلی و پشتیبانی RTK را ادغام می‌کند. این سیستم اطلاعاتی مانند خوانش سرعت‌سنج چرخ و زوایای فرمان را در بر می‌گیرد و اطلاعات مربوط به وضعیت، مسیر و موقعیت خودرو را در تمام شرایط آب و هوایی و هر سناریویی در اختیار خودرو قرار می‌دهد. این سیستم همچنین می‌تواند به صورت بلادرنگ با سیستم LiDAR خودرو ادغام شود و تضمین ایمنی فعال را در سناریوهای رانندگی خودکار فراهم کند."
       },
       "la": {
-        "name": "High precision inertialis measurement unit PA-IMU -02D/03D",
-        "description": "PA-IMU-02D/03d est aequalis domestic, high-fampisehoana, small-bolume, inertialis overloadis resistant device that can be used for accurate navigation, control, and dynamic measurement of weapons. This series of products uses fully domestic MEMS inertial devices with high trustiability and high robustibus, quia لاهم үнэн зөв کولی شي velocity angularis et acceleration information of the move carrier under hard environments, and can provide reliable attitude information. PA-IMU-02D/03D dia manasongadina ny mari-pana malalaka, wide bandwidth, small size, startup fast, high accuracy, et more. It be used in weapons precision guidance and control, engineering equipment control, platform stability, pipeline robots, inwater vehicles and ali system."
+        "name": "Integrated navigation-based multisignal fusion car positioning system PA-GSAUTO",
+        "description": "PA-GSAUTO, systema multius Signal fusion car positioning based on Integrated navigation technology, is un navigation and positioning system based in inertial technology, which integrates differential GPS and supports RTK with extremely high cost performance. Systema informationes integrate such as the car's tachometer, steering wheel corner, etc. Potestate autem car with all-weather, posture, trajectory, location et alia informationes in aliquo scenario. Systema autem consecutum lidar systemum car in tempore rerum, civitatis security pro caritatis in case de unmannedu."
       },
       "ru": {
-        "name": "Высокоточный инерциальный измерительный блок PA-IMU-02D/03D",
-        "description": "PA-IMU-02D/03D - это полностью отечественный, высокопроизводительный, малообъемный, устойчивый к высоким перегрузкам инерциальный измерительный прибор, который может использоваться для точной навигации, управления и динамического измерения оружия. В этой серии продуктов используются полностью отечественные инерциальные устройства MEMS с высокой надежностью и высокой прочностью, которые все еще могут точно измерять информацию об угловой скорости и ускорении движущегося носителя в суровых условиях и могут предоставлять надежную информацию об ориентации. PA-IMU-02D/03D имеет широкий диапазон рабочих температур, широкую полосу пропускания, небольшой размер, быстрый запуск, высокую точность и многое другое. Он может широко использоваться в высокоточном наведении и управлении оружием, управлении инженерным оборудованием, устойчивости платформы, трубопроводных роботах, подводных аппаратах и других системах."
+        "name": "Интегрированная навигационная МНОГОСИГНАЛЬНАЯ система позиционирования транспортного средства PA-GSAUTO",
+        "description": "PA-GSAUTO, многосигнальная система позиционирования транспортного средства, основанная на интегрированной навигационной технологии, представляет собой систему навигации и позиционирования, основанную на инерциальной технологии, которая интегрирует дифференциальный GPS и поддерживает RTK с чрезвычайно высокой стоимостью. Система интегрирует такую информацию, как тахометр автомобиля, угол рулевого колеса и т. д. Он может предоставить транспортному средству всепогодную информацию, информацию о позе, траектории, местоположении и другую информацию в любом сценарии. Система может соответствовать лидарной системе транспортного средства в режиме реального времени, обеспечивая активную гарантию безопасности транспортного средства в случае беспилотного вождения."
       },
       "zh": {
-        "name": "高精度惯性测量单元 PA-IMU-02D/03D",
-        "description": "PA-IMU-02D/03D是一款完全国产化的高性能、小体积、耐高过载的惯性 测量设备,可用于武器的精确导航、控制和动态测量。此系列产品采用完全国 产化的MEMS惯性器件,具有高可靠性和高坚固性,在恶劣环境下仍能精密的 测量运动载体的角速度和加速度信息,并能提供可靠的姿态信息。 PA-IMU-02D/03D具有宽的工作温度范围、宽的带宽、小体积、快速 启 动、精度高等特点。它可广泛用于武器精确制导与控制、工程装备控制、平台 稳定、管道机器人、水下航行器等系统。"
+        "name": "基于组合导航的多信号 融合车辆定位系统 PA-GSAUTO",
+        "description": "基于组合导航技术的多信号融合车辆定位系统PA-GSAUTO,是一款基于 惯性技术,融合了差分GPS,支持RTK的性价比极高的导航定位系统。该系统 融合了车辆的轮速计、方向盘转角等信息。可以为车辆提供全天候、任意场景 下的姿态、轨迹、位置等信息。该系统可以实时匹配车辆的激光雷达系统,为 车辆提供无人驾驶情况下的主动安全保障。"
       }
     },
     "createdAt": "2024-01-01T00:00:00.000Z",
-    "updatedAt": "2026-04-27T05:40:30.970Z"
+    "updatedAt": "2026-04-28T09:21:24.630Z"
   },
   {
     "id": "PA-ARG",
