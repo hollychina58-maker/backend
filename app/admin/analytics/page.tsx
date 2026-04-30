@@ -1,175 +1,101 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState, useCallback } from 'react';
 import { AdminHeader } from '../../../components/AdminHeader';
-
-interface Stats {
-  totalViews: number;
-  uniqueVisitors: number;
-  viewsByDay: { date: string; views: number }[];
-  topProducts: { product_id: string; clicks: number }[];
-  topCountries: { country: string; views: number }[];
-  topPages: { page_url: string; views: number }[];
-}
-
-interface StatsResponse {
-  success: boolean;
-  data?: Stats;
-  error?: string;
-}
+import { useAnalyticsData } from './hooks/useAnalyticsData';
+import { StatsCards } from './components/StatsCards';
+import { TrendLineChart } from './components/TrendLineChart';
+import { WorldMapChart } from './components/WorldMapChart';
+import { TopCountriesTable } from './components/TopCountriesTable';
+import { ReferrerChart } from './components/ReferrerChart';
+import { CountryDetailModal } from './components/CountryDetailModal';
 
 export default function AnalyticsPage() {
-  const [stats, setStats] = useState<Stats | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
-  const [days, setDays] = useState('30');
+  const [days, setDays] = useState(30);
+  const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
+  const {
+    stats,
+    loading,
+    error,
+    lastUpdated,
+    refresh,
+    countryDetail,
+    fetchCountryDetail,
+    countryLoading
+  } = useAnalyticsData(days);
 
-  useEffect(() => {
-    async function fetchStats() {
-      try {
-        const res = await fetch(`/api/analytics/stats?days=${days}`);
+  const handleCountryClick = useCallback((country: string) => {
+    setSelectedCountry(country);
+    fetchCountryDetail(country);
+  }, [fetchCountryDetail]);
 
-        // Check response status before attempting to parse JSON
-        if (!res.ok) {
-          let errorDetail = `HTTP ${res.status}: ${res.statusText}`;
-          try {
-            const errorData = await res.json();
-            if (errorData.error) {
-              errorDetail = errorData.error;
-            }
-          } catch {
-            // Response body might be empty or not JSON
-          }
-          setError(`加载失败: ${errorDetail}`);
-          setLoading(false);
-          return;
-        }
-
-        // Check Content-Type to ensure we get JSON
-        const contentType = res.headers.get('content-type');
-        if (!contentType || !contentType.includes('application/json')) {
-          const text = await res.text();
-          console.error('[Analytics Admin] Non-JSON response:', text.substring(0, 500));
-          setError('服务器返回了无效响应');
-          setLoading(false);
-          return;
-        }
-
-        const data: StatsResponse = await res.json();
-
-        if (data.success && data.data) {
-          setStats(data.data);
-          setError('');
-        } else {
-          setError(data.error || '获取统计数据失败');
-        }
-      } catch (err) {
-        console.error('[Analytics Admin] Fetch error:', err);
-        setError('网络错误');
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchStats();
-  }, [days]);
+  const handleCloseModal = useCallback(() => {
+    setSelectedCountry(null);
+  }, []);
 
   return (
     <>
-      <AdminHeader title="访问统计" />
-      <div className="p-6">
-        <div className="mb-6 flex items-center gap-4">
-          <label className="text-sm font-medium text-slate-700 dark:text-slate-300">
-            时间范围:
-          </label>
-          <select
-            value={days}
-            onChange={(e) => setDays(e.target.value)}
-            className="px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-slate-900 dark:text-white"
-          >
-            <option value="7">最近7天</option>
-            <option value="30">最近30天</option>
-            <option value="90">最近90天</option>
-          </select>
-        </div>
+      <AdminHeader title="数据分析" />
+      <div className="p-6 min-h-screen bg-slate-900/30">
+        {/* Stats Cards with Refresh */}
+        <StatsCards
+          totalViews={stats?.totalViews || 0}
+          uniqueVisitors={stats?.uniqueVisitors || 0}
+          avgDailyViews={stats && stats.viewsByDay.length > 0 ? Math.round(stats.totalViews / stats.viewsByDay.length) : 0}
+          lastUpdated={lastUpdated}
+          onRefresh={refresh}
+        />
 
-        {loading ? (
-          <div className="flex items-center justify-center py-12">
-            <div className="animate-spin w-8 h-8 border-4 border-[#0066ff] border-t-transparent rounded-full" />
-          </div>
-        ) : error ? (
-          <div className="p-4 rounded-lg bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400">
+        {/* Error State */}
+        {error && (
+          <div className="mb-6 p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400">
             {error}
+          </div>
+        )}
+
+        {/* Loading State */}
+        {loading && !stats ? (
+          <div className="flex items-center justify-center py-20">
+            <div className="animate-spin w-10 h-10 border-3 border-blue-500 border-t-transparent rounded-full" />
           </div>
         ) : stats ? (
           <>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6">
-                <p className="text-sm text-slate-500 dark:text-slate-400 mb-1">总访问量</p>
-                <p className="text-3xl font-bold text-slate-900 dark:text-white">{stats.totalViews.toLocaleString()}</p>
+            {/* Top Row: Trend Chart + Referrer Chart */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+              <div className="lg:col-span-2">
+                <TrendLineChart data={stats.viewsByDay} />
               </div>
-              <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6">
-                <p className="text-sm text-slate-500 dark:text-slate-400 mb-1">独立访客</p>
-                <p className="text-3xl font-bold text-slate-900 dark:text-white">{stats.uniqueVisitors.toLocaleString()}</p>
-              </div>
-              <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6">
-                <p className="text-sm text-slate-500 dark:text-slate-400 mb-1">平均每日访问</p>
-                <p className="text-3xl font-bold text-slate-900 dark:text-white">
-                  {Math.round(stats.totalViews / parseInt(days, 10))}
-                </p>
+              <div>
+                <ReferrerChart data={stats.referrers} />
               </div>
             </div>
 
-            <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 mb-6">
-              <h2 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">热门产品</h2>
-              {stats.topProducts.length > 0 ? (
-                <div className="space-y-2">
-                  {stats.topProducts.map((product) => (
-                    <div key={product.product_id} className="flex items-center justify-between py-2 border-b border-slate-100 dark:border-slate-700 last:border-0">
-                      <span className="text-slate-700 dark:text-slate-300">{product.product_id}</span>
-                      <span className="text-[#0066ff] font-medium">{product.clicks} 次点击</span>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <p className="text-slate-500 dark:text-slate-400">暂无数据</p>
-              )}
-            </div>
-
-            <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 mb-6">
-              <h2 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">访客国家分布</h2>
-              {stats.topCountries.length > 0 ? (
-                <div className="space-y-2">
-                  {stats.topCountries.map((country) => (
-                    <div key={country.country} className="flex items-center justify-between py-2 border-b border-slate-100 dark:border-slate-700 last:border-0">
-                      <span className="text-slate-700 dark:text-slate-300">{country.country || 'Unknown'}</span>
-                      <span className="text-[#0066ff] font-medium">{country.views} 次访问</span>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <p className="text-slate-500 dark:text-slate-400">暂无数据</p>
-              )}
-            </div>
-
-            <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6">
-              <h2 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">热门页面</h2>
-              {stats.topPages.length > 0 ? (
-                <div className="space-y-2">
-                  {stats.topPages.map((page) => (
-                    <div key={page.page_url} className="flex items-center justify-between py-2 border-b border-slate-100 dark:border-slate-700 last:border-0">
-                      <span className="text-slate-700 dark:text-slate-300 truncate max-w-md">{page.page_url}</span>
-                      <span className="text-[#0066ff] font-medium ml-4">{page.views} 次访问</span>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <p className="text-slate-500 dark:text-slate-400">暂无数据</p>
-              )}
+            {/* Middle Row: World Map + Country Table */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+              <div className="lg:col-span-2">
+                <WorldMapChart
+                  data={stats.topCountries}
+                  onCountryClick={handleCountryClick}
+                />
+              </div>
+              <div>
+                <TopCountriesTable
+                  data={stats.topCountries}
+                  onCountryClick={handleCountryClick}
+                />
+              </div>
             </div>
           </>
         ) : null}
       </div>
+
+      {/* Country Detail Modal */}
+      <CountryDetailModal
+        country={selectedCountry || ''}
+        data={countryDetail}
+        loading={countryLoading}
+        onClose={handleCloseModal}
+      />
     </>
   );
 }
