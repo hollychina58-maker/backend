@@ -3,6 +3,28 @@
 import { MapPin } from 'lucide-react';
 import type { CountryStats } from '../types/analytics';
 
+// Code to name mapping
+const COUNTRY_CODE_TO_NAME: Record<string, string> = {
+  'CN': 'China', 'US': 'United States', 'DE': 'Germany', 'FR': 'France',
+  'GB': 'United Kingdom', 'JP': 'Japan', 'KR': 'South Korea', 'IN': 'India',
+  'BR': 'Brazil', 'RU': 'Russia', 'CA': 'Canada', 'AU': 'Australia',
+  'IT': 'Italy', 'ES': 'Spain', 'MX': 'Mexico', 'ID': 'Indonesia',
+  'TR': 'Turkey', 'SA': 'Saudi Arabia', 'TH': 'Thailand', 'VN': 'Vietnam',
+  'NL': 'Netherlands', 'PL': 'Poland', 'SE': 'Sweden', 'NO': 'Norway',
+  'FI': 'Finland', 'DK': 'Denmark', 'CH': 'Switzerland', 'AT': 'Austria',
+  'BE': 'Belgium', 'IE': 'Ireland', 'PT': 'Portugal', 'GR': 'Greece',
+  'CZ': 'Czech Republic', 'HU': 'Hungary', 'RO': 'Romania', 'UA': 'Ukraine',
+  'EG': 'Egypt', 'ZA': 'South Africa', 'NG': 'Nigeria', 'KE': 'Kenya',
+  'AR': 'Argentina', 'CL': 'Chile', 'CO': 'Colombia', 'PE': 'Peru',
+  'VE': 'Venezuela', 'EC': 'Ecuador', 'UY': 'Uruguay', 'PA': 'Panama',
+  'CR': 'Costa Rica', 'PH': 'Philippines', 'MY': 'Malaysia', 'SG': 'Singapore',
+  'PK': 'Pakistan', 'BD': 'Bangladesh', 'LK': 'Sri Lanka', 'NP': 'Nepal',
+  'AE': 'United Arab Emirates', 'IL': 'Israel', 'IR': 'Iran', 'IQ': 'Iraq',
+  'KW': 'Kuwait', 'QA': 'Qatar', 'BH': 'Bahrain', 'OM': 'Oman',
+  'JO': 'Jordan', 'LB': 'Lebanon', 'SY': 'Syria', 'NZ': 'New Zealand',
+  'HK': 'Hong Kong', 'TW': 'Taiwan',
+};
+
 interface TopCountriesTableProps {
   data: CountryStats[];
   onCountryClick: (country: string) => void;
@@ -29,7 +51,7 @@ export function TopCountriesTable({ data, onCountryClick }: TopCountriesTablePro
                     <span className="text-sm text-slate-500 w-6">{index + 1}</span>
                     <MapPin className="w-4 h-4 text-slate-400" />
                     <span className="text-sm text-white font-medium group-hover:text-blue-400 transition-colors">
-                      {country.country}
+                      {COUNTRY_CODE_TO_NAME[country.country] || country.country}
                     </span>
                   </div>
                   <span className="text-sm text-blue-400 font-medium">

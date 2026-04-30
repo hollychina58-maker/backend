@@ -9,79 +9,32 @@ interface WorldMapChartProps {
   onCountryClick: (country: string) => void;
 }
 
-// Country name mapping to ECharts geo names
-const COUNTRY_NAME_MAP: Record<string, string> = {
-  'CN': 'China',
-  'US': 'United States',
-  'DE': 'Germany',
-  'FR': 'France',
-  'GB': 'United Kingdom',
-  'JP': 'Japan',
-  'KR': 'South Korea',
-  'IN': 'India',
-  'BR': 'Brazil',
-  'RU': 'Russia',
-  'CA': 'Canada',
-  'AU': 'Australia',
-  'IT': 'Italy',
-  'ES': 'Spain',
-  'MX': 'Mexico',
-  'ID': 'Indonesia',
-  'TR': 'Turkey',
-  'SA': 'Saudi Arabia',
-  'TH': 'Thailand',
-  'VN': 'Vietnam',
-  'NL': 'Netherlands',
-  'PL': 'Poland',
-  'SE': 'Sweden',
-  'NO': 'Norway',
-  'FI': 'Finland',
-  'DK': 'Denmark',
-  'CH': 'Switzerland',
-  'AT': 'Austria',
-  'BE': 'Belgium',
-  'IE': 'Ireland',
-  'PT': 'Portugal',
-  'GR': 'Greece',
-  'CZ': 'Czech Republic',
-  'HU': 'Hungary',
-  'RO': 'Romania',
-  'UA': 'Ukraine',
-  'EG': 'Egypt',
-  'ZA': 'South Africa',
-  'NG': 'Nigeria',
-  'KE': 'Kenya',
-  'AR': 'Argentina',
-  'CL': 'Chile',
-  'CO': 'Colombia',
-  'PE': 'Peru',
-  'VE': 'Venezuela',
-  'EC': 'Ecuador',
-  'UY': 'Uruguay',
-  'PA': 'Panama',
-  'CR': 'Costa Rica',
-  'PH': 'Philippines',
-  'MY': 'Malaysia',
-  'SG': 'Singapore',
-  'PK': 'Pakistan',
-  'BD': 'Bangladesh',
-  'LK': 'Sri Lanka',
-  'NP': 'Nepal',
-  'AE': 'United Arab Emirates',
-  'IL': 'Israel',
-  'IR': 'Iran',
-  'IQ': 'Iraq',
-  'KW': 'Kuwait',
-  'QA': 'Qatar',
-  'BH': 'Bahrain',
-  'OM': 'Oman',
-  'JO': 'Jordan',
-  'LB': 'Lebanon',
-  'SY': 'Syria',
-  'NZ': 'New Zealand',
-  'HK': 'Hong Kong',
-  'TW': 'Taiwan',
+// Country code to ECharts geo name mapping
+const COUNTRY_CODE_TO_NAME: Record<string, string> = {
+  'CN': 'China', 'US': 'United States', 'DE': 'Germany', 'FR': 'France',
+  'GB': 'United Kingdom', 'JP': 'Japan', 'KR': 'South Korea', 'IN': 'India',
+  'BR': 'Brazil', 'RU': 'Russia', 'CA': 'Canada', 'AU': 'Australia',
+  'IT': 'Italy', 'ES': 'Spain', 'MX': 'Mexico', 'ID': 'Indonesia',
+  'TR': 'Turkey', 'SA': 'Saudi Arabia', 'TH': 'Thailand', 'VN': 'Vietnam',
+  'NL': 'Netherlands', 'PL': 'Poland', 'SE': 'Sweden', 'NO': 'Norway',
+  'FI': 'Finland', 'DK': 'Denmark', 'CH': 'Switzerland', 'AT': 'Austria',
+  'BE': 'Belgium', 'IE': 'Ireland', 'PT': 'Portugal', 'GR': 'Greece',
+  'CZ': 'Czech Republic', 'HU': 'Hungary', 'RO': 'Romania', 'UA': 'Ukraine',
+  'EG': 'Egypt', 'ZA': 'South Africa', 'NG': 'Nigeria', 'KE': 'Kenya',
+  'AR': 'Argentina', 'CL': 'Chile', 'CO': 'Colombia', 'PE': 'Peru',
+  'VE': 'Venezuela', 'EC': 'Ecuador', 'UY': 'Uruguay', 'PA': 'Panama',
+  'CR': 'Costa Rica', 'PH': 'Philippines', 'MY': 'Malaysia', 'SG': 'Singapore',
+  'PK': 'Pakistan', 'BD': 'Bangladesh', 'LK': 'Sri Lanka', 'NP': 'Nepal',
+  'AE': 'United Arab Emirates', 'IL': 'Israel', 'IR': 'Iran', 'IQ': 'Iraq',
+  'KW': 'Kuwait', 'QA': 'Qatar', 'BH': 'Bahrain', 'OM': 'Oman',
+  'JO': 'Jordan', 'LB': 'Lebanon', 'SY': 'Syria', 'NZ': 'New Zealand',
+  'HK': 'Hong Kong', 'TW': 'Taiwan',
 };
+
+// Reverse map: ECharts geo name -> code for click handling
+const COUNTRY_NAME_TO_CODE: Record<string, string> = Object.fromEntries(
+  Object.entries(COUNTRY_CODE_TO_NAME).map(([code, name]) => [name, code])
+);
 
 export function WorldMapChart({ data, onCountryClick }: WorldMapChartProps) {
   const chartRef = useRef<HTMLDivElement>(null);
@@ -110,7 +63,6 @@ export function WorldMapChart({ data, onCountryClick }: WorldMapChartProps) {
       })
       .catch(err => {
         console.error('[WorldMapChart] Failed to load world map:', err);
-        // Try alternative URL
         const altUrl = 'https://raw.githubusercontent.com/apache/echarts/master/test/data/map/json/world.json';
         console.log('[WorldMapChart] Trying alternative URL:', altUrl);
         fetch(altUrl)
@@ -141,7 +93,7 @@ export function WorldMapChart({ data, onCountryClick }: WorldMapChartProps) {
 
     const maxViews = Math.max(...data.map(d => d.views));
     const mapData = data.map(d => {
-      const countryName = COUNTRY_NAME_MAP[d.country] || d.country;
+      const countryName = COUNTRY_CODE_TO_NAME[d.country] || d.country;
       return { name: countryName, value: d.views };
     });
 
@@ -191,7 +143,11 @@ export function WorldMapChart({ data, onCountryClick }: WorldMapChartProps) {
     chart.setOption(option);
     chart.off('click');
     chart.on('click', (params: any) => {
-      if (params.name) onCountryClick(params.name);
+      if (params.name) {
+        const countryCode = COUNTRY_NAME_TO_CODE[params.name] || params.name;
+        console.log('[WorldMapChart] Clicked:', params.name, '-> code:', countryCode);
+        onCountryClick(countryCode);
+      }
     });
   }, [mapLoaded, data, onCountryClick]);
 
