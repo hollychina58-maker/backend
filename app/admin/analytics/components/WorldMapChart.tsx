@@ -94,14 +94,35 @@ export function WorldMapChart({ data, onCountryClick }: WorldMapChartProps) {
     const chart = echarts.init(chartRef.current);
     chartInstanceRef.current = chart;
 
-    fetch('https://cdn.jsdelivr.net/npm/echarts@4.9.1/map/json/world.json')
-      .then(response => response.json())
+    const mapUrl = 'https://cdn.jsdelivr.net/npm/echarts@4.9.1/map/json/world.json';
+    console.log('[WorldMapChart] Loading map from:', mapUrl);
+
+    fetch(mapUrl)
+      .then(response => {
+        console.log('[WorldMapChart] Response status:', response.status);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return response.json();
+      })
       .then(geoJSON => {
+        console.log('[WorldMapChart] GeoJSON loaded, features count:', geoJSON.features?.length);
         echarts.registerMap('world', geoJSON);
         setMapLoaded(true);
       })
       .catch(err => {
-        console.error('Failed to load world map:', err);
+        console.error('[WorldMapChart] Failed to load world map:', err);
+        // Try alternative URL
+        const altUrl = 'https://raw.githubusercontent.com/apache/echarts/master/test/data/map/json/world.json';
+        console.log('[WorldMapChart] Trying alternative URL:', altUrl);
+        fetch(altUrl)
+          .then(r => r.json())
+          .then(geoJSON => {
+            console.log('[WorldMapChart] Alt GeoJSON loaded');
+            echarts.registerMap('world', geoJSON);
+            setMapLoaded(true);
+          })
+          .catch(err2 => {
+            console.error('[WorldMapChart] Alternative also failed:', err2);
+          });
       });
 
     return () => {
@@ -110,9 +131,14 @@ export function WorldMapChart({ data, onCountryClick }: WorldMapChartProps) {
   }, []);
 
   useEffect(() => {
-    if (!mapLoaded || !chartInstanceRef.current || data.length === 0) return;
+    if (!mapLoaded || !chartInstanceRef.current || data.length === 0) {
+      console.log('[WorldMapChart] Skipping render - mapLoaded:', mapLoaded, 'data length:', data.length);
+      return;
+    }
 
     const chart = chartInstanceRef.current;
+    console.log('[WorldMapChart] Rendering with data:', data);
+
     const maxViews = Math.max(...data.map(d => d.views));
     const mapData = data.map(d => {
       const countryName = COUNTRY_NAME_MAP[d.country] || d.country;
