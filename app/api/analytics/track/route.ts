@@ -55,7 +55,7 @@ export async function POST(request: NextRequest) {
 
   if (isRateLimited(clientIp)) {
     console.warn('[Analytics Track] Rate limit exceeded for IP:', clientIp);
-    return NextResponse.json({ success: false, error: 'Rate limit exceeded' }, { status: 429 });
+    return NextResponse.json({ success: false, error: 'Rate limit exceeded' }, { status: 429, headers });
   }
 
   // Ensure database is initialized (creates tables if needed)
@@ -66,18 +66,18 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: false,
       error: 'Database initialization failed: ' + (error instanceof Error ? error.message : String(error))
-    }, { status: 500 });
+    }, { status: 500, headers });
   }
 
   if (!isDatabaseAvailable()) {
     console.error('[Analytics Track] Database not available - DATABASE_URL may be missing');
-    return NextResponse.json({ success: false, error: 'Database not available' }, { status: 503 });
+    return NextResponse.json({ success: false, error: 'Database not available' }, { status: 503, headers });
   }
 
   const sql = getDb();
   if (!sql) {
     console.error('[Analytics Track] Failed to get database connection');
-    return NextResponse.json({ success: false, error: 'Database connection failed' }, { status: 500 });
+    return NextResponse.json({ success: false, error: 'Database connection failed' }, { status: 500, headers });
   }
 
   // Perform 30-day cleanup (random chance to avoid doing it on every request)
@@ -113,15 +113,15 @@ export async function POST(request: NextRequest) {
       `;
     } else {
       console.warn('[Analytics Track] Unknown event type:', event_type);
-      return NextResponse.json({ success: false, error: 'Unknown event type' }, { status: 400 });
+      return NextResponse.json({ success: false, error: 'Unknown event type' }, { status: 400, headers });
     }
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true }, { headers });
   } catch (error) {
     console.error('[Analytics Track] Failed to track event:', error);
     return NextResponse.json({
       success: false,
       error: 'Failed to track event: ' + (error instanceof Error ? error.message : String(error))
-    }, { status: 500 });
+    }, { status: 500, headers });
   }
 }
