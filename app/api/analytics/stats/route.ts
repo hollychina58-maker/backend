@@ -90,6 +90,22 @@ export async function GET(request: NextRequest) {
       LIMIT 10
     ` as { page_url: string; views: number }[];
 
+    // Referrers aggregation
+    const referrersResult = await sql`
+      SELECT COALESCE(NULLIF(referrer, ''), 'direct') as referrer, COUNT(*) as visits
+      FROM page_views
+      WHERE created_at >= ${startDate.toISOString()}
+      GROUP BY referrer
+      ORDER BY visits DESC
+      LIMIT 10
+    ` as { referrer: string; visits: string }[];
+    const totalReferrerVisits = referrersResult.reduce((sum, r) => sum + Number(r.visits || 0), 0);
+    const referrers = referrersResult.map(row => ({
+      referrer: row.referrer || 'direct',
+      visits: Number(row.visits || 0),
+      percentage: totalReferrerVisits > 0 ? (Number(row.visits || 0) / totalReferrerVisits) * 100 : 0
+    }));
+
     // Safely serialize dates - handle both Date objects and string dates from Neon
     const serializedViewsByDay = viewsByDay.map((v: { date: Date | string; views: number }) => {
       const dateValue = v.date;
@@ -120,6 +136,7 @@ export async function GET(request: NextRequest) {
           page_url: p.page_url,
           views: Number(p.views)
         })),
+        referrers,
       },
     }, { headers: corsHeaders });
   } catch (error) {
