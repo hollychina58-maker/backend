@@ -2,6 +2,13 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getDb, isDatabaseAvailable, initializeDatabase } from '../../../../lib/db';
 import { getCorsHeaders } from '../../../../lib/cors';
 
+// OPTIONS handler for CORS preflight requests
+export async function OPTIONS(request: NextRequest) {
+  const origin = request.headers.get('origin');
+  const headers = getCorsHeaders(origin);
+  return new NextResponse(null, { status: 204, headers });
+}
+
 export async function GET(request: NextRequest) {
   const origin = request.headers.get('origin');
   const corsHeaders = getCorsHeaders(origin);

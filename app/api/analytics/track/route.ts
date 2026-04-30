@@ -2,6 +2,13 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getDb, isDatabaseAvailable, initializeDatabase } from '../../../../lib/db';
 import { getCorsHeaders } from '../../../../lib/cors';
 
+// OPTIONS handler for CORS preflight requests
+export async function OPTIONS(request: NextRequest) {
+  const origin = request.headers.get('origin');
+  const headers = getCorsHeaders(origin);
+  return new NextResponse(null, { status: 204, headers });
+}
+
 // Simple in-memory rate limiter for analytics
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
 const RATE_LIMIT = 100; // max requests per minute per IP
