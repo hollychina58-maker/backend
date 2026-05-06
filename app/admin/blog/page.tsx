@@ -140,6 +140,8 @@ export default function BlogPage() {
         content: editingPost.content,
       };
 
+      console.log('[BlogPage] Saving to:', url, 'payload:', JSON.stringify(payload, null, 2));
+
       const res = await fetch(url, {
         method,
         headers: getAuthHeader(),
@@ -147,17 +149,19 @@ export default function BlogPage() {
       });
 
       const data = await res.json();
-      console.log('[BlogPage] Save result:', data);
+      console.log('[BlogPage] Save result:', res.status, data);
 
       if (!res.ok) {
-        throw new Error(data.error || `保存失败 (${res.status})`);
+        const errorMsg = data.error || `服务器错误 (${res.status})`;
+        console.error('[BlogPage] Save failed:', errorMsg);
+        throw new Error(errorMsg);
       }
 
       await fetchPosts();
       setIsModalOpen(false);
     } catch (error) {
-      console.error('Failed to save post:', error);
-      alert(error instanceof Error ? error.message : '保存失败');
+      console.error('[BlogPage] Save error:', error);
+      alert(error instanceof Error ? error.message : '保存失败，请检查网络连接');
     } finally {
       setSaving(false);
     }
