@@ -13,7 +13,6 @@ async function ensureDbInitialized(): Promise<void> {
 
 export async function verifyApiKey(request: NextRequest): Promise<NextResponse | null> {
   if (!isDatabaseAvailable()) {
-    console.error('[Auth] Database not available for API key verification');
     return NextResponse.json(
       { success: false, error: 'Server configuration error - database not available' },
       { status: 500 }
@@ -50,7 +49,6 @@ export async function verifyApiKey(request: NextRequest): Promise<NextResponse |
   try {
     const sql = getDb();
     if (!sql) {
-      console.error('[Auth] Database connection is null');
       return NextResponse.json(
         { success: false, error: 'Database connection failed' },
         { status: 500 }
@@ -59,7 +57,6 @@ export async function verifyApiKey(request: NextRequest): Promise<NextResponse |
 
     const result = await sql`SELECT password_hash FROM admin_users WHERE id = 'admin'`;
     if (result.length === 0) {
-      console.error('[Auth] No admin user found in database');
       return NextResponse.json(
         { success: false, error: 'Invalid API token - admin not configured' },
         { status: 401 }
@@ -70,7 +67,6 @@ export async function verifyApiKey(request: NextRequest): Promise<NextResponse |
     const isValid = await bcrypt.compare(token, storedHash);
 
     if (!isValid) {
-      console.error('[Auth] Token comparison failed - invalid password');
       return NextResponse.json(
         { success: false, error: 'Invalid API token' },
         { status: 401 }
@@ -79,7 +75,7 @@ export async function verifyApiKey(request: NextRequest): Promise<NextResponse |
 
     return null;
   } catch (error) {
-    console.error('[Auth] API key verification error:', error);
+    console.error('API key verification error:', error);
     return NextResponse.json(
       { success: false, error: 'Authentication failed - check server logs' },
       { status: 401 }

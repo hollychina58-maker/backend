@@ -35,27 +35,19 @@ export function ImageUpload({ value, onChange, label }: ImageUploadProps) {
         // Don't set Content-Type for FormData - browser needs to set it with boundary
         delete authHeader['Content-Type'];
 
-        console.log('[ImageUpload] Sending request to /api/upload');
-        console.log('[ImageUpload] Auth header present:', !!authHeader['Authorization']);
-
         const res = await fetch('/api/upload', {
           method: 'POST',
           headers: authHeader,
           body: formData,
         });
 
-        console.log('[ImageUpload] Response status:', res.status);
-
         const data = await res.json();
-        console.log('[ImageUpload] Response data:', data);
-
         if (!res.ok) {
           throw new Error(data.error || `上传失败 (${res.status})`);
         }
 
         onChange(data.url);
       } catch (err) {
-        console.error('[ImageUpload] Upload error:', err);
         setError(err instanceof Error ? err.message : '图片上传失败');
       } finally {
         setUploading(false);
