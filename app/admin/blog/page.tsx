@@ -188,6 +188,44 @@ export default function BlogPage() {
     setIsDeleteModalOpen(true);
   };
 
+  const handleImportMarkdown = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (!file.name.endsWith('.md')) {
+      alert('请选择 .md 文件');
+      return;
+    }
+
+    setSaving(true);
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+
+      const res = await fetch('/api/blog/import', {
+        method: 'POST',
+        headers: getAuthHeader(),
+        body: formData,
+      });
+
+      const data = await res.json();
+      console.log('[BlogPage] Import result:', data);
+
+      if (!res.ok) {
+        throw new Error(data.error || `导入失败 (${res.status})`);
+      }
+
+      alert(`成功导入: ${data.data?.slug}`);
+      await fetchPosts();
+    } catch (error) {
+      console.error('[BlogPage] Import error:', error);
+      alert(error instanceof Error ? error.message : '导入失败');
+    } finally {
+      setSaving(false);
+      e.target.value = '';
+    }
+  };
+
   const addTag = () => {
     const tag = tagInput.trim();
     if (tag && !editingPost.tags.includes(tag)) {
@@ -342,7 +380,22 @@ export default function BlogPage() {
               ]}
             />
           </div>
-          <Button onClick={openCreateModal}>+ 新增文章</Button>
+          <div className="flex items-center gap-4">
+            <label className="relative flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg cursor-pointer hover:bg-green-700 transition-colors">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+              </svg>
+              <span>导入MD</span>
+              <input
+                type="file"
+                accept=".md"
+                className="sr-only"
+                onChange={handleImportMarkdown}
+                disabled={saving}
+              />
+            </label>
+            <Button onClick={openCreateModal}>+ 新增文章</Button>
+          </div>
         </div>
 
         <DataTable columns={columns} data={filteredPosts} loading={loading} />
