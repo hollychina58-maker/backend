@@ -30,14 +30,16 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const validation = validateBlogPostInput(body);
     if (!validation.success) {
+      const errors = validation.error.errors.map(e => `${e.path.join('.')}: ${e.message}`).join(', ');
       return NextResponse.json(
-        { success: false, error: 'Invalid input' },
+        { success: false, error: `Invalid input: ${errors}` },
         { status: 400, headers }
       );
     }
     const post = await createPost(body as BlogPostInput);
     return NextResponse.json({ success: true, data: post }, { status: 201, headers });
-  } catch {
+  } catch (error) {
+    console.error('[Blog API] Failed to create post:', error);
     return NextResponse.json(
       { success: false, error: 'Failed to create post' },
       { status: 500, headers }

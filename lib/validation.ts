@@ -26,8 +26,8 @@ const blogContentSchema = z.object({
 });
 
 const blogPostInputSchema = z.object({
-  slug: z.string().min(1).regex(/^[a-z0-9-]+$/),
-  coverImage: z.string().url().optional(),
+  slug: z.string().min(1).regex(/^[a-z0-9-]+$/, 'Slug must be lowercase letters, numbers, and hyphens'),
+  coverImage: z.string().optional().default(''),
   tags: z.array(z.string()).max(20),
   author: z.string().min(1).max(100),
   date: z.string(),
