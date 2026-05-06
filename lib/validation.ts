@@ -33,7 +33,11 @@ const blogPostInputSchema = z.object({
   date: z.string(),
   readTime: z.string().min(1),
   published: z.boolean(),
-  content: z.record(z.string(), blogContentSchema),
+  content: z.record(z.string(), z.object({
+    title: z.string().min(1, 'Title is required').max(300),
+    excerpt: z.string().min(1, 'Excerpt is required').max(1000).optional().default(''),
+    content: z.string().min(1, 'Content is required').optional().default(''),
+  }).passthrough()),
 });
 
 export function validateProductInput(data: unknown) {
