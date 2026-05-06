@@ -204,6 +204,7 @@ export default function BlogPage() {
 
       const res = await fetch('/api/blog/import', {
         method: 'POST',
+        headers: { Authorization: `Bearer ${sessionStorage.getItem('admin_api_key') || ''}` },
         body: formData,
       });
 
