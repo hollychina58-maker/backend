@@ -159,8 +159,9 @@ export async function POST(request: NextRequest) {
 
   } catch (error) {
     console.error('[Blog Import] Error:', error);
+    const message = error instanceof Error ? error.message : String(error);
     return NextResponse.json(
-      { success: false, error: 'Failed to import markdown file' },
+      { success: false, error: 'Failed to import markdown file: ' + message },
       { status: 500, headers }
     );
   }
