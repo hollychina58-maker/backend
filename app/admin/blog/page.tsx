@@ -204,7 +204,6 @@ export default function BlogPage() {
 
       const res = await fetch('/api/blog/import', {
         method: 'POST',
-        headers: getAuthHeader(),
         body: formData,
       });
 
