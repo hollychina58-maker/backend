@@ -114,6 +114,16 @@ export default function BlogPage() {
   };
 
   const handleSave = async () => {
+    // Validate required fields
+    if (!editingPost.slug.trim()) {
+      alert('请填写 Slug 字段');
+      return;
+    }
+    if (!editingPost.content['en']?.title?.trim()) {
+      alert('请填写英文标题');
+      return;
+    }
+
     setSaving(true);
     try {
       const method = editingPost.id ? 'PUT' : 'POST';
@@ -136,12 +146,18 @@ export default function BlogPage() {
         body: JSON.stringify(payload),
       });
 
-      if (!res.ok) throw new Error('Failed to save');
+      const data = await res.json();
+      console.log('[BlogPage] Save result:', data);
+
+      if (!res.ok) {
+        throw new Error(data.error || `保存失败 (${res.status})`);
+      }
 
       await fetchPosts();
       setIsModalOpen(false);
     } catch (error) {
       console.error('Failed to save post:', error);
+      alert(error instanceof Error ? error.message : '保存失败');
     } finally {
       setSaving(false);
     }
