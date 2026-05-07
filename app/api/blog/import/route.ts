@@ -141,6 +141,14 @@ function parseMultiLangFrontmatter(fileContent: string): {
 
     // Field parsing
     if (trimmed.startsWith('title:') || trimmed.startsWith('excerpt:') || trimmed.startsWith('body:')) {
+      // First: if we were collecting a multi-line body for this language, finalize it
+      if (pendingBodyMultiLine && currentLang && content[currentLang]) {
+        console.log('[Import] Finalizing pending body for', currentLang, 'at field', trimmed, 'with', bodyLines.length, 'lines');
+        content[currentLang].content = bodyLines.join('\n').trimEnd();
+        pendingBodyMultiLine = false;
+        bodyLines.length = 0;
+      }
+
       const colonIdx = trimmed.indexOf(':');
       currentField = trimmed.slice(0, colonIdx).trim();
       const value = trimmed.slice(colonIdx + 1).trim();
@@ -158,13 +166,6 @@ function parseMultiLangFrontmatter(fileContent: string): {
             content[currentLang].content = value;
           }
         } else if (currentField === 'title' || currentField === 'excerpt') {
-          // If we were collecting a multi-line body for this language, finalize it first
-          if (pendingBodyMultiLine) {
-            console.log('[Import] Finalizing body for', currentLang, 'at field', currentField, 'with', bodyLines.length, 'lines');
-            content[currentLang].content = bodyLines.join('\n').trimEnd();
-            pendingBodyMultiLine = false;
-            bodyLines.length = 0;
-          }
           (content[currentLang] as any)[currentField] = value;
         }
       }
