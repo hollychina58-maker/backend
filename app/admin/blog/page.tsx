@@ -215,8 +215,18 @@ export default function BlogPage() {
         throw new Error(data.error || `导入失败 (${res.status})`);
       }
 
-      alert(`成功导入: ${data.data?.slug}`);
-      await fetchPosts();
+      // Fetch the newly imported post and open edit modal
+      const postRes = await fetch(`/api/blog/${data.data.id}`, {
+        headers: getAuthHeader(),
+      });
+      const postData = await postRes.json();
+
+      if (postData.success && postData.data) {
+        openEditModal(postData.data);
+      } else {
+        alert(`成功导入: ${data.data?.slug}，但无法加载编辑，请手动刷新列表`);
+        await fetchPosts();
+      }
     } catch (error) {
       console.error('[BlogPage] Import error:', error);
       alert(error instanceof Error ? error.message : '导入失败');

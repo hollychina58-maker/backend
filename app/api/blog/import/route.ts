@@ -76,9 +76,31 @@ function parseMultiLangFrontmatter(fileContent: string): {
   let inMeta = false;
   let inContent = false;
   let currentSection = '';
+  let pendingBodyMultiLine = false; // true when currentField='body' and value ends with '|'
+  let bodyIndent = 0;
+  const bodyLines: string[] = [];
 
   for (const line of metaBuffer) {
     const trimmed = line.trim();
+    const lineIndent = line.length - line.trimStart().length;
+
+    // If collecting multi-line body content
+    if (pendingBodyMultiLine) {
+      // Check if this line continues the body (must be indented at or past body indent)
+      if (lineIndent >= bodyIndent && !trimmed.startsWith('title:') && !trimmed.startsWith('excerpt:') && !trimmed.startsWith('body:') && !LANGUAGES.some(l => trimmed === l + ':') && trimmed !== 'meta:' && trimmed !== 'content:') {
+        // Continuation of body — remove leading indent and store
+        const deindented = lineIndent > bodyIndent ? line.slice(bodyIndent) : line.trimStart();
+        bodyLines.push(deindented === '' ? '' : deindented);
+        continue;
+      } else {
+        // New field reached — finalize the accumulated body
+        if (currentLang && content[currentLang]) {
+          content[currentLang].content = bodyLines.join('\n').trimEnd();
+        }
+        pendingBodyMultiLine = false;
+        bodyLines.length = 0;
+      }
+    }
 
     // Section headers
     if (trimmed === 'meta:') {
@@ -94,6 +116,12 @@ function parseMultiLangFrontmatter(fileContent: string): {
 
     // Language headers under content
     if (inContent && LANGUAGES.some(l => trimmed === l + ':')) {
+      // Finalize any pending body before switching language
+      if (pendingBodyMultiLine && currentLang && content[currentLang]) {
+        content[currentLang].content = bodyLines.join('\n').trimEnd();
+        pendingBodyMultiLine = false;
+        bodyLines.length = 0;
+      }
       currentLang = trimmed.slice(0, -1);
       content[currentLang] = { title: '', excerpt: '', content: '' };
       currentField = '';
@@ -108,7 +136,14 @@ function parseMultiLangFrontmatter(fileContent: string): {
 
       if (value && currentLang) {
         if (currentField === 'body') {
-          content[currentLang].content = value;
+          if (value === '|' || value === '') {
+            // Multi-line YAML block scalar — collect continuation lines
+            pendingBodyMultiLine = true;
+            bodyIndent = lineIndent;
+            bodyLines.length = 0;
+          } else {
+            content[currentLang].content = value;
+          }
         } else if (currentField === 'title' || currentField === 'excerpt') {
           (content[currentLang] as any)[currentField] = value;
         }
@@ -124,6 +159,11 @@ function parseMultiLangFrontmatter(fileContent: string): {
         }
       }
     }
+  }
+
+  // Finalize any remaining multi-line body
+  if (pendingBodyMultiLine && currentLang && content[currentLang]) {
+    content[currentLang].content = bodyLines.join('\n').trimEnd();
   }
 
   // If no multi-language content found, check for simple format
