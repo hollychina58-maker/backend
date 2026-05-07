@@ -117,14 +117,17 @@ function parseMultiLangFrontmatter(fileContent: string): {
     if (pendingBodyMultiLine) {
       // Blank line — always continue (YAML multi-line scalars allow blank lines at any indent)
       if (trimmed === '') {
+        console.log('[Import] Body BLANK LINE at indent', lineIndent, 'bodyIndent:', bodyIndent);
         bodyLines.push('');
         continue;
       }
+      console.log('[Import] Body check: lineIndent', lineIndent, '>= bodyIndent', bodyIndent, '?', lineIndent >= bodyIndent, '| trimmed:', trimmed?.slice(0, 30));
       // Check if this line continues the body (must be indented at or past body indent)
       // and is NOT a language header, field, or section marker
       if (lineIndent >= bodyIndent && !LANGUAGES.some(l => trimmed === l + ':') && !trimmed.startsWith('title:') && !trimmed.startsWith('excerpt:') && !trimmed.startsWith('body:') && trimmed !== 'meta:' && trimmed !== 'content:') {
         // Continuation of body — remove leading indent and store
         const deindented = lineIndent > bodyIndent ? line.slice(bodyIndent) : line.trimStart();
+        console.log('[Import] Body COLLECTING (count:', bodyLines.length + 1, '):', deindented?.slice(0, 40));
         bodyLines.push(deindented === '' ? '' : deindented);
         continue;
       } else {
