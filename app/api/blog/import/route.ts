@@ -123,15 +123,20 @@ function parseMultiLangFrontmatter(fileContent: string): {
       }
       // Closing frontmatter delimiter at indent 0 — DO NOT treat as body content
       // This MUST be checked before the lineIndent >= bodyIndent condition since --- at indent 0 always fails that check
+      // BUT: we only treat it as closing if we ARE in body collection AND the content has substantial content
+      // If bodyLines is nearly empty, this --- is likely a thematic break, not frontmatter end
       if (line.trim() === '---') {
-        console.log('[Import] Closing frontmatter --- found at indent 0, finalizing body');
-        if (pendingBodyMultiLine && currentLang && content[currentLang]) {
+        const isThematicBreak = bodyLines.length <= 2; // Thematic breaks usually have ~2 lines before them
+        console.log('[Import] Found --- at indent 0, bodyLines count:', bodyLines.length, 'isThematicBreak:', isThematicBreak);
+        if (!isThematicBreak) {
           console.log('[Import] Finalizing body for', currentLang, 'with', bodyLines.length, 'lines');
           content[currentLang].content = bodyLines.join('\n').trimEnd();
+          pendingBodyMultiLine = false;
+          bodyLines.length = 0;
+          continue;
         }
-        pendingBodyMultiLine = false;
-        bodyLines.length = 0;
-        continue;
+        // Thematic break: collect it as content and continue
+        console.log('[Import] Treating as thematic break, collecting');
       }
       // Check if this line continues the body (must be indented at or past body indent)
       // and is NOT a language header, field, or section marker
