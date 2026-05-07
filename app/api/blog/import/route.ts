@@ -84,22 +84,19 @@ function parseMultiLangFrontmatter(fileContent: string): {
     const trimmed = line.trim();
     const lineIndent = line.length - line.trimStart().length;
 
-    // If collecting multi-line body content
-    if (pendingBodyMultiLine) {
-      // Check if this line continues the body (must be indented at or past body indent)
-      if (lineIndent >= bodyIndent && !trimmed.startsWith('title:') && !trimmed.startsWith('excerpt:') && !trimmed.startsWith('body:') && !LANGUAGES.some(l => trimmed === l + ':') && trimmed !== 'meta:' && trimmed !== 'content:') {
-        // Continuation of body — remove leading indent and store
-        const deindented = lineIndent > bodyIndent ? line.slice(bodyIndent) : line.trimStart();
-        bodyLines.push(deindented === '' ? '' : deindented);
-        continue;
-      } else {
-        // New field reached — finalize the accumulated body
-        if (currentLang && content[currentLang]) {
-          content[currentLang].content = bodyLines.join('\n').trimEnd();
-        }
+    // Language headers under content — check BEFORE body continuation logic
+    // because indented language keys (e.g. "  zh:") match body-continuation indent rules
+    if (inContent && LANGUAGES.some(l => trimmed === l + ':')) {
+      // Finalize any pending body before switching language
+      if (pendingBodyMultiLine && currentLang && content[currentLang]) {
+        content[currentLang].content = bodyLines.join('\n').trimEnd();
         pendingBodyMultiLine = false;
         bodyLines.length = 0;
       }
+      currentLang = trimmed.slice(0, -1);
+      content[currentLang] = { title: '', excerpt: '', content: '' };
+      currentField = '';
+      continue;
     }
 
     // Section headers
@@ -114,18 +111,23 @@ function parseMultiLangFrontmatter(fileContent: string): {
       continue;
     }
 
-    // Language headers under content
-    if (inContent && LANGUAGES.some(l => trimmed === l + ':')) {
-      // Finalize any pending body before switching language
-      if (pendingBodyMultiLine && currentLang && content[currentLang]) {
-        content[currentLang].content = bodyLines.join('\n').trimEnd();
+    // If collecting multi-line body content
+    if (pendingBodyMultiLine) {
+      // Check if this line continues the body (must be indented at or past body indent)
+      // and is NOT a language header, field, or section marker
+      if (lineIndent >= bodyIndent && !trimmed.startsWith('title:') && !trimmed.startsWith('excerpt:') && !trimmed.startsWith('body:') && trimmed !== 'meta:' && trimmed !== 'content:') {
+        // Continuation of body — remove leading indent and store
+        const deindented = lineIndent > bodyIndent ? line.slice(bodyIndent) : line.trimStart();
+        bodyLines.push(deindented === '' ? '' : deindented);
+        continue;
+      } else {
+        // New field reached — finalize the accumulated body
+        if (currentLang && content[currentLang]) {
+          content[currentLang].content = bodyLines.join('\n').trimEnd();
+        }
         pendingBodyMultiLine = false;
         bodyLines.length = 0;
       }
-      currentLang = trimmed.slice(0, -1);
-      content[currentLang] = { title: '', excerpt: '', content: '' };
-      currentField = '';
-      continue;
     }
 
     // Field parsing
