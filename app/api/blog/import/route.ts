@@ -121,9 +121,21 @@ function parseMultiLangFrontmatter(fileContent: string): {
         bodyLines.push('');
         continue;
       }
-      console.log('[Import] Body check: lineIndent', lineIndent, '>= bodyIndent', bodyIndent, '?', lineIndent >= bodyIndent, '| trimmed:', trimmed?.slice(0, 30));
+      // Closing frontmatter delimiter at indent 0 — finalize body and exit frontmatter early
+      // This MUST be checked before the lineIndent >= bodyIndent condition since --- at indent 0 always fails that check
+      if (line.trim() === '---') {
+        console.log('[Import] Closing frontmatter --- found, finalizing body and breaking');
+        if (currentLang && content[currentLang]) {
+          console.log('[Import] Finalizing body for', currentLang, 'with', bodyLines.length, 'lines');
+          content[currentLang].content = bodyLines.join('\n').trimEnd();
+        }
+        pendingBodyMultiLine = false;
+        bodyLines.length = 0;
+        break;
+      }
       // Check if this line continues the body (must be indented at or past body indent)
       // and is NOT a language header, field, or section marker
+      console.log('[Import] Body check: lineIndent', lineIndent, '>= bodyIndent', bodyIndent, '?', lineIndent >= bodyIndent, '| trimmed:', trimmed?.slice(0, 30));
       if (lineIndent >= bodyIndent && !LANGUAGES.some(l => trimmed === l + ':') && !trimmed.startsWith('title:') && !trimmed.startsWith('excerpt:') && !trimmed.startsWith('body:') && trimmed !== 'meta:' && trimmed !== 'content:') {
         // Continuation of body — remove leading indent and store
         const deindented = lineIndent > bodyIndent ? line.slice(bodyIndent) : line.trimStart();
