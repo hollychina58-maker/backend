@@ -87,12 +87,14 @@ function parseMultiLangFrontmatter(fileContent: string): {
     // Language headers under content — check BEFORE body continuation logic
     // because indented language keys (e.g. "  zh:") match body-continuation indent rules
     if (inContent && LANGUAGES.some(l => trimmed === l + ':')) {
+      console.log('[Import] Language header:', trimmed, 'pendingBodyMultiLine:', pendingBodyMultiLine, 'bodyLines count:', bodyLines.length);
       // Finalize any pending body before switching language
       if (pendingBodyMultiLine && currentLang && content[currentLang]) {
+        console.log('[Import] Finalizing body for', currentLang, 'with', bodyLines.length, 'lines, first 50 chars:', bodyLines[0]?.slice(0, 50));
         content[currentLang].content = bodyLines.join('\n').trimEnd();
-        pendingBodyMultiLine = false;
-        bodyLines.length = 0;
       }
+      pendingBodyMultiLine = false;
+      bodyLines.length = 0;
       currentLang = trimmed.slice(0, -1);
       content[currentLang] = { title: '', excerpt: '', content: '' };
       currentField = '';
@@ -122,7 +124,9 @@ function parseMultiLangFrontmatter(fileContent: string): {
         continue;
       } else {
         // New field reached — finalize the accumulated body
+        console.log('[Import] Body continuation STOPPED at line:', trimmed?.slice(0, 40), 'lineIndent:', lineIndent, 'bodyIndent:', bodyIndent);
         if (currentLang && content[currentLang]) {
+          console.log('[Import] Finalizing body for', currentLang, 'with', bodyLines.length, 'lines, starts with:', bodyLines[0]?.slice(0, 50));
           content[currentLang].content = bodyLines.join('\n').trimEnd();
         }
         pendingBodyMultiLine = false;
@@ -135,6 +139,7 @@ function parseMultiLangFrontmatter(fileContent: string): {
       const colonIdx = trimmed.indexOf(':');
       currentField = trimmed.slice(0, colonIdx).trim();
       const value = trimmed.slice(colonIdx + 1).trim();
+      console.log('[Import] Field:', currentField, '=', value?.slice(0, 30), 'pendingBodyMultiLine:', pendingBodyMultiLine, 'currentLang:', currentLang);
 
       if (value && currentLang) {
         if (currentField === 'body') {
@@ -143,10 +148,18 @@ function parseMultiLangFrontmatter(fileContent: string): {
             pendingBodyMultiLine = true;
             bodyIndent = lineIndent;
             bodyLines.length = 0;
+            console.log('[Import] Starting multi-line body collection for', currentLang, 'at indent', bodyIndent);
           } else {
             content[currentLang].content = value;
           }
         } else if (currentField === 'title' || currentField === 'excerpt') {
+          // If we were collecting a multi-line body for this language, finalize it first
+          if (pendingBodyMultiLine) {
+            console.log('[Import] Finalizing body for', currentLang, 'at field', currentField, 'with', bodyLines.length, 'lines');
+            content[currentLang].content = bodyLines.join('\n').trimEnd();
+            pendingBodyMultiLine = false;
+            bodyLines.length = 0;
+          }
           (content[currentLang] as any)[currentField] = value;
         }
       }
