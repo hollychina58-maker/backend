@@ -115,18 +115,23 @@ function parseMultiLangFrontmatter(fileContent: string): {
 
     // If collecting multi-line body content
     if (pendingBodyMultiLine) {
+      // Blank line — always continue (YAML multi-line scalars allow blank lines at any indent)
+      if (trimmed === '') {
+        bodyLines.push('');
+        continue;
+      }
       // Check if this line continues the body (must be indented at or past body indent)
       // and is NOT a language header, field, or section marker
-      if (lineIndent >= bodyIndent && !trimmed.startsWith('title:') && !trimmed.startsWith('excerpt:') && !trimmed.startsWith('body:') && trimmed !== 'meta:' && trimmed !== 'content:') {
+      if (lineIndent >= bodyIndent && !LANGUAGES.some(l => trimmed === l + ':') && !trimmed.startsWith('title:') && !trimmed.startsWith('excerpt:') && !trimmed.startsWith('body:') && trimmed !== 'meta:' && trimmed !== 'content:') {
         // Continuation of body — remove leading indent and store
         const deindented = lineIndent > bodyIndent ? line.slice(bodyIndent) : line.trimStart();
         bodyLines.push(deindented === '' ? '' : deindented);
         continue;
       } else {
-        // New field reached — finalize the accumulated body
+        // New field/section reached — finalize the accumulated body
         console.log('[Import] Body continuation STOPPED at line:', trimmed?.slice(0, 40), 'lineIndent:', lineIndent, 'bodyIndent:', bodyIndent);
         if (currentLang && content[currentLang]) {
-          console.log('[Import] Finalizing body for', currentLang, 'with', bodyLines.length, 'lines, starts with:', bodyLines[0]?.slice(0, 50));
+          console.log('[Import] Finalizing body for', currentLang, 'with', bodyLines.length, 'lines');
           content[currentLang].content = bodyLines.join('\n').trimEnd();
         }
         pendingBodyMultiLine = false;
