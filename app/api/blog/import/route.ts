@@ -126,7 +126,8 @@ function parseMultiLangFrontmatter(fileContent: string): {
       // BUT: we only treat it as closing if we ARE in body collection AND the content has substantial content
       // If bodyLines is nearly empty, this --- is likely a thematic break, not frontmatter end
       if (line.trim() === '---') {
-        const isThematicBreak = bodyLines.length <= 2; // Thematic breaks usually have ~2 lines before them
+        // Frontmatter closing has hundreds of lines before it; thematic breaks have only a few
+        const isThematicBreak = bodyLines.length < 15;
         console.log('[Import] Found --- at indent 0, bodyLines count:', bodyLines.length, 'isThematicBreak:', isThematicBreak);
         if (!isThematicBreak) {
           console.log('[Import] Finalizing body for', currentLang, 'with', bodyLines.length, 'lines');
