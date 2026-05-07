@@ -121,17 +121,17 @@ function parseMultiLangFrontmatter(fileContent: string): {
         bodyLines.push('');
         continue;
       }
-      // Closing frontmatter delimiter at indent 0 — finalize body and exit frontmatter early
+      // Closing frontmatter delimiter at indent 0 — DO NOT treat as body content
       // This MUST be checked before the lineIndent >= bodyIndent condition since --- at indent 0 always fails that check
       if (line.trim() === '---') {
-        console.log('[Import] Closing frontmatter --- found, finalizing body and breaking');
-        if (currentLang && content[currentLang]) {
+        console.log('[Import] Closing frontmatter --- found at indent 0, finalizing body');
+        if (pendingBodyMultiLine && currentLang && content[currentLang]) {
           console.log('[Import] Finalizing body for', currentLang, 'with', bodyLines.length, 'lines');
           content[currentLang].content = bodyLines.join('\n').trimEnd();
         }
         pendingBodyMultiLine = false;
         bodyLines.length = 0;
-        break;
+        continue;
       }
       // Check if this line continues the body (must be indented at or past body indent)
       // and is NOT a language header, field, or section marker
