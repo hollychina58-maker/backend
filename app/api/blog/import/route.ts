@@ -62,7 +62,7 @@ function parseMultiLangFrontmatter(fileContent: string): {
   // State: which section (meta/content), which language, which field, collecting body or not
   let section: 'meta' | 'content' | 'none' = 'none';
   let lang: string = '';
-  let field: string = '';
+  let field: 'title' | 'excerpt' | 'body' | '' = '';
   let bodyIndent: number = 0;
   const bodyLines: string[] = [];
 
@@ -118,9 +118,9 @@ function parseMultiLangFrontmatter(fileContent: string): {
             content[lang].content = value;
             field = '';
           }
-        } else {
+        } else if (field === 'title' || field === 'excerpt') {
           // title or excerpt
-          content[lang][field] = value;
+          (content[lang] as Record<string, string>)[field] = value;
         }
         continue;
       }
