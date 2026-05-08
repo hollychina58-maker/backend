@@ -57,7 +57,9 @@ function parseSimpleFrontmatter(fileContent: string): {
     let started = false;
     for (const l of lines3) {
       if (l.trim() === '' && !started) continue;
-      if (l.trim() === '---') break;
+      // Only break on --- before content starts (end of frontmatter block)
+      // After content starts, --- are section dividers within the content
+      if (l.trim() === '---' && !started) break;
       if (l.match(/^[a-zA-Z0-9#]/)) {
         // Non-space indented line that's not empty - end of content
         if (!started) {
