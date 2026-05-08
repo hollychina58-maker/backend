@@ -105,7 +105,7 @@ function parseMultiLangFrontmatter(fileContent: string): {
         }
 
         const colonIdx = trimmed.indexOf(':');
-        field = trimmed.slice(0, colonIdx);
+        field = trimmed.slice(0, colonIdx) as 'title' | 'excerpt' | 'body';
         const value = trimmed.slice(colonIdx + 1).trim();
 
         if (field === 'body') {
