@@ -178,17 +178,6 @@ export async function POST(request: NextRequest) {
     const contentByLang: Record<string, { title: string; excerpt: string; content: string }> = {};
     contentByLang[lang] = { title, excerpt, content };
 
-    // Fill other languages with placeholder
-    for (const langKey of LANGUAGES) {
-      if (!contentByLang[langKey]) {
-        contentByLang[langKey] = {
-          title: title,
-          excerpt: '',
-          content: content,
-        };
-      }
-    }
-
     await sql`
       INSERT INTO blog_posts (id, slug, cover_image, tags, author, date, read_time, published, content, created_at, updated_at)
       VALUES (
