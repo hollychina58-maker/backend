@@ -132,18 +132,32 @@ function parseMultiLangFrontmatter(fileContent: string): {
       // BUT: we only treat it as closing if we ARE in body collection AND the content has substantial content
       // If bodyLines is nearly empty, this --- is likely a thematic break, not frontmatter end
       if (line.trim() === '---') {
-        // Frontmatter closing has hundreds of lines before it; thematic breaks have only a few
-        const isThematicBreak = bodyLines.length < 15;
-        console.log('[Import] Found --- at indent 0, bodyLines count:', bodyLines.length, 'isThematicBreak:', isThematicBreak);
-        if (!isThematicBreak) {
-          console.log('[Import] Finalizing body for', currentLang, 'with', bodyLines.length, 'lines');
-          content[currentLang].content = bodyLines.join('\n').trimEnd();
+        // Indent 6+ thematic breaks (within body content) — always stop and finalize
+        // Indent 0 closing delimiter — only finalize if body has substantial content (>15 lines)
+        const isClosingDelimiter = lineIndent === 0;
+        const isThematicBreak = lineIndent >= bodyIndent && lineIndent > 0;
+        console.log('[Import] Found --- at indent', lineIndent, 'bodyIndent:', bodyIndent, 'isThematicBreak:', isThematicBreak, 'isClosing:', isClosingDelimiter);
+        if (isThematicBreak) {
+          // Thematic break: finalize body and stop collection
+          console.log('[Import] Thematic break, finalizing body for', currentLang, 'with', bodyLines.length, 'lines');
+          if (currentLang && content[currentLang]) {
+            content[currentLang].content = bodyLines.join('\n').trimEnd();
+          }
           pendingBodyMultiLine = false;
           bodyLines.length = 0;
           continue;
         }
-        // Thematic break: collect it as content and continue
-        console.log('[Import] Treating as thematic break, collecting');
+        if (isClosingDelimiter && bodyLines.length >= 15) {
+          // Frontmatter closing after substantial content
+          console.log('[Import] Closing frontmatter, finalizing body for', currentLang, 'with', bodyLines.length, 'lines');
+          if (currentLang && content[currentLang]) {
+            content[currentLang].content = bodyLines.join('\n').trimEnd();
+          }
+          pendingBodyMultiLine = false;
+          bodyLines.length = 0;
+          continue;
+        }
+        // Otherwise collect as content (blank/short body)
       }
       // Check if this line continues the body (must be indented at or past body indent)
       // and is NOT a language header, field, or section marker
