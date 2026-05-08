@@ -79,6 +79,7 @@ function parseMultiLangFrontmatter(fileContent: string): {
   let pendingBodyMultiLine = false; // true when currentField='body' and value ends with '|'
   let bodyIndent = 0;
   const bodyLines: string[] = [];
+  let seenThematicBreak = false; // tracks if we've seen a --- at indent 0 (thematic break) during body collection
 
   for (let lineIdx = 0; lineIdx < metaBuffer.length; lineIdx++) {
     const line = metaBuffer[lineIdx];
@@ -138,19 +139,22 @@ function parseMultiLangFrontmatter(fileContent: string): {
         const isThematicBreak = lineIndent >= bodyIndent && lineIndent > 0;
         console.log('[Import] Found --- at indent', lineIndent, 'bodyIndent:', bodyIndent, 'isThematicBreak:', isThematicBreak, 'isClosing:', isClosingDelimiter);
         if (isThematicBreak) {
-          // Thematic break: finalize body and stop collection
-          console.log('[Import] Thematic break, finalizing body for', currentLang, 'with', bodyLines.length, 'lines');
+          // Thematic break: add it to body, finalize, and stop collection
+          // Mark that we've seen a thematic break, so subsequent --- at indent 0 will be treated as closing delimiter
+          console.log('[Import] Thematic break, collecting and finalizing body for', currentLang, 'with', bodyLines.length, 'lines');
+          bodyLines.push('---');
           if (currentLang && content[currentLang]) {
             content[currentLang].content = bodyLines.join('\n').trimEnd();
           }
           pendingBodyMultiLine = false;
           bodyLines.length = 0;
-          // DO NOT continue — let the next iteration's field-parsing handle the thematic break
-          // as a normal markdown line if needed, but body collection is done
+          seenThematicBreak = true;
+          continue;
         }
-        if (isClosingDelimiter && bodyLines.length >= 15) {
-          // Frontmatter closing after substantial content
-          console.log('[Import] Closing frontmatter, finalizing body for', currentLang, 'with', bodyLines.length, 'lines');
+        if (isClosingDelimiter && (bodyLines.length >= 15 || seenThematicBreak)) {
+          // Frontmatter closing — either substantial content (>15 lines) OR we've already seen a thematic break
+          // (thematic break means we're definitely in body area, so this --- is the real closing delimiter)
+          console.log('[Import] Closing frontmatter delimiter, finalizing body for', currentLang, 'with', bodyLines.length, 'lines');
           if (currentLang && content[currentLang]) {
             content[currentLang].content = bodyLines.join('\n').trimEnd();
           }
