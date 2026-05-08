@@ -176,6 +176,7 @@ function parseMultiLangFrontmatter(fileContent: string): {
         continue;
       } else {
         // New field/section reached — finalize the accumulated body
+        // Reset seenThematicBreak since this stop was NOT from a thematic break
         console.log('[Import] Body continuation STOPPED at line:', trimmed?.slice(0, 40), 'lineIndent:', lineIndent, 'bodyIndent:', bodyIndent);
         if (currentLang && content[currentLang]) {
           console.log('[Import] Finalizing body for', currentLang, 'with', bodyLines.length, 'lines');
@@ -183,6 +184,7 @@ function parseMultiLangFrontmatter(fileContent: string): {
         }
         pendingBodyMultiLine = false;
         bodyLines.length = 0;
+        seenThematicBreak = false;
       }
     }
 
