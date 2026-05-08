@@ -80,9 +80,15 @@ function parseMultiLangFrontmatter(fileContent: string): {
   let bodyIndent = 0;
   const bodyLines: string[] = [];
 
-  for (const line of metaBuffer) {
+  for (let lineIdx = 0; lineIdx < metaBuffer.length; lineIdx++) {
+    const line = metaBuffer[lineIdx];
     const trimmed = line.trim();
     const lineIndent = line.length - line.trimStart().length;
+
+    // Log checkpoints and key lines
+    if (lineIdx % 300 === 0 || trimmed === '---' || trimmed.startsWith('  zh') || trimmed.startsWith('  ru') || trimmed.startsWith('  ar') || trimmed.startsWith('  fa') || trimmed.startsWith('  la') || trimmed.startsWith('content:') || trimmed.startsWith('meta:')) {
+      console.log('[Import] Parse line', lineIdx, ': indent=', lineIndent, 'content=', JSON.stringify(trimmed?.slice(0, 50)));
+    }
 
     // Language headers under content — check BEFORE body continuation logic
     // because indented language keys (e.g. "  zh:") match body-continuation indent rules
