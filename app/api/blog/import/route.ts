@@ -145,7 +145,8 @@ function parseMultiLangFrontmatter(fileContent: string): {
           }
           pendingBodyMultiLine = false;
           bodyLines.length = 0;
-          continue;
+          // DO NOT continue — let the next iteration's field-parsing handle the thematic break
+          // as a normal markdown line if needed, but body collection is done
         }
         if (isClosingDelimiter && bodyLines.length >= 15) {
           // Frontmatter closing after substantial content
@@ -161,8 +162,9 @@ function parseMultiLangFrontmatter(fileContent: string): {
       }
       // Check if this line continues the body (must be indented at or past body indent)
       // and is NOT a language header, field, or section marker
+      // Markdown headings (# text) at any indent level stop body collection (they're not content)
       console.log('[Import] Body check: lineIndent', lineIndent, '>= bodyIndent', bodyIndent, '?', lineIndent >= bodyIndent, '| trimmed:', trimmed?.slice(0, 30));
-      if (lineIndent >= bodyIndent && !LANGUAGES.some(l => trimmed === l + ':') && !trimmed.startsWith('title:') && !trimmed.startsWith('excerpt:') && !trimmed.startsWith('body:') && trimmed !== 'meta:' && trimmed !== 'content:') {
+      if (lineIndent >= bodyIndent && !LANGUAGES.some(l => trimmed === l + ':') && !trimmed.startsWith('title:') && !trimmed.startsWith('excerpt:') && !trimmed.startsWith('body:') && trimmed !== 'meta:' && trimmed !== 'content:' && !trimmed.startsWith('#')) {
         // Continuation of body — remove leading indent and store
         const deindented = lineIndent > bodyIndent ? line.slice(bodyIndent) : line.trimStart();
         console.log('[Import] Body COLLECTING (count:', bodyLines.length + 1, '):', deindented?.slice(0, 40));
