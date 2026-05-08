@@ -41,208 +41,125 @@ function parseMultiLangFrontmatter(fileContent: string): {
   let body = fileContent;
 
   const lines = fileContent.split('\n');
-  const frontmatterLines: string[] = [];
   let inFrontmatter = false;
-  let inContentSection = false;
-  let currentLang = '';
-  let currentField = '';
-  let contentBuffer: string[] = [];
-  let metaBuffer: string[] = [];
+  const frontmatterLines: string[] = [];
 
-  // Simple state machine parser
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
-
-    // Start or end of frontmatter
+  // Phase 1: Extract frontmatter block
+  for (const line of lines) {
     if (line.trim() === '---') {
       if (!inFrontmatter) {
         inFrontmatter = true;
-        metaBuffer = [];
-        contentBuffer = [];
       } else {
-        // End frontmatter
-        inFrontmatter = false;
+        // End of frontmatter
         break;
       }
     } else if (inFrontmatter) {
-      metaBuffer.push(line);
-    } else {
-      // Body after frontmatter
-      body += '\n' + line;
+      frontmatterLines.push(line);
     }
   }
 
-  // Parse meta section
-  let inMeta = false;
-  let inContent = false;
-  let currentSection = '';
-  let pendingBodyMultiLine = false; // true when currentField='body' and value ends with '|'
-  let bodyIndent = 0;
+  // Phase 2: Parse frontmatter with a simple state machine
+  // State: which section (meta/content), which language, which field, collecting body or not
+  let section: 'meta' | 'content' | 'none' = 'none';
+  let lang: string = '';
+  let field: string = '';
+  let bodyIndent: number = 0;
   const bodyLines: string[] = [];
-  let seenThematicBreak = false; // tracks if we've seen a --- at indent 0 (thematic break) during body collection
 
-  for (let lineIdx = 0; lineIdx < metaBuffer.length; lineIdx++) {
-    const line = metaBuffer[lineIdx];
+  for (let i = 0; i < frontmatterLines.length; i++) {
+    const rawLine = frontmatterLines[i];
+    const line = rawLine;
     const trimmed = line.trim();
-    const lineIndent = line.length - line.trimStart().length;
+    const indent = line.length - line.trimStart().length;
 
-    // Log checkpoints and key lines
-    if (lineIdx % 300 === 0 || trimmed === '---' || trimmed.startsWith('  zh') || trimmed.startsWith('  ru') || trimmed.startsWith('  ar') || trimmed.startsWith('  fa') || trimmed.startsWith('  la') || trimmed.startsWith('content:') || trimmed.startsWith('meta:')) {
-      console.log('[Import] Parse line', lineIdx, ': indent=', lineIndent, 'content=', JSON.stringify(trimmed?.slice(0, 50)));
+    // Check for section-level headers (meta:, content:)
+    if (indent === 0 && (trimmed === 'meta:' || trimmed === 'content:')) {
+      section = trimmed === 'meta:' ? 'meta' : 'content';
+      lang = '';
+      field = '';
+      continue;
     }
 
-    // Language headers under content — check BEFORE body continuation logic
-    // because indented language keys (e.g. "  zh:") match body-continuation indent rules
-    if (inContent && LANGUAGES.some(l => trimmed === l + ':')) {
-      console.log('[Import] Language header:', trimmed, 'pendingBodyMultiLine:', pendingBodyMultiLine, 'bodyLines count:', bodyLines.length);
-      // Finalize any pending body before switching language
-      if (pendingBodyMultiLine && currentLang && content[currentLang]) {
-        console.log('[Import] Finalizing body for', currentLang, 'with', bodyLines.length, 'lines, first 50 chars:', bodyLines[0]?.slice(0, 50));
-        content[currentLang].content = bodyLines.join('\n').trimEnd();
+    // Check for language headers (en:, zh:, ru:, etc.) - only at indent 2 within content section
+    if (section === 'content' && indent === 2) {
+      const langMatch = LANGUAGES.find(l => trimmed === l + ':');
+      if (langMatch) {
+        // Save previous language's body if any
+        if (lang && field === 'body' && bodyLines.length > 0) {
+          content[lang].content = bodyLines.join('\n').trimEnd();
+        }
+        lang = langMatch;
+        content[lang] = { title: '', excerpt: '', content: '' };
+        field = '';
+        continue;
       }
-      pendingBodyMultiLine = false;
-      bodyLines.length = 0;
-      currentLang = trimmed.slice(0, -1);
-      content[currentLang] = { title: '', excerpt: '', content: '' };
-      currentField = '';
-      continue;
     }
 
-    // Section headers
-    if (trimmed === 'meta:') {
-      inMeta = true;
-      inContent = false;
-      continue;
-    }
-    if (trimmed === 'content:') {
-      inMeta = false;
-      inContent = true;
-      continue;
+    // Check for field headers (title:, excerpt:, body:) at indent 4
+    if (section === 'content' && lang && indent === 4) {
+      if (trimmed.startsWith('title:') || trimmed.startsWith('excerpt:') || trimmed.startsWith('body:')) {
+        // Save previous field's body if any
+        if (field === 'body' && bodyLines.length > 0) {
+          content[lang].content = bodyLines.join('\n').trimEnd();
+          bodyLines.length = 0;
+        }
+
+        const colonIdx = trimmed.indexOf(':');
+        field = trimmed.slice(0, colonIdx);
+        const value = trimmed.slice(colonIdx + 1).trim();
+
+        if (field === 'body') {
+          if (value === '|') {
+            // Start multi-line body collection
+            field = 'body';
+            bodyIndent = indent;
+          } else {
+            // Single-line body
+            content[lang].content = value;
+            field = '';
+          }
+        } else {
+          // title or excerpt
+          content[lang][field] = value;
+        }
+        continue;
+      }
     }
 
-    // If collecting multi-line body content
-    if (pendingBodyMultiLine) {
-      // Blank line — always continue (YAML multi-line scalars allow blank lines at any indent)
+    // If we're collecting a multi-line body
+    if (section === 'content' && lang && field === 'body' && bodyIndent > 0) {
+      // Blank line - always include in body
       if (trimmed === '') {
-        console.log('[Import] Body BLANK LINE at indent', lineIndent, 'bodyIndent:', bodyIndent);
         bodyLines.push('');
         continue;
       }
-      // Closing frontmatter delimiter at indent 0 — DO NOT treat as body content
-      // This MUST be checked before the lineIndent >= bodyIndent condition since --- at indent 0 always fails that check
-      // BUT: we only treat it as closing if we ARE in body collection AND the content has substantial content
-      // If bodyLines is nearly empty, this --- is likely a thematic break, not frontmatter end
-      if (line.trim() === '---') {
-        // Indent 6+ thematic breaks (within body content) — always stop and finalize
-        // Indent 0 closing delimiter — only finalize if body has substantial content (>15 lines)
-        const isClosingDelimiter = lineIndent === 0;
-        const isThematicBreak = lineIndent >= bodyIndent && lineIndent > 0;
-        console.log('[Import] Found --- at indent', lineIndent, 'bodyIndent:', bodyIndent, 'isThematicBreak:', isThematicBreak, 'isClosing:', isClosingDelimiter);
-        if (isThematicBreak) {
-          // Thematic break: add it to body, finalize, and stop collection
-          // Mark that we've seen a thematic break, so subsequent --- at indent 0 will be treated as closing delimiter
-          console.log('[Import] Thematic break, collecting and finalizing body for', currentLang, 'with', bodyLines.length, 'lines');
-          bodyLines.push('---');
-          if (currentLang && content[currentLang]) {
-            content[currentLang].content = bodyLines.join('\n').trimEnd();
-          }
-          pendingBodyMultiLine = false;
-          bodyLines.length = 0;
-          seenThematicBreak = true;
-          continue;
-        }
-        if (isClosingDelimiter && (bodyLines.length >= 15 || seenThematicBreak)) {
-          // Frontmatter closing — either substantial content (>15 lines) OR we've already seen a thematic break
-          // (thematic break means we're definitely in body area, so this --- is the real closing delimiter)
-          console.log('[Import] Closing frontmatter delimiter, finalizing body for', currentLang, 'with', bodyLines.length, 'lines');
-          if (currentLang && content[currentLang]) {
-            content[currentLang].content = bodyLines.join('\n').trimEnd();
-          }
-          pendingBodyMultiLine = false;
-          bodyLines.length = 0;
-          continue;
-        }
-        // Otherwise collect as content (blank/short body)
-      }
-      // Check if this line continues the body (must be indented at or past body indent)
-      // and is NOT a language header, field, or section marker
-      // Markdown headings (# text) at any indent level stop body collection (they're not content)
-      console.log('[Import] Body check: lineIndent', lineIndent, '>= bodyIndent', bodyIndent, '?', lineIndent >= bodyIndent, '| trimmed:', trimmed?.slice(0, 30));
-      if (lineIndent >= bodyIndent && !LANGUAGES.some(l => trimmed === l + ':') && !trimmed.startsWith('title:') && !trimmed.startsWith('excerpt:') && !trimmed.startsWith('body:') && trimmed !== 'meta:' && trimmed !== 'content:' && !trimmed.startsWith('#')) {
-        // Continuation of body — remove leading indent and store
-        const deindented = lineIndent > bodyIndent ? line.slice(bodyIndent) : line.trimStart();
-        console.log('[Import] Body COLLECTING (count:', bodyLines.length + 1, '):', deindented?.slice(0, 40));
-        bodyLines.push(deindented === '' ? '' : deindented);
-        continue;
+
+      // Dedented to field level (indent <= bodyIndent - 2) - end of body
+      if (indent <= bodyIndent - 2) {
+        content[lang].content = bodyLines.join('\n').trimEnd();
+        bodyLines.length = 0;
+        field = '';
+        bodyIndent = 0;
+        // Don't continue - let this line be re-processed by field detection
       } else {
-        // New field/section reached — finalize the accumulated body
-        // Reset seenThematicBreak since this stop was NOT from a thematic break
-        console.log('[Import] Body continuation STOPPED at line:', trimmed?.slice(0, 40), 'lineIndent:', lineIndent, 'bodyIndent:', bodyIndent);
-        if (currentLang && content[currentLang]) {
-          console.log('[Import] Finalizing body for', currentLang, 'with', bodyLines.length, 'lines');
-          content[currentLang].content = bodyLines.join('\n').trimEnd();
-        }
-        pendingBodyMultiLine = false;
-        bodyLines.length = 0;
-        seenThematicBreak = false;
-      }
-    }
-
-    // Field parsing
-    if (trimmed.startsWith('title:') || trimmed.startsWith('excerpt:') || trimmed.startsWith('body:')) {
-      // First: if we were collecting a multi-line body for this language, finalize it
-      if (pendingBodyMultiLine && currentLang && content[currentLang]) {
-        console.log('[Import] Finalizing pending body for', currentLang, 'at field', trimmed, 'with', bodyLines.length, 'lines');
-        content[currentLang].content = bodyLines.join('\n').trimEnd();
-        pendingBodyMultiLine = false;
-        bodyLines.length = 0;
-      }
-
-      const colonIdx = trimmed.indexOf(':');
-      currentField = trimmed.slice(0, colonIdx).trim();
-      const value = trimmed.slice(colonIdx + 1).trim();
-      console.log('[Import] Field:', currentField, '=', value?.slice(0, 30), 'pendingBodyMultiLine:', pendingBodyMultiLine, 'currentLang:', currentLang);
-
-      if (value && currentLang) {
-        if (currentField === 'body') {
-          if (value === '|' || value === '') {
-            // Multi-line YAML block scalar — collect continuation lines
-            pendingBodyMultiLine = true;
-            bodyIndent = lineIndent;
-            bodyLines.length = 0;
-            console.log('[Import] Starting multi-line body collection for', currentLang, 'at indent', bodyIndent);
-          } else {
-            content[currentLang].content = value;
-          }
-        } else if (currentField === 'title' || currentField === 'excerpt') {
-          (content[currentLang] as any)[currentField] = value;
-        }
-      }
-
-      if (value && inMeta) {
-        if (trimmed.startsWith('tags:')) {
-          // Parse array syntax: [IMU, Sensor]
-          meta.tags = value.replace(/[\[\]]/g, '').split(',').map(t => t.trim()).filter(Boolean);
-        } else {
-          const key = trimmed.slice(0, trimmed.indexOf(':')).trim();
-          meta[key] = value;
-        }
+        // Content line - strip leading indent (the bodyIndent indentation)
+        const contentIndent = indent - bodyIndent;
+        const deindented = line.slice(bodyIndent);
+        bodyLines.push(deindented);
       }
     }
   }
 
-  // Finalize any remaining multi-line body
-  if (pendingBodyMultiLine && currentLang && content[currentLang]) {
-    content[currentLang].content = bodyLines.join('\n').trimEnd();
+  // Save last body's content
+  if (lang && field === 'body' && bodyLines.length > 0) {
+    content[lang].content = bodyLines.join('\n').trimEnd();
   }
 
   // If no multi-language content found, check for simple format
   if (Object.keys(content).length === 0) {
-    // Try simple frontmatter with single title/excerpt
     const { data, body: simpleBody } = parseSimpleFrontmatter(fileContent);
     body = simpleBody;
 
-    // Extract meta
     meta.slug = data.slug || '';
     meta.author = data.author || 'Admin';
     meta.date = data.date || new Date().toISOString().split('T')[0];
@@ -250,27 +167,16 @@ function parseMultiLangFrontmatter(fileContent: string): {
     meta.cover_image = data.cover_image || data.coverImage || '';
     meta.published = data.published === 'true' || data.published === '1';
 
-    // If we have language-prefixed fields, parse them
-    for (const lang of LANGUAGES) {
-      const title = data[`title.${lang}`] || data[`title_${lang}`] || '';
-      const excerpt = data[`excerpt.${lang}`] || data[`excerpt_${lang}`] || '';
-
+    for (const langKey of LANGUAGES) {
+      const title = data[`title.${langKey}`] || data[`title_${langKey}`] || '';
+      const excerpt = data[`excerpt.${langKey}`] || data[`excerpt_${langKey}`] || '';
       if (title) {
-        content[lang] = {
-          title,
-          excerpt,
-          content: simpleBody,
-        };
+        content[langKey] = { title, excerpt, content: simpleBody };
       }
     }
 
-    // If still no multi-language content, use single content as source for all
     if (Object.keys(content).length === 0 && data.title) {
-      content['en'] = {
-        title: data.title,
-        excerpt: data.excerpt || simpleBody.slice(0, 200),
-        content: simpleBody,
-      };
+      content['en'] = { title: data.title, excerpt: data.excerpt || simpleBody.slice(0, 200), content: simpleBody };
     }
   }
 
@@ -325,25 +231,16 @@ export async function POST(request: NextRequest) {
     await initializeDatabase();
   } catch (error) {
     console.error('[Blog Import] Database initialization failed:', error);
-    return NextResponse.json(
-      { success: false, error: 'Database initialization failed' },
-      { status: 500, headers }
-    );
+    return NextResponse.json({ success: false, error: 'Database initialization failed' }, { status: 500, headers });
   }
 
   if (!isDatabaseAvailable()) {
-    return NextResponse.json(
-      { success: false, error: 'Database not available' },
-      { status: 503, headers }
-    );
+    return NextResponse.json({ success: false, error: 'Database not available' }, { status: 503, headers });
   }
 
   const sql = getDb();
   if (!sql) {
-    return NextResponse.json(
-      { success: false, error: 'Database connection failed' },
-      { status: 500, headers }
-    );
+    return NextResponse.json({ success: false, error: 'Database connection failed' }, { status: 500, headers });
   }
 
   try {
@@ -351,17 +248,11 @@ export async function POST(request: NextRequest) {
     const file = formData.get('file') as File | null;
 
     if (!file) {
-      return NextResponse.json(
-        { success: false, error: 'No file provided' },
-        { status: 400, headers }
-      );
+      return NextResponse.json({ success: false, error: 'No file provided' }, { status: 400, headers });
     }
 
     if (!file.name.endsWith('.md')) {
-      return NextResponse.json(
-        { success: false, error: 'Only .md files are supported' },
-        { status: 400, headers }
-      );
+      return NextResponse.json({ success: false, error: 'Only .md files are supported' }, { status: 400, headers });
     }
 
     const fileContent = await file.text();
@@ -370,13 +261,10 @@ export async function POST(request: NextRequest) {
     // Validate multi-language content
     const hasMultiLang = Object.keys(contentByLang).filter(k => LANGUAGES.includes(k)).length > 0;
     if (!hasMultiLang) {
-      return NextResponse.json(
-        {
-          success: false,
-          error: 'Multi-language content required. Please provide content for at least one language (en, zh, ru, ar, fa, or la).'
-        },
-        { status: 400, headers }
-      );
+      return NextResponse.json({
+        success: false,
+        error: 'Multi-language content required. Please provide content for at least one language (en, zh, ru, ar, fa, or la).'
+      }, { status: 400, headers });
     }
 
     // Extract meta fields
@@ -402,10 +290,7 @@ export async function POST(request: NextRequest) {
     // Check if post with same slug exists
     const existing = await sql`SELECT id FROM blog_posts WHERE LOWER(slug) = LOWER(${slug})`;
     if (existing.length > 0) {
-      return NextResponse.json(
-        { success: false, error: `Post with slug "${slug}" already exists` },
-        { status: 409, headers }
-      );
+      return NextResponse.json({ success: false, error: `Post with slug "${slug}" already exists` }, { status: 409, headers });
     }
 
     // Insert into database
@@ -439,9 +324,6 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('[Blog Import] Error:', error);
     const message = error instanceof Error ? error.message : String(error);
-    return NextResponse.json(
-      { success: false, error: 'Failed to import markdown file: ' + message },
-      { status: 500, headers }
-    );
+    return NextResponse.json({ success: false, error: 'Failed to import markdown file: ' + message }, { status: 500, headers });
   }
 }
